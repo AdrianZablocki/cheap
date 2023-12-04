@@ -1,6 +1,9 @@
 {
   "author": "Avneesh Bagade",
   "date": "2023-09-21T23:48:28.000Z",
+  "region": "mazowieckie",
+  "miasto": "Warszawa",
+  "adress": "Al. Jerozolimskie 78, Warszawa",
   "name": "Red no 2",
   "price": 22.33
 }
