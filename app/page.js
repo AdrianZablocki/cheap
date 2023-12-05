@@ -1,8 +1,8 @@
 import axios from 'axios'
-import queryString from 'query-string'
 
 import styles from './page.module.css'
 import Post from '@/components/post'
+import LoadGoogleMapsScript from '@/components/autocomplete'
 
 const getPosts = async () => {
   const  { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`)
@@ -11,17 +11,12 @@ const getPosts = async () => {
 }
 
 const HomePage = async() => {
-  let postsData;
-  try {
-    postsData = await getPosts()
-    console.log('DATA', postsData)
-  } catch(error) {
-    console.log('ERROR', error)
-  }
+  const postsData = await getPosts();
 
   return (
     <main className={styles.main}>
       main
+      <LoadGoogleMapsScript />
       <Post posts={postsData.posts} />
     </main>
   )
