@@ -11,13 +11,13 @@ const getPosts = async () => {
 }
 
 const HomePage = async() => {
-  const postsData = await getPosts();
+  // const postsData = await getPosts();
 
   return (
     <main className={styles.main}>
       main
       <LoadGoogleMapsScript />
-      <Post posts={postsData.posts} />
+      {/* <Post posts={postsData.posts} /> */}
     </main>
   )
 }
