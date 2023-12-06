@@ -15,7 +15,7 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Województwo jest polem wymaganym']
   },
-  citi: {
+  city: {
     type: String,
     required: [true, 'Miasto jest polem wymaganym']
   },
