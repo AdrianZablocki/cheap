@@ -9,12 +9,12 @@ const getPosts = async () => {
   return data
 }
 
-const HomePage = async() => {
+const HomePage = async({params: { session, ...params}}) => {
   const postsData = await getPosts();
 
   return (
     <main className={styles.main}>
-      <Post posts={postsData.posts} />
+      <Post posts={postsData.posts} session={session} />
     </main>
   )
 }

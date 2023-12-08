@@ -23,9 +23,16 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Adres apteki jest polem wymaganym']
   },
+  contact: {
+    type: String
+  },
   price: {
     type: Number,
     required: [true, 'Cena jest polem wymaganym']
+  },
+  amount: {
+    type: Number,
+    required: [true, 'Ilość wagowa suszu jest polem wymaganym']
   }
 })
 

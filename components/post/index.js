@@ -1,10 +1,11 @@
 'use client'
 
-const Post = ({posts}) => {
+const Post = ({ posts }) => {
+
   return (
-  <>
-    {posts && posts.map((post, index) =><div key={`post_${index}`}>{post.name}</div>)}
-  </>
+    <>
+      {posts && posts.map((post, index) =><div key={`post_${index}`}>{post.name}</div>)}
+    </>
   )
 }
 
