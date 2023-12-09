@@ -20,7 +20,7 @@ const PostPage = async({ params }) => {
 
   return (
     <>
-      <Post post={post} />
+      <Post post={post} isFullPost />
     </>
   )
 }
