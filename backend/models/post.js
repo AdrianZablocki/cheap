@@ -23,6 +23,9 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Adres apteki jest polem wymaganym']
   },
+  placeId: {
+    type: String
+  },
   contact: {
     type: String
   },

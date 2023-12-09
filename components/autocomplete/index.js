@@ -13,7 +13,7 @@ const PlacesAutocomplete = ({ onAddressSelect }) => {
     requestOptions: { componentRestrictions: { country: 'pl' } },
     debounce: 300,
     cache: 86400,
-  });
+  })
 
   const renderSuggestions = () => {
     return data.map((suggestion) => {
@@ -21,15 +21,15 @@ const PlacesAutocomplete = ({ onAddressSelect }) => {
         place_id,
         structured_formatting: { main_text, secondary_text },
         description,
-      } = suggestion;
+      } = suggestion
 
       return (
         <li
           key={place_id}
           onClick={() => {
-            setValue(description, false);
-            clearSuggestions();
-            onAddressSelect && onAddressSelect(description);
+            setValue(description, false)
+            clearSuggestions()
+            onAddressSelect && onAddressSelect(description, place_id)
           }}
         >
           <strong>{main_text}</strong> <small>{secondary_text}</small>

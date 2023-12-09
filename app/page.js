@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 import styles from './page.module.css'
-import Post from '@/components/post'
-import Map from '@/components/map'
+import PostList from '@/components/posts-list'
 
 const getPosts = async () => {
   const  { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`)
@@ -10,13 +9,12 @@ const getPosts = async () => {
   return data
 }
 
-const HomePage = async({params: { session, ...params}}) => {
+const HomePage = async() => {
   const postsData = await getPosts();
 
   return (
     <main className={styles.main}>
-      <Post posts={postsData.posts} session={session} />
-      <Map />
+      <PostList postsList={postsData.posts} />
     </main>
   )
 }

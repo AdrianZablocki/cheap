@@ -1,11 +1,15 @@
 'use client'
 
-const Post = ({ posts }) => {
+import styles from './post.module.css'
 
+const Post = ({ post }) => {
+
+  console.log('post', post)
   return (
-    <>
-      {posts && posts.map((post, index) =><div key={`post_${index}`}>{post.name}</div>)}
-    </>
+      <div className={styles.post}>
+        {post.name}
+        <button>edit</button>
+      </div>
   )
 }
 
