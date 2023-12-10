@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-import styles from './page.module.css'
 import PostList from '@/components/posts-list'
+
+import styles from './page.module.css'
 
 const getPosts = async () => {
   const  { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`)

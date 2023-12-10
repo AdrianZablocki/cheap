@@ -63,6 +63,7 @@ export const deleteUser = async (req, res) => {
 export const getUsers = async (req, res) => {
   try {
     const users = await User.find()
+    console.log(users)
     const updatedUsers = users.map(user => {
       const updatedUser = {
         id: user._id,

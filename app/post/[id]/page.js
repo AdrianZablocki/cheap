@@ -1,7 +1,8 @@
-import Post from '@/components/post'
 import axios from 'axios'
 import mongoose from 'mongoose'
 import { redirect } from 'next/navigation'
+
+import Post from '@/components/post'
 
 const getPost = async (id) => {
   const  { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`)

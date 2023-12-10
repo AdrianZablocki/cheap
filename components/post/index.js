@@ -8,7 +8,7 @@ const Post = ({ post, isFullPost }) => {
   return (
     <div className={styles.post}>
       {post.name}
-      {isFullPost && <Map mapCenter={{lat: 27.672932021393862, lng: 85.31184012689732}} />}
+      {/* {isFullPost && <Map mapCenter={{lat: 27.672932021393862, lng: 85.31184012689732}} />} */}
       <button>edit</button>
     </div>
   )

@@ -1,9 +1,8 @@
 import { Inter } from 'next/font/google'
 
-import './globals.css'
-
-import SessionWrapper from '@/components/layout/session-provider/session-wrapper'
 import Navbar from '@/components/layout/navbar'
+
+import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,10 +16,8 @@ export default function RootLayout({ children, params: { session, ...params} }) 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SessionWrapper session={session}>
           <Navbar />
           {children}
-        </SessionWrapper>
       </body>
     </html>
   )

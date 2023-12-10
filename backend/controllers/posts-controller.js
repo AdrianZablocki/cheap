@@ -8,7 +8,7 @@ export const getPosts = async(req, res, next) => {
   res.status(200).json({ 
     postsPerPage,
     postsCount,
-    posts
+    posts: posts.reverse()
   })
 }
 
@@ -23,10 +23,12 @@ export const getPost = async(req, res, next) => {
 }
 
 export const createPost = async(req, res, next) => {
-
-  const post = await Post.create(req.body)
-
-  res.status(201).json({ post })
+  try {
+    const post = await Post.create(req.body)
+    res.status(201).json({ post })
+  } catch (error) {
+    res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
+  }
 
 }
 

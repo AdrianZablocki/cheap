@@ -29,7 +29,6 @@ const AutocompleteMap = () => {
       <Map mapCenter={mapCenter}/>
       <button onClick={() => console.log(lat, lng)}>show lat/lng</button>   
     </>
-
   )
 }
 

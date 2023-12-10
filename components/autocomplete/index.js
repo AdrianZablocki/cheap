@@ -12,7 +12,7 @@ const PlacesAutocomplete = ({ onAddressSelect }) => {
   } = usePlacesAutocomplete({
     requestOptions: { componentRestrictions: { country: 'pl' } },
     debounce: 300,
-    cache: 86400,
+    cache: 86400
   })
 
   const renderSuggestions = () => {
@@ -20,7 +20,7 @@ const PlacesAutocomplete = ({ onAddressSelect }) => {
       const {
         place_id,
         structured_formatting: { main_text, secondary_text },
-        description,
+        description
       } = suggestion
 
       return (
