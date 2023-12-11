@@ -6,18 +6,16 @@ const saltRounds = 12
 
 export const createUser = async (req, res) => {
   const user = await User.findOne({ email: req.body.email })
-
+  
   if (!user) {
     bcrypt.hash(req.body.password, saltRounds, async (err,   hash) => {
       try {
         const user = await User.create({ ...req.body, password: hash})
 
-        if (user) {
-          const userData = { ...user._doc }
-          delete userData.password
+        const userData = { ...user._doc }
+        delete userData.password
 
-          res.status(201).json({ message: 'Konto zostało utworzone', userData })
-        }
+        res.status(201).json({ message: 'Konto zostało utworzone', userData })
       } catch (error) {
           res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
       }
