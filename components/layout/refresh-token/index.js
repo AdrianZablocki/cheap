@@ -15,7 +15,7 @@ const RefreshToken = ({ refreshToken }) => {
     setAuthenticated(false)
     const refresh = async (token) => {
       try {
-        await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/refresh`, { token })
+        await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/refresh`, { token })
 
         setAuthenticated(true)
         push(`/${location}`)

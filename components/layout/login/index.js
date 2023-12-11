@@ -16,7 +16,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`, {email, password})
+      const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {email, password})
       if (data) {
         setAuthenticated(true)
         push('/')
