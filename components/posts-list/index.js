@@ -29,7 +29,7 @@ const PostList = ({ postsList }) => {
     } catch (error) {
       console.log('ERROR', error)
       
-      if (error.response.status === 403 || error.response.status === 401) {
+      if (error.response.status === 403 || error.response.status === 401 || error.response.status === 405) {
         push(`/refresh?location=${pathName}`)
       }
     }
