@@ -1,12 +1,15 @@
 'use client'
 import Link from 'next/link'
+import { useRouter, usePathname } from 'next/navigation'
 import axios from 'axios'
 
 import Post from '@/components/post'
 
 const PostList = ({ postsList }) => {
+  const { push } = useRouter()
+  const pathName = usePathname()
 
-  // TEST AUTH MIDDLEWARE
+  // TODO TEST AUTH MIDDLEWARE - remove after implement it
   const createPost = async () => {
     const body = {
         author: "Doktor Ziółko",
@@ -21,11 +24,14 @@ const PostList = ({ postsList }) => {
     }
 
     try {
-      const  { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, body)
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, body)
 
-      console.log(data) 
     } catch (error) {
       console.log('ERROR', error)
+      
+      if (error.response.status === 403 || error.response.status === 401) {
+        push(`/refresh?location=${pathName}`)
+      }
     }
   }
 

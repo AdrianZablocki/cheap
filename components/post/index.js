@@ -1,6 +1,7 @@
 'use client'
 
 import Map from '../map'
+
 import styles from './post.module.css'
 
 const Post = ({ post, isFullPost }) => {

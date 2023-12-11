@@ -69,7 +69,8 @@ export const getUsers = async (req, res) => {
         id: user._id,
         email: user.email,
         verified: user.verified,
-        role: user.role
+        role: user.role,
+        refreshToken: user.refreshToken
       }
       return updatedUser
     })

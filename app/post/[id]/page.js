@@ -1,6 +1,6 @@
+import { redirect } from 'next/navigation'
 import axios from 'axios'
 import mongoose from 'mongoose'
-import { redirect } from 'next/navigation'
 
 import Post from '@/components/post'
 
@@ -20,9 +20,7 @@ const PostPage = async({ params }) => {
   const { post } = await getPost(params?.id);
 
   return (
-    <>
-      <Post post={post} isFullPost />
-    </>
+    <Post post={post} isFullPost />
   )
 }
 

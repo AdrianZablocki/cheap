@@ -1,9 +1,5 @@
 import LoginForm from '@/components/layout/login'
 
-const LoginPage = () => {
-  return (
-    <LoginForm />
-  )
-}
+const LoginPage = () => (<LoginForm />)
 
 export default LoginPage
