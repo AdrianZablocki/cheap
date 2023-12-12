@@ -15,7 +15,7 @@ const verificationEmail = async( region, email, id ) => {
   try {
     // TODO add stylish email template
     const emailToSend = await transporter.sendMail({
-      // from: 'info@cheap-weed.pl',
+      // TODO add irganization email from: 'info@cheap-weed.pl', 
       to: email,
       subject: `Zweryfikuj konto załozone na cheap weed`,
       html: `
