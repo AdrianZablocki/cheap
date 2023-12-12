@@ -15,14 +15,13 @@ const verificationEmail = async( region, email, id ) => {
   try {
     // TODO add stylish email template
     const emailToSend = await transporter.sendMail({
-      from: user,
-      to: 'adrian.zablocki@yahoo.com',
-      replyTo: email,
+      // from: 'info@cheap-weed.pl',
+      to: email,
       subject: `Zweryfikuj konto załozone na cheap weed`,
       html: `
         <p>Region: ${region}</p>
         <p>Email: ${email}</p>
-        <a href="${process.env.NEXT_PUBLIC_API_URL}/users/${id}">link</a>
+        <a href="${process.env.NEXT_PUBLIC_API_URL}/user/${id}">link</a>
       `
     })
   } catch (error) {
