@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers'
 
-import RefreshToken from '@/components/layout/refresh-token'
+import RefreshToken from '@/components/refresh-token'
 
 const Refresh = () => {
   const token = cookies().get('refresToken')

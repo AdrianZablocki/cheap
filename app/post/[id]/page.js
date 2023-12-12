@@ -11,13 +11,13 @@ const getPost = async (id) => {
 }
 
 const PostPage = async({ params }) => {
-  const isValidId = mongoose.isValidObjectId(params?.id);
+  const isValidId = mongoose.isValidObjectId(params?.id)
 
   if (!isValidId) {
-    return redirect('/');
+    return redirect('/')
   }
 
-  const { post } = await getPost(params?.id);
+  const { post } = await getPost(params?.id)
 
   return (
     <Post post={post} isFullPost />
