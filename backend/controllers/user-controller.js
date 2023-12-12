@@ -1,23 +1,28 @@
 import bcrypt from 'bcrypt'
 
 import User from '../models/user'
+import verificationEmail from '../utils/verification-email'
 
 const saltRounds = 12
 
 export const createUser = async (req, res) => {
   const user = await User.findOne({ email: req.body.email })
-  
+
   if (!user) {
     bcrypt.hash(req.body.password, saltRounds, async (err,   hash) => {
       try {
         const user = await User.create({ ...req.body, password: hash})
 
+        if (user) {
+          await verificationEmail(req.body.region, req.body.email, user._id)
+        }
+
         const userData = { ...user._doc }
         delete userData.password
-
+        
         res.status(201).json({ message: 'Konto zostało utworzone', userData })
       } catch (error) {
-          res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
+        res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
       }
     })
   } else {
@@ -61,14 +66,12 @@ export const deleteUser = async (req, res) => {
 export const getUsers = async (req, res) => {
   try {
     const users = await User.find()
-    console.log(users)
     const updatedUsers = users.map(user => {
       const updatedUser = {
         id: user._id,
         email: user.email,
         verified: user.verified,
-        role: user.role,
-        refreshToken: user.refreshToken
+        role: user.role
       }
       return updatedUser
     })

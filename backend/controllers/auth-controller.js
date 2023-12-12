@@ -4,7 +4,7 @@ import { serialize } from 'cookie'
 
 import User from '../models/user'
 
-const tokenExpires = 60 //86400
+const tokenExpires = 86400
 const refreshTokenExpires = 525600
 const tokenCookieExpires = new Date(Date.now() + (tokenExpires * 1000))
 const refreshTokenCookieExpires = new Date(Date.now() + (refreshTokenExpires * 1000))
