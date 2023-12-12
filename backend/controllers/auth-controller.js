@@ -57,7 +57,7 @@ export const refreshToken = async (req, res) => {
 
     if (user) {
       const accessToken = jwt.sign(
-        { id: user.id, email: user.email }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: 86400 }
+        { id: user.id, email: user.email }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: tokenExpires}
       )
 
       res.setHeader('Set-Cookie', [
