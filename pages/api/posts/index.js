@@ -11,6 +11,5 @@ dbConnect()
 
 router.get(getPosts)
 router.use(auth).post(createPost)
-router.post(createPost)
 
 export default router.handler()
