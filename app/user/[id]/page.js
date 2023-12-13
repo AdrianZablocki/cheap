@@ -24,14 +24,15 @@ const UserPage = async ({ params, searchParams }) => {
 
   const { user } = await getUser(params?.id)
 
-  if (searchParams?.verified === 'true' && user) {
-    const updatedUser = {...user, verified: true}
+  // if (searchParams?.verified === 'true' && user) {
+  //   const updatedUser = {...user, verified: true}
   
-    const res = await setValidationFlag(updatedUser)
-  }
+  //   const res = await setValidationFlag(updatedUser)
+  // }
 
   return (
-    <User user={{...user, ...searchParams}} />
+    // <User user={{...user, ...searchParams}} />
+    <User user={user} />
   )
 }
 export default UserPage
