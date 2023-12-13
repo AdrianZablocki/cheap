@@ -24,10 +24,25 @@ const RegistrationForm = () => {
         email, password, region
       })
 
+      if (data) {
+        await sendEmail(data.userData.email, data.userData.region)
+      }
+      
       console.log(data)
     } catch (error) {
       // TODO errors handler
       console.log(error)
+    }
+  }
+
+  const sendEmail = async (email, region) => {
+    try {
+      const test = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/verification`, {
+        email, region
+      })
+      console.log('WYSŁANO EMAIL WERUFIKACYNY', test)
+    } catch (error) {
+      console.log('SEND EMAIL ERROR', error)
     }
   }
 
