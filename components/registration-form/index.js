@@ -25,7 +25,7 @@ const RegistrationForm = () => {
       })
 
       if (data) {
-        await sendEmail(data.userData.email, data.userData.region, data.userData.id)
+        await sendEmail(data.userData.email, data.userData.region, data.userData._id)
       }
       
       console.log(data)
@@ -36,6 +36,7 @@ const RegistrationForm = () => {
   }
 
   const sendEmail = async (email, region, id) => {
+    console.log(email, region, id)
     try {
       const test = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/verification`, {
         email, region, id
