@@ -14,9 +14,9 @@ export const createUser = async (req, res) => {
       try {
         const user = await User.create({ ...req.body, password: hash})
 
-        if (user) {
-          await verificationEmail(req.body.region, req.body.email, user._id)
-        }
+        // if (user) {
+        //   await verificationEmail(req.body.region, req.body.email, user._id)
+        // }
 
         const userData = removePassword(user)
         
