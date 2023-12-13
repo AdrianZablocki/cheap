@@ -15,6 +15,8 @@ const Navbar = () => {
 
   return (
     <div className={styles.navbar}>
+      <h1> user is {`${authenticated ? "" : "not"} authenticated`} </h1>
+      
       <button type="button" onClick={() => router.back()}>GO BACK</button>
 
       {

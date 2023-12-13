@@ -3,13 +3,14 @@
 import { useState } from 'react'
 
 import AuthContext from '@/context/auth-context'
+import Navbar from '../navbar'
 
 const LayoutWrapper = ({ children, isLogged }) => {
   const [authenticated, setAuthenticated] = useState(isLogged)
 
   return (
     <AuthContext.Provider value={{ authenticated, setAuthenticated }}>
-      <h1> user is {`${authenticated ? "" : "not"} authenticated`} </h1>
+      <Navbar />
       {children}
     </AuthContext.Provider>
   )

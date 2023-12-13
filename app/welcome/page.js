@@ -1,5 +1,5 @@
 import WelcomeScreen from '@/components/welcome-screen'
 
-const LoginPage = () => (<WelcomeScreen />)
+const WelcomePage = () => (<WelcomeScreen />)
 
-export default LoginPage
+export default WelcomePage

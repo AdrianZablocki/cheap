@@ -6,6 +6,9 @@ import axios from 'axios'
 
 import AuthContext from '@/context/auth-context'
 
+import styles from './refresh-token.module.css'
+import Spinner from '../layout/spinner'
+
 const RefreshToken = ({ refreshToken }) => {
   const { setAuthenticated } = useContext(AuthContext)
   const location = useSearchParams().get('location')
@@ -19,7 +22,7 @@ const RefreshToken = ({ refreshToken }) => {
         setAuthenticated(true)
         push(`/${location}`)
       } catch (error) {
-        console.log('REFRESH', error)
+        console.log('REFRESH TOKEN ERROR', error)
         
         if (error.response.status === 401 || error.response.status === 405) {
           push('/welcome')
@@ -30,7 +33,9 @@ const RefreshToken = ({ refreshToken }) => {
   }, [setAuthenticated, push, location, refreshToken])
 
   return (
-    <div>Loading ...</div>
+    <div className={styles.wrapper}>
+      <Spinner />
+    </div>
   )
 }
 
