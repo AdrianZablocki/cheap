@@ -1,13 +1,12 @@
 import { createRouter } from 'next-connect'
 
 import dbConnect from '@/backend/config/db-connect'
-import { getUsers } from '@/backend/controllers/user-controller'
-import { auth } from '@/middleware/auth'
+import { createUser } from '@/backend/controllers/user-controller'
 
 const router = createRouter();
 
 dbConnect()
 
-router.use(auth).get(getUsers)
+router.post(createUser)
 
 export default router.handler()

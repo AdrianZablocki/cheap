@@ -21,6 +21,7 @@ const RefreshToken = ({ refreshToken }) => {
         await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/refresh`, { token })
         setAuthenticated(true)
         push(`/${location}`)
+        
       } catch (error) {
         console.log('REFRESH TOKEN ERROR', error)
         
