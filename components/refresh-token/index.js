@@ -16,14 +16,13 @@ const RefreshToken = ({ refreshToken }) => {
     const refresh = async (token) => {
       try {
         await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/refresh`, { token })
-
         setAuthenticated(true)
         push(`/${location}`)
       } catch (error) {
-        console.log('Coś poszło nie tak', error)
+        console.log('REFRESH', error)
         
-        if (error.response.status === 401) {
-          push('/login')
+        if (error.response.status === 401 || error.response.status === 405) {
+          push('/welcome')
         }
       }
     }

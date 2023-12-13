@@ -4,6 +4,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import axios from 'axios'
 
 import Post from '@/components/post'
+import { useEffect, useState } from 'react'
 
 const PostList = ({ postsList }) => {
   const { push } = useRouter()
@@ -30,6 +31,7 @@ const PostList = ({ postsList }) => {
       console.log('ERROR', error)
       
       if (error.response.status === 403 || error.response.status === 401 || error.response.status === 405) {
+        console.log('CREATE POST', pathName)
         push(`/refresh?location=${pathName}`)
       }
     }
@@ -38,13 +40,14 @@ const PostList = ({ postsList }) => {
   return (
     <>
       <button type="button" onClick={createPost}>create post</button>
+  
       <ul>
         {postsList && postsList.map((post, index )=> 
           <Link href={`post/${post._id}`} passHref key={`post_${index}`}>
             <Post post={post} />
           </Link>
         )}
-      </ul> 
+      </ul>
     </>
   )
 }

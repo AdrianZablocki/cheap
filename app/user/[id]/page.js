@@ -26,10 +26,8 @@ const UserPage = async ({ params, searchParams }) => {
 
   if (searchParams?.verified === 'true' && user) {
     const updatedUser = {...user, verified: true}
-    console.log('USER', user)
-
+  
     const res = await setValidationFlag(updatedUser)
-    console.log('flag updated', res)
   }
 
   return (

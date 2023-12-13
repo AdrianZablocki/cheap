@@ -23,7 +23,8 @@ const LoginForm = () => {
       }
     } catch (error) {
       // TODO errors handler
-      setErrorMesage(error.response.data.message)
+      setAuthenticated(false)
+      setErrorMesage(error?.response?.data.message)
       console.log('Coś poszło nie tak', error)
     }
   }

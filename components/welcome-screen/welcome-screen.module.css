@@ -1,0 +1,69 @@
+.wrapper {
+  padding: 0 33px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+}
+
+.title {
+  margin: 50px 0;
+  text-align: center;
+  font-weight: 400;
+}
+.title span {
+  display: block;
+}
+
+.welcome {
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.cheap,
+.weed {
+  font-size: 36px;
+  line-height: 24px;
+}
+
+.weed {
+  margin-left: 17px;
+}
+
+.title span.green {
+  display: inline;
+  color: #A3EF97;
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 26px;
+}
+
+.subtitle {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 60px
+}
+
+.actions a {
+  padding: 8px 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.50);
+  background: #A3EF97;
+  margin-bottom: 27px;
+}
