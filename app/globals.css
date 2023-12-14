@@ -1,3 +1,5 @@
+/* CSS RESET - START */
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -47,3 +49,21 @@ table {
 	border-spacing: 0;
 }
 
+/* CSS RESET - END */
+
+
+/* GLOBAL STYLES - START */
+
+.spinnerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+}
+
+/* GLOBAL STYLES - END */

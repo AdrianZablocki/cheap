@@ -11,9 +11,17 @@ const LayoutWrapper = ({ children }) => {
   
   return (
     <SpinnerContext.Provider value={{openSpinner, setOpenSpinner}}>
+
       <Navbar />
-      {openSpinner && <Spinner />}
+
+      {openSpinner && 
+        <div className="spinnerWrapper" style={{backgroundColor: `${openSpinner ? 'rgba(0, 0, 0, .5)': '#fff'}` }}>
+          <Spinner />       
+        </div>
+      }
+
       {children}
+      
     </SpinnerContext.Provider>
   )
 }

@@ -4,7 +4,6 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import axios from 'axios'
 
-import styles from './refresh-token.module.scss'
 import Spinner from '../layout/spinner'
 
 const RefreshToken = ({ refreshToken }) => {
@@ -32,7 +31,7 @@ const RefreshToken = ({ refreshToken }) => {
   }, [push, location, refreshToken])
 
   return (
-    <div className={styles.wrapper}>
+    <div className="spinnerWrapper">
       <Spinner />
     </div>
   )

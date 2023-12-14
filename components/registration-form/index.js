@@ -29,11 +29,12 @@ const RegistrationForm = () => {
         await sendEmail(data.userData.email, data.userData.region, data.userData._id)
       }
       console.log(data)
+      console.log('UTWORZONO UZYTKOWNIKA', data)
     } catch (error) {
       // TODO errors handler
       setOpenSpinner(false)
       setErrorMesage(error.response.data.error?.message || error.response.data.message)
-      console.log(error)
+      console.log('REGISTE USER', error)
     }
   }
 
@@ -45,9 +46,11 @@ const RegistrationForm = () => {
       })
 
       setOpenSpinner(false)
+      push('/')
       console.log('WYSŁANO EMAIL WERUFIKACYNY', test)
     } catch (error) {
       setOpenSpinner(false)
+      setErrorMesage(error.response.data.error?.message || error.response.data.message)
       console.log('SEND EMAIL ERROR', error)
     }
   }

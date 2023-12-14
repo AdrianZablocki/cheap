@@ -28,7 +28,8 @@ export const sendVerificationEmail = async (req, res) => {
     console.log(emailToSend.messageId, emailToSend.accepted);
     res.status(200).json({ message: 'Wysłaliśmy meila weryfikacyjneg'})
   } catch (error) {
-    console.log('Mail error', error)    
+    console.log('Mail error', error)
+    res.status(404).json({ message: 'Nie udało się wysłać maila'})
   }
 
 }
