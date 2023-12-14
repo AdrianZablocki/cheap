@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 import PostList from '@/components/posts-list'
 
 import styles from './page.module.css'
@@ -20,7 +19,7 @@ const HomePage = async({ searchParams }) => {
   const postsData = await getPosts();
 
   console.log('search param', searchParams)
-  if (searchParams?.verified === 'true' && searchParams?.userId) {
+  if (searchParams?.verified) {
     try {
       const res = await setValidationFlag(searchParams.userId, { verified: true}) 
       // console.timeLog('verification success', res)

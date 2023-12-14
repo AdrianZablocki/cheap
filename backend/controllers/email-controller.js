@@ -21,7 +21,7 @@ export const sendVerificationEmail = async (req, res) => {
       html: `
         <p>Region: ${region}</p>
         <p>Email: ${email}</p>
-        <a href="${process.env.NEXT_PUBLIC_API_URL}?userId=${id}&verified=true">link</a>
+        <a href="${process.env.NEXT_PUBLIC_API_URL}?verified=true">link</a>
       `
     })
 

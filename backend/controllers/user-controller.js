@@ -1,7 +1,6 @@
 import bcrypt from 'bcrypt'
 
 import User from '../models/user'
-import verificationEmail from '../utils/verification-email'
 import { removePassword } from '../utils/remove-password'
 
 const saltRounds = 12
@@ -13,10 +12,6 @@ export const createUser = async (req, res) => {
     bcrypt.hash(req.body.password, saltRounds, async (err,   hash) => {
       try {
         const user = await User.create({ ...req.body, password: hash})
-
-        // if (user) {
-        //   await verificationEmail(req.body.region, req.body.email, user._id)
-        // }
 
         const userData = removePassword(user)
         
