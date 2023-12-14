@@ -1,6 +1,6 @@
 import Spinner from '@/components/layout/spinner'
 
-import styles  from './page.module.css'
+import styles  from './page.module.scss'
 
 const Loading = () => {
   return(<div className={styles.spinner}><Spinner /></div>)

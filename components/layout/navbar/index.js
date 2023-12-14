@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-import styles from './navbar.module.css'
+import styles from './navbar.module.scss'
 
 const Navbar = () => {
   const router = useRouter()

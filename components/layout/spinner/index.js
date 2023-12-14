@@ -1,4 +1,6 @@
-import styles from './spinner.module.css'
+'use-client'
+
+import styles from './spinner.module.scss'
 
 const Spinner = () => (<div className={styles.customLoader}></div>)
 

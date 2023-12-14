@@ -1,9 +1,10 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import axios from 'axios'
 
+import SpinnerContext from '@/context/spinner-context'
 import UserForm from '../user-form'
 
 const RegistrationForm = () => {
@@ -11,10 +12,12 @@ const RegistrationForm = () => {
   const [ password, setPassword ] = useState()
   const [ region, setRegion ] = useState()
   const [ errorMessage, setErrorMesage ] = useState()
+  const { setOpenSpinner} = useContext(SpinnerContext)
   const { push } = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setOpenSpinner(true)
     try {
       const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, {
         role: 'user',
@@ -25,10 +28,11 @@ const RegistrationForm = () => {
       if (data) {
         await sendEmail(data.userData.email, data.userData.region, data.userData._id)
       }
-      
       console.log(data)
     } catch (error) {
       // TODO errors handler
+      setOpenSpinner(false)
+      setErrorMesage(error.response.data.error?.message || error.response.data.message)
       console.log(error)
     }
   }
@@ -39,8 +43,11 @@ const RegistrationForm = () => {
       const test = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/verification`, {
         email, region, id
       })
+
+      setOpenSpinner(false)
       console.log('WYSŁANO EMAIL WERUFIKACYNY', test)
     } catch (error) {
+      setOpenSpinner(false)
       console.log('SEND EMAIL ERROR', error)
     }
   }

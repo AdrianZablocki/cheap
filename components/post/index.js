@@ -2,7 +2,7 @@
 
 import Map from '../map'
 
-import styles from './post.module.css'
+import styles from './post.module.scss'
 
 const Post = ({ post, isFullPost }) => {
 

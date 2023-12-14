@@ -1,3 +1,5 @@
+'use-client'
+
 const UserForm = ({handleSubmit, setEmail, setPassword, setRegion, errorMessage}) => {
   return (
     <form onSubmit={(e) => handleSubmit(e)}>

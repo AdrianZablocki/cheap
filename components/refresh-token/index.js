@@ -4,7 +4,7 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import axios from 'axios'
 
-import styles from './refresh-token.module.css'
+import styles from './refresh-token.module.scss'
 import Spinner from '../layout/spinner'
 
 const RefreshToken = ({ refreshToken }) => {

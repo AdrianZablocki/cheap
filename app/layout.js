@@ -1,7 +1,6 @@
-import { cookies } from 'next/headers'
 import { Inter } from 'next/font/google'
 
-import LayoutWrapper from '@/components/layout/wrapper'
+import LayoutWrapper from '@/components/layout/layout-wrapper'
 
 import './globals.css'
 
@@ -13,12 +12,11 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
-  const token = cookies().get('refreshToken')
 
   return (
     <html lang="pl">
       <body className={inter.className}>
-        <LayoutWrapper token={token}>
+        <LayoutWrapper>
           {children}      
         </LayoutWrapper>
       </body>

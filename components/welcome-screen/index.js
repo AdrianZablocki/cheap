@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 
-import styles from './welcome-screen.module.css'
+import styles from './welcome-screen.module.scss'
 
 const WelcomeScreen = () => (
   <div className={styles.wrapper}>
