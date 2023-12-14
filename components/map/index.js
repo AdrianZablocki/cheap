@@ -1,22 +1,22 @@
 import { useMemo } from 'react'
 import { useLoadScript, GoogleMap, MarkerF } from '@react-google-maps/api'
 
-const Map = ({ mapCenter }) => {
-  const libraries = useMemo(() => ['places'], [])
+const Map = ({ mapCenter, isLoaded }) => {
+  // const libraries = useMemo(() => ['places'], [])
 
   const mapOptions = useMemo(
     () => ({
       disableDefaultUI: true,
       clickableIcons: true,
-      scrollwheel: true
+      scrollwheel: false
     }),
     []
   )
 
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
-    libraries: libraries
-  })
+  // const { isLoaded } = useLoadScript({
+  //   googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
+  //   libraries: libraries
+  // })
 
   if (!isLoaded) {
     return (<div>loading...</div>)
@@ -29,7 +29,7 @@ const Map = ({ mapCenter }) => {
       center={mapCenter}
       mapTypeId={google.maps.MapTypeId.ROADMAP}
       mapContainerStyle={{ width: '400px', height: '400px' }}
-      onLoad={(map) => console.log('Map Loaded')}
+      onLoad={(map) => console.log('Map Loaded', map)}
     >
       <MarkerF
         position={mapCenter}

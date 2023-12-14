@@ -2,8 +2,12 @@
   "author": "Avneesh Bagade",
   "date": "2023-09-21T23:48:28.000Z",
   "region": "mazowieckie",
-  "miasto": "Warszawa",
-  "adress": "Al. Jerozolimskie 78, Warszawa",
+  "city": "Warszawa",
   "name": "Red no 2",
-  "price": 22.33
+  "price": 22.33,
+  "adress": "al. Jerozolimskie 96, 00-807 Warszawa, Poland",
+  "amount": 15,
+  "contact": "882 623 151",
+  "lat": 52.2225665,
+  "lng": 20.978485
 }

@@ -23,9 +23,6 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Adres apteki jest polem wymaganym']
   },
-  placeId: {
-    type: String
-  },
   contact: {
     type: String
   },
@@ -36,6 +33,12 @@ const postSchema = new mongoose.Schema({
   amount: {
     type: Number,
     required: [true, 'Ilość wagowa suszu jest polem wymaganym']
+  },
+  lat: {
+    type: Number
+  },
+  lng: {
+    type: Number
   }
 })
 
