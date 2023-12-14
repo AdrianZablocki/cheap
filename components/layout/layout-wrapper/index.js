@@ -6,7 +6,7 @@ import { useLoadScript } from '@react-google-maps/api'
 import SpinnerContext from '@/context/spinner-context'
 import Navbar from '../navbar'
 import Spinner from '../spinner'
-import AutocompleteMap from '@/components/autocomplete-map'
+// import AutocompleteMap from '@/components/autocomplete-map'
 
 const LayoutWrapper = ({ children }) => {
   const [openSpinner, setOpenSpinner] = useState(false)
@@ -21,8 +21,8 @@ const LayoutWrapper = ({ children }) => {
     <SpinnerContext.Provider value={{openSpinner, setOpenSpinner}}>
 
       <Navbar />
-      <AutocompleteMap loaded={isLoaded} />
-      
+      {/* <AutocompleteMap loaded={isLoaded} /> */}
+
       {openSpinner && 
         <div className="spinnerWrapper" style={{backgroundColor: `${openSpinner ? 'rgba(0, 0, 0, .5)': '#fff'}` }}>
           <Spinner />       
