@@ -4,7 +4,6 @@ import { useRouter, usePathname } from 'next/navigation'
 import axios from 'axios'
 
 import Post from '@/components/post'
-import { useEffect, useState } from 'react'
 
 const PostList = ({ postsList }) => {
   const { push } = useRouter()

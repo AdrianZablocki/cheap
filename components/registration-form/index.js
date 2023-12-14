@@ -1,14 +1,12 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
-import AuthContext from '@/context/auth-context'
 import UserForm from '../user-form'
 
 const RegistrationForm = () => {
-  const { setAuthenticated } = useContext(AuthContext)
   const [ email, setEmail ] = useState()
   const [ password, setPassword ] = useState()
   const [ region, setRegion ] = useState()

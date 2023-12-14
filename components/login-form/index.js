@@ -1,13 +1,12 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
-import AuthContext from '@/context/auth-context'
+
 
 const LoginForm = () => {
-  const { setAuthenticated } = useContext(AuthContext)
   const [ email, setEmail ] = useState()
   const [ password, setPassword ] = useState()
   const [ errorMessage, setErrorMesage ] = useState()
@@ -18,12 +17,12 @@ const LoginForm = () => {
     try {
       const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {email, password})
       if (data) {
-        setAuthenticated(true)
+ 
         push('/')
       }
     } catch (error) {
       // TODO errors handler
-      setAuthenticated(false)
+
       setErrorMesage(error?.response?.data.message)
       console.log('Coś poszło nie tak', error)
     }
