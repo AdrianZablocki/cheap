@@ -9,6 +9,16 @@ const refreshTokenExpires = 525600
 const tokenCookieExpires = new Date(Date.now() + (tokenExpires * 1000))
 const refreshTokenCookieExpires = new Date(Date.now() + (refreshTokenExpires * 1000))
 
+export const verifyUser = async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate({ email: req.body.email }, { verified: true }, { new: true })
+    console.log('VERIFICATION', user)
+    res.status(200).json({ message: 'Email verified' })
+  } catch (error) {
+    res.status(404).json({ message: 'Wrong email', error })
+  }
+}
+
 export const authUser = async (req, res) => {
   const user = await User.findOne({email: req.body.email});
 

@@ -9,24 +9,10 @@ const getPosts = async () => {
   return data
 }
 
-const setValidationFlag = async (userId, user) => {
-  const  { data } = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/user/${userId}`, user)
 
-  return data
-}
 
-const HomePage = async({ searchParams }) => {
-  const postsData = await getPosts();
-
-  console.log('search param', searchParams)
-  if (searchParams?.verified) {
-    try {
-      const res = await setValidationFlag(searchParams.userId, { verified: true}) 
-      // console.timeLog('verification success', res)
-    } catch (error) {
-      console.log('Verifications failed', error)
-    }
-  }
+const HomePage = async() => {
+  const postsData = await getPosts()
 
   return (
     <main className={styles.main}>

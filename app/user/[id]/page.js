@@ -9,13 +9,7 @@ const getUser = async (id) => {
   return data
 }
 
-const setValidationFlag = async (user) => {
-  const  { data } = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${user._id}`, user)
-
-  return data
-}
-
-const UserPage = async ({ params, searchParams }) => {
+const UserPage = async ({ params }) => {
   const isValidId = mongoose.isValidObjectId(params?.id);
 
   if (!isValidId) {
@@ -24,15 +18,9 @@ const UserPage = async ({ params, searchParams }) => {
 
   const { user } = await getUser(params?.id)
 
-  // if (searchParams?.verified === 'true' && user) {
-  //   const updatedUser = {...user, verified: true}
-  
-  //   const res = await setValidationFlag(updatedUser)
-  // }
-
   return (
-    // <User user={{...user, ...searchParams}} />
     <User user={user} />
   )
 }
+
 export default UserPage
