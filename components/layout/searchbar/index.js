@@ -9,6 +9,17 @@ import IconButton from '../icon-button'
 
 const SearchBar = () => {
   const [showModal, setShowModal] = useState(false)
+  const [search, setSearch] = useState('')
+
+  const onSearch = (e) => {
+    console.log(e.target.value)
+    setSearch(e.target.value)
+  }
+
+  const onClear = (e) => {
+    setSearch('')
+    e.target.value = ''
+  }
   
   return (
     <>
@@ -26,9 +37,22 @@ const SearchBar = () => {
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
           <div className={styles.searchInModal}>
-            <input type="text" placeholder="Wyszukaj nazwę suszu lub miejsce" />
+            <input
+              type="text"
+              value={search}
+              placeholder="Wyszukaj nazwę suszu lub miejsce"
+              onChange={(e) => onSearch(e)}
+            />
+            <div className={styles.clearButton}>
+              <IconButton
+                priority
+                icon={searchIcon}
+                alt="clear"
+                action={(e) => onClear(e)}
+              />              
+            </div>
           </div>
-          <div className={styles.note}>searched places list / not found</div>
+          <div className={styles.note}>searched places list / not found {search}</div>
         </Modal>
       }
     </>

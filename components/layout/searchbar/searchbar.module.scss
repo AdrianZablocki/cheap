@@ -5,6 +5,9 @@
   padding: 0;
   background-color: $color-paradise-green;
   border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   input {
     width: 100%;
@@ -18,6 +21,11 @@
       color: $color-black;
     }
   }
+}
+
+.clearButton {
+  position: absolute;
+  right: 32px;
 }
 
 .note {
