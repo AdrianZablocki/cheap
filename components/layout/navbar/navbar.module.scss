@@ -1,21 +1,26 @@
 @import '../../../styles//mixins.scss';
 
 .navbarWrapper {
-  @extend %main-container;
+  margin: 10px 0 20px;
+  padding-top: 20px;
+  border-top: 1px solid gray;
 }
 
 .navbar {
+  @extend %main-container;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 0 20px;
 }
 
 .actionButtons {
+  
   button {
     border: none;
     background-color: transparent;
     margin: 0 20px;
+    padding: 0;
     cursor: pointer;
 
     &:last-child {

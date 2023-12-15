@@ -5,6 +5,7 @@ import { useState } from 'react'
 import SpinnerContext from '@/context/spinner-context'
 import Navbar from '../navbar'
 import Spinner from '../spinner'
+import Logo from '../logo'
 
 const LayoutWrapper = ({ children }) => {
   const [openSpinner, setOpenSpinner] = useState(false)

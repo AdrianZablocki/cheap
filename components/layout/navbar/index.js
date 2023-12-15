@@ -29,11 +29,11 @@ const Navbar = () => {
             />       
           </button>          
         </div>
-
-
-      {/* <button type="button" onClick={() => router.back()}>GO BACK</button>
+      {/* 
+          <button type="button" onClick={() => router.back()}>GO BACK</button>
           <Link href="/logout" passHref>Wyloguj</Link>
-          <Link href="/login" passHref>Zaloguj</Link> */}
+          <Link href="/login" passHref>Zaloguj</Link> 
+      */}
       </div>
     </div>
 

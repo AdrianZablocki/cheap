@@ -3,14 +3,15 @@
 import Link from 'next/link'
 
 import styles from './welcome-screen.module.scss'
+import Logo from '../layout/logo'
 
 const WelcomeScreen = () => (
   <div className={styles.wrapper}>
-    <h1 className={styles.title}>
-      <span className={styles.welcome}>Witaj w</span>
-      <span className={styles.cheap}>Chea<span className={styles.green}>p</span></span>
-      <span className={styles.weed}>Wee<span className={styles.green}>d</span></span>
-    </h1>
+
+    <div className={styles.logo}>
+      <div className={styles.title}>WITAJ W</div>
+      <Logo width={160} height={80} />
+    </div>
 
     <h2 className={styles.subtitle}>NASZYM wspólnym celem jest zakup medycznego suszu w najlepszej cenie</h2>
     
@@ -19,6 +20,7 @@ const WelcomeScreen = () => (
       <Link href="registration" passHref>REJESTRACJA</Link>
       <Link href="/" passHref>POMIŃ</Link>
     </div>
+
   </div>
 )
 

@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 
 import LayoutWrapper from '@/components/layout/layout-wrapper'
+import Header from '@/components/layout/header'
 
 import './globals.scss'
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl">
       <body className={inter.className}>
+        <Header logoWidth={80} logoHeight={40} />
         <LayoutWrapper>
           {children}      
         </LayoutWrapper>
@@ -23,3 +25,6 @@ export default function RootLayout({ children }) {
     </html>
   )
 }
+
+
+
