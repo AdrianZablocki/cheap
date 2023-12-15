@@ -31,9 +31,7 @@ const RefreshToken = ({ refreshToken }) => {
   }, [push, location, refreshToken])
 
   return (
-    <div className="spinnerWrapper">
-      <Spinner />
-    </div>
+    <Spinner background="#FFF" isOpen />
   )
 }
 

@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .wrapper {
   padding: 0 33px;
   position: absolute;
@@ -5,7 +7,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #fff;
+  background-color: $color-white;
 }
 
 .title {
@@ -35,7 +37,7 @@
 
 .title span.green {
   display: inline;
-  color: #A3EF97;
+  color: $color-paradise-green;
   font-weight: 700;
   font-size: 38px;
   line-height: 26px;
@@ -63,7 +65,7 @@
   align-items: center;
   text-decoration: none;
   border-radius: 25px;
-  border: 1px solid rgba(0, 0, 0, 0.50);
-  background: #A3EF97;
+  border: $border-1-black-50;
+  background: $color-paradise-green;
   margin-bottom: 27px;
 }

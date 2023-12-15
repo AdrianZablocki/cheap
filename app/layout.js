@@ -2,7 +2,7 @@ import { Inter } from 'next/font/google'
 
 import LayoutWrapper from '@/components/layout/layout-wrapper'
 
-import './globals.css'
+import './globals.scss'
 
 const inter = Inter({ subsets: ['latin'] })
 
