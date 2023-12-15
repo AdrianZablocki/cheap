@@ -2,17 +2,18 @@
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 // import Link from 'next/link'
 
 import filtersIcon from '@/public/icons/filters.svg'
 import SearchBar from '../searchbar'
+import Modal from '../modal'
 
 import styles from './navbar.module.scss'
 
 const Navbar = () => {
+  const [showModal, setShowModal] = useState(false)
   const router = useRouter()
-
-  const onFilters = () => console.log('open filters modal')
 
   return (
     <div className={styles.navbarWrapper}>
@@ -20,7 +21,7 @@ const Navbar = () => {
         <SearchBar />
 
         <div className={styles.actionButtons}>
-          <button type="button" onClick={onFilters}>
+          <button type="button" onClick={() => setShowModal(true)}>
             <Image
               width={40}
               height={40}
@@ -34,6 +35,12 @@ const Navbar = () => {
           <Link href="/logout" passHref>Wyloguj</Link>
           <Link href="/login" passHref>Zaloguj</Link> 
       */}
+
+      {showModal &&
+        <Modal onClose={() => setShowModal(false)}>
+          filters
+        </Modal>
+      }
       </div>
     </div>
 

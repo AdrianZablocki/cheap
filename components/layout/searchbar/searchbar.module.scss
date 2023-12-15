@@ -1,22 +1,15 @@
 @import '../../../styles/variables.scss';
 
-.searchbar,
-.searchbar input {
-  width: 100%;
-}
-
-.searchbar {
+.search,
+.searchInModal {
   position: relative;
-  width: 275px;
-}
-
-.search {
   padding: 8px 40px 8px 20px;
   color: $color-black;
   background-color: $color-paradise-green;
   border-radius: 50px;
   border: none;
-  font-size: 12px;;
+  font-size: 12px;
+  cursor: pointer;
 
   &::placeholder {
     color: $color-black;
@@ -31,4 +24,18 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+.searchInModal {
+  margin-top: 50px;
+  padding: 0;
+
+  input {
+    width: 100%;
+    padding: 8px 20px;
+    font-size: 16px;
+    background-color: transparent;
+    border-radius: 50px;
+    border: none;
+  }
 }
