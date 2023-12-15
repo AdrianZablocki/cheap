@@ -7,4 +7,19 @@
 .navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: 10px 0 20px;
+}
+
+.actionButtons {
+  button {
+    border: none;
+    background-color: transparent;
+    margin: 0 20px;
+    cursor: pointer;
+
+    &:last-child {
+      margin: 0 0 0 20px;
+    }
+  }
 }
