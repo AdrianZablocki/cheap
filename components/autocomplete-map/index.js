@@ -26,7 +26,7 @@ const AutocompleteMap = ({ loaded }) => {
           })
         }}
       />}
-      <Map mapCenter={mapCenter} isLoaded={loaded} />
+      <Map mapCenter={mapCenter} isLoaded={loaded} width="400px" height="400px" zoom={16} />
       <button onClick={() => console.log(lat, lng)}>show lat/lng</button>   
     </>
   )

@@ -20,7 +20,7 @@ const PostPage = async({ params }) => {
   const { post } = await getPost(params?.id)
 
   return (
-    <Post post={post} isFullPost />
+    <Post post={post} />
   )
 }
 

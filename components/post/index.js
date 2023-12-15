@@ -1,16 +1,41 @@
 'use client'
 
+import { useMemo } from 'react'
+import { useLoadScript } from '@react-google-maps/api'
+
 import Map from '../map'
 
 import styles from './post.module.scss'
 
-const Post = ({ post, isFullPost }) => {
+const Post = ({ post }) => {
+  const libraries = useMemo(() => ['places'], [])
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
+    libraries: libraries
+  })
 
+  console.log(post)
   return (
     <div className={styles.post}>
-      {post.name}
-      {/* {isFullPost && <Map mapCenter={{lat: 27.672932021393862, lng: 85.31184012689732}} />} */}
-      <button>edit</button>
+      <div className={styles.map}>
+        <Map mapCenter={{lat: post.lat, lng: post.lng}} isLoaded={isLoaded} width="140px" height="140px" zoom={10}/>
+      </div>
+
+      <div>
+      <div>
+          <div>{post.name}</div>
+          <div>Nazwa suszu</div>
+        </div>
+        <div>
+          <div>{post.name}</div>
+          <div>Nazwa apteki</div>
+        </div>
+        <div>
+          <div>{post.adress}</div>
+          <div>Adres</div>
+        </div>
+      </div>
+      
     </div>
   )
 }

@@ -43,9 +43,9 @@ const PostList = ({ postsList }) => {
   
       <ul>
         {postsList && postsList.map((post, index )=> 
-          <Link href={`post/${post._id}`} passHref key={`post_${index}`}>
-            <Post post={post} />
-          </Link>
+          // <Link href={`post/${post._id}`} passHref key={`post_${index}`}>
+            <Post key={`post_${index}`} post={post} />
+          // </Link>
         )}
       </ul>
     </>

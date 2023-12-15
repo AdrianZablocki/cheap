@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useLoadScript, GoogleMap, MarkerF } from '@react-google-maps/api'
 
-const Map = ({ mapCenter, isLoaded }) => {
+const Map = ({ mapCenter, isLoaded, width, height, zoom }) => {
   // const libraries = useMemo(() => ['places'], [])
 
   const mapOptions = useMemo(
@@ -25,10 +25,11 @@ const Map = ({ mapCenter, isLoaded }) => {
   return (
     <GoogleMap 
       options={mapOptions}
-      zoom={16}
+      disableDefaultUI={true}
+      zoom={zoom}
       center={mapCenter}
       mapTypeId={google.maps.MapTypeId.ROADMAP}
-      mapContainerStyle={{ width: '400px', height: '400px' }}
+      mapContainerStyle={{ width, height }}
       onLoad={(map) => console.log('Map Loaded', map)}
     >
       <MarkerF
