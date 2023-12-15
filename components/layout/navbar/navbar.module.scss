@@ -1,4 +1,10 @@
+@import '../../../styles//mixins.scss';
+
+.navbarWrapper {
+  @extend %main-container;
+}
+
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }

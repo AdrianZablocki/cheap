@@ -1,0 +1,32 @@
+@import '../../../styles/variables.scss';
+
+.searchbar,
+.searchbar input {
+  width: 100%;
+}
+
+.searchbar {
+  position: relative;
+  margin: 10px 0 20px;
+
+  input {
+    padding: 8px 40px 8px 20px;
+    color: $color-black;
+    background-color: $color-paradise-green;
+    border-radius: 50px;
+    border: none;
+
+    &::placeholder {
+      color: $color-black;
+    }
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+}
