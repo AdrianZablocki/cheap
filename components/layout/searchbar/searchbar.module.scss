@@ -1,34 +1,10 @@
 @import '../../../styles/variables.scss';
 
-.search,
-.searchInModal {
-  position: relative;
-  padding: 8px 40px 8px 20px;
-  color: $color-black;
-  background-color: $color-paradise-green;
-  border-radius: 50px;
-  border: none;
-  font-size: 12px;
-  cursor: pointer;
-
-  &::placeholder {
-    color: $color-black;
-  }
-}
-
-.searchIcon {
-  position: absolute;
-  top: 50%;
-  right: 8px;
-  transform: translateY(-50%);
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
 .searchInModal {
   margin-top: 50px;
   padding: 0;
+  background-color: $color-paradise-green;
+  border-radius: 50px;
 
   input {
     width: 100%;
@@ -37,5 +13,14 @@
     background-color: transparent;
     border-radius: 50px;
     border: none;
+
+    &::placeholder {
+      color: $color-black;
+    }
   }
+}
+
+.note {
+  margin-top: 24px;
+  text-align: center;
 }

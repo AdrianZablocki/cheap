@@ -1,19 +1,22 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 import SpinnerContext from '@/context/spinner-context'
 import Navbar from '../navbar'
 import Spinner from '../spinner'
-import Logo from '../logo'
 
 const LayoutWrapper = ({ children }) => {
   const [openSpinner, setOpenSpinner] = useState(false)
+  const pathname = usePathname()
+
+  console.log(pathname)
 
   return (
     <SpinnerContext.Provider value={{openSpinner, setOpenSpinner}}>
 
-      <Navbar />
+      { pathname === '/' && <Navbar /> }
 
       { children }
       

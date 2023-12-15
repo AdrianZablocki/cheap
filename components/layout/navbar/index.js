@@ -8,6 +8,7 @@ import { useState } from 'react'
 import filtersIcon from '@/public/icons/filters.svg'
 import SearchBar from '../searchbar'
 import Modal from '../modal'
+import IconButton from '../icon-button'
 
 import styles from './navbar.module.scss'
 
@@ -21,14 +22,13 @@ const Navbar = () => {
         <SearchBar />
 
         <div className={styles.actionButtons}>
-          <button type="button" onClick={() => setShowModal(true)}>
-            <Image
-              width={40}
-              height={40}
-              src={filtersIcon}
-              alt="search"
-            />       
-          </button>          
+          <IconButton
+            width={40}
+            height={40}
+            icon={filtersIcon}
+            alt="search"
+            action={() => setShowModal(true)}
+          />
         </div>
       {/* 
           <button type="button" onClick={() => router.back()}>GO BACK</button>

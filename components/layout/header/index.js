@@ -8,6 +8,7 @@ import Logo from '../logo'
 import Modal from '../modal'
 
 import styles from './header.module.scss'
+import IconButton from '../icon-button'
 
 const Header = ({ logoWidth, logoHeight }) => {
   const [showModal, setShowModal] = useState(false)
@@ -18,14 +19,13 @@ const Header = ({ logoWidth, logoHeight }) => {
         <Logo width={logoWidth} height={logoHeight} />
         <span className={styles.title}>Cheap weed</span>
       </h1>
-      <Image
-        onClick={() => setShowModal(true)}
-        className={styles.user}
+      <IconButton
         width={40}
         height={40}
-        src={userIcon}
+        icon={userIcon}
         alt="logo"
         priority
+        action={() => setShowModal(true)}
       />
       {showModal &&
           <Modal onClose={() => setShowModal(false)}>
