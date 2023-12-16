@@ -2,9 +2,14 @@ import styles from './snackbar.module.scss'
 
 const SnackbarMessage = ({ isOpen, message, severity }) => {
   return (
-    <span className={styles.snackbar} style={{
-      opacity: isOpen ? '1' : '0'
-    }}>{ message }<span>: { severity }</span></span>
+    <div className={styles.wrapper}>
+      <div 
+        className={`${styles.snackbar} ${styles[severity]} ${isOpen ? styles.open : styles.hidden}`} 
+      >
+        { message }<span>{ severity }</span>
+      </div> 
+    </div>
+
   )
 }
 

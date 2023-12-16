@@ -1,5 +1,6 @@
 export const errorStrategy = new Map([
-  ['Unauthorized', 'Uytkownik jest niezalogowany']
+  ['Unauthorized', 'Uytkownik jest niezalogowany'],
+  ['Request failed with status code 500', 'fak jutu']
 ])
 
 export const getErrorMessage = (error) => {
@@ -37,7 +38,11 @@ const useErrorHandler = (snackbarHandler) => {
 
       snackbarHandler(getErrorMessage(error.response.data), SEVERITY.ERROR)
     } else if (error.response.status === ERROR_CODES.SERVER_500) {
-      snackbarHandler(getErrorMessage(error.response.data), SEVERITY.ERROR)
+      console.log(Object.keys(error.response.data.error.errors))
+      const message = Object.keys(error.response.data.error.errors).map(key => {
+        return error.response.data.error.errors[key].message
+      })
+      snackbarHandler(message.join(', '), SEVERITY.ERROR)
     }
   }
 
