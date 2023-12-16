@@ -16,7 +16,7 @@ const Post = ({ post }) => {
 
   console.log(post)
   return (
-    <div className={styles.post}>
+    <li className={styles.post}>
       <div className={styles.map}>
         <Map mapCenter={{lat: post.lat, lng: post.lng}} isLoaded={isLoaded} width="140px" height="140px" zoom={10}/>
       </div>
@@ -36,7 +36,7 @@ const Post = ({ post }) => {
         </div>
       </div>
       
-    </div>
+    </li>
   )
 }
 
