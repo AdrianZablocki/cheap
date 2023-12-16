@@ -1,7 +1,16 @@
 import { useMemo } from 'react'
 import { useLoadScript, GoogleMap, MarkerF } from '@react-google-maps/api'
+import Spinner from '../layout/spinner'
 
-const Map = ({ mapCenter, isLoaded, width, height, zoom }) => {
+import styles from './map.module.scss'
+
+const Map = ({ 
+  mapCenter, 
+  isLoaded, 
+  // width, 
+  // height, 
+  zoom 
+}) => {
   // const libraries = useMemo(() => ['places'], [])
 
   const mapOptions = useMemo(
@@ -19,7 +28,7 @@ const Map = ({ mapCenter, isLoaded, width, height, zoom }) => {
   // })
 
   if (!isLoaded) {
-    return (<div>loading...</div>)
+    return (<div className={styles.spinnerWrapper}><Spinner isOpen={true}/></div>)
   }
 
   return (
@@ -29,7 +38,7 @@ const Map = ({ mapCenter, isLoaded, width, height, zoom }) => {
       zoom={zoom}
       center={mapCenter}
       mapTypeId={google.maps.MapTypeId.ROADMAP}
-      mapContainerStyle={{ width, height }}
+      // mapContainerStyle={{ width, height }}
       onLoad={(map) => console.log('Map Loaded', map)}
     >
       <MarkerF

@@ -3,6 +3,14 @@ $color-white: #FFF;
 $color-black: #000;
 
 $color-paradise-green: #A3EF97;
+$color-hunter-green: #023E08;
+$color-bruschetta-tomato: #FF5F42;
+
 
 // BORDERS
 $border-1-black-50: 1px solid rgba(0, 0, 0, 0.50);
+
+// SHADOWS
+$shadow-paradise-green: rgba($color-paradise-green, 0.3) 0px 2px 6px -1px,
+  rgba($color-paradise-green, 0.3) 0px 1px 1px 0px,
+  rgba($color-paradise-green, 0.12) 0px 1px 3px 0px;

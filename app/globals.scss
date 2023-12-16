@@ -1,7 +1,12 @@
 @import '../styles//reset.scss';
+@import '../styles/fonts.scss';
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  font-family: $ibm-plex-light;
 }
 
 button {

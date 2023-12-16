@@ -22,7 +22,7 @@ const AutocompleteMap = ({ loaded }) => {
             setLng(lng)
           });
           getDetails({placeId}).then((result) => {
-            console.log('adress details', result)
+            console.log('address details', result)
           })
         }}
       />}

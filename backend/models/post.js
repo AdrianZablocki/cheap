@@ -19,7 +19,7 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Miasto jest polem wymaganym']
   },
-  adress: {
+  address: {
     type: String,
     required: [true, 'Adres apteki jest polem wymaganym']
   },
