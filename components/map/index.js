@@ -7,8 +7,8 @@ import styles from './map.module.scss'
 const Map = ({ 
   mapCenter, 
   isLoaded, 
-  // width, 
-  // height, 
+  width, 
+  height, 
   zoom 
 }) => {
   // const libraries = useMemo(() => ['places'], [])
@@ -26,7 +26,7 @@ const Map = ({
   //   googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
   //   libraries: libraries
   // })
-
+  console.log(' map comp, `GOOGLE script loaded', isLoaded)
   if (!isLoaded) {
     return (<div className={styles.spinnerWrapper}><Spinner isOpen={true}/></div>)
   }
@@ -38,7 +38,7 @@ const Map = ({
       zoom={zoom}
       center={mapCenter}
       mapTypeId={google.maps.MapTypeId.ROADMAP}
-      // mapContainerStyle={{ width, height }}
+      mapContainerStyle={{ width, height }}
       onLoad={(map) => console.log('Map Loaded', map)}
     >
       <MarkerF

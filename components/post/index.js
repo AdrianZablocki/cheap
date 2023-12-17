@@ -37,7 +37,7 @@ const Post = ({ post }) => {
         </div>
 
         <div className={styles.map}>
-          <Map mapCenter={{lat: post.lat, lng: post.lng}} isLoaded={isLoaded} zoom={10} />
+          {/* <Map mapCenter={{lat: post.lat, lng: post.lng}} isLoaded={isLoaded} zoom={10} /> */}
         </div>
 
         <div className={styles.content}>
