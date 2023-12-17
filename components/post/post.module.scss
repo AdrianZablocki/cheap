@@ -24,26 +24,13 @@
   margin-top: 4px;
 }
 
-.map {
-  position: relative;
+.image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
   border-top: 1px solid rgba(217, 217, 217, 0.80);
   border-bottom: 1px solid rgba(217, 217, 217, 0.80);
-
-
-  height: 150px; //for test
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-  > div {
-    width: 100%;
-    height: 150px;
-  }
 }
 
 .content {

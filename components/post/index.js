@@ -1,43 +1,33 @@
 'use client'
 
-import Link from 'next/link'
-import { useMemo, useState } from 'react'
-import { useLoadScript } from '@react-google-maps/api'
+import Image from 'next/image'
+import { useState } from 'react'
 import dayjs from 'dayjs'
 
-import styles from './post.module.scss'
-
 import { date } from '@/utils'
-
 import sadIcon from '@/public/icons/sad.svg'
-import Map from '../map'
+import redNo2Image from '@/public/images/red-no-2.webp'
 import IconButton from '../layout/icon-button'
 import Modal from '../layout/modal'
 
+import styles from './post.module.scss'
 
 const Post = ({ post }) => {
   const [showModal, setShowModal] = useState(false)
 
-  const libraries = useMemo(() => ['places'], [])
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
-    libraries: libraries
-  })
-
-  console.log(post)
   return (
     <>
       <li className={styles.post}>
         <div className={styles.header}>
-          <div>{post.name}</div>
+          <div>{post.strainName}</div>
           <div className={styles.price}>
             <div>{post.price} zł/gram</div>
             <div>{dayjs(post.date).format(date)}</div>
           </div>
         </div>
 
-        <div className={styles.map}>
-          {/* <Map mapCenter={{lat: post.lat, lng: post.lng}} isLoaded={isLoaded} zoom={10} /> */}
+        <div className={styles.imageContainer}>
+          <Image className={styles.image} src={redNo2Image} alt="red" fill={false} />
         </div>
 
         <div className={styles.content}>
@@ -50,9 +40,9 @@ const Post = ({ post }) => {
         <div className={styles.actions}>
           <IconButton alt="sad icon" icon={sadIcon} padding={'8px'} action={()=>setShowModal(true)} />
 
-          <div>
+          {/* <div>
             <Link href="tel:515107460">telefon</Link>
-          </div>
+          </div> */}
         </div>
       </li>  
 
