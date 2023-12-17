@@ -49,6 +49,10 @@ const Post = ({ post }) => {
 
         <div className={styles.actions}>
           <IconButton alt="sad icon" icon={sadIcon} padding={'8px'} action={()=>setShowModal(true)} />
+
+          <div>
+            <Link href="tel:515107460">telefon</Link>
+          </div>
         </div>
       </li>  
 
