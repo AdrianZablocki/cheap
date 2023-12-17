@@ -11,8 +11,6 @@ const LayoutWrapper = ({ children }) => {
   const [openSpinner, setOpenSpinner] = useState(false)
   const pathname = usePathname()
 
-  console.log(pathname)
-
   return (
     <SpinnerContext.Provider value={{openSpinner, setOpenSpinner}}>
 

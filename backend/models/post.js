@@ -7,9 +7,13 @@ const postSchema = new mongoose.Schema({
   date: {
     type: Date
   },
-  name: {
+  strainName: {
     type: String,
     required: [true, 'Nazwa suszu jest polem wymaganym']
+  },
+  name: {
+    type: String,
+    required: [true, 'Nazwa apteki jest polem wymaganym']
   },
   region: {
     type: String,

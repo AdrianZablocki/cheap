@@ -3,11 +3,14 @@
   "date": "2023-09-21T23:48:28.000Z",
   "region": "mazowieckie",
   "city": "Warszawa",
-  "name": "Red no 2",
-  "price": 22.33,
+  "name": "Apteka Medicover Ochota",
   "address": "al. Jerozolimskie 96, 00-807 Warszawa, Poland",
+  "strainName": "Red no 2",
+  "price": 22.33,
   "amount": 15,
   "contact": "882 623 151",
   "lat": 52.2225665,
   "lng": 20.978485
 }
+
+

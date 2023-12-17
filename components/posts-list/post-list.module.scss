@@ -1,0 +1,15 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/grid.scss';
+
+.grid {
+  @include drawGrid(3);
+  @extend .gap;
+
+  @media (max-width: 992px) {
+    @include drawGrid(2);
+  }
+  
+  @media (max-width: 560px) {
+    @include drawGrid(1);
+  }
+}

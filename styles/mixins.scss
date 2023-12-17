@@ -11,8 +11,19 @@
   display: inline;
   background-color: $color-paradise-green;
   color: $color-black;
-  font-family: $ibm-plex-medium;
+  // font-family: $ibm-plex-medium;
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 16px;
+}
+
+@mixin drawGrid($col) {
+  display: grid;
+  grid-template-columns: repeat($col, 1fr);
+}
+
+@mixin font($family, $size) {
+  font-family: $family;
+  font-size: $size;
+  line-height: normal;
 }

@@ -1,17 +1,13 @@
+@import './mixins.scss';
+
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  column-gap: 0;
 }
 
 .gap {
   row-gap: 16px;
   column-gap: 16px;
-}
-
-.noGap {
-  grid-gap: 0;
-  column-count: 0;
 }
 
 @for $i from 1 to 14 {

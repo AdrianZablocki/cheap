@@ -6,6 +6,8 @@ import axios from 'axios'
 
 import Post from '@/components/post'
 
+import styles from './post-list.module.scss'
+
 const PostList = ({ postsList }) => {
   const { push } = useRouter()
   const pathName = usePathname()
@@ -41,7 +43,7 @@ const PostList = ({ postsList }) => {
     <>
       {/* <button type="button" onClick={createPost}>create post</button> */}
   
-      <ul>
+      <ul className={styles.grid}>
         {postsList && postsList.map((post, index )=> 
           // <Link href={`post/${post._id}`} passHref key={`post_${index}`}>
             <Post key={`post_${index}`} post={post} />

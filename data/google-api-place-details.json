@@ -1,0 +1,393 @@
+{
+  "address_components": [
+      {
+          "long_name": "96",
+          "short_name": "96",
+          "types": [
+              "street_number"
+          ]
+      },
+      {
+          "long_name": "Aleje Jerozolimskie",
+          "short_name": "al. Jerozolimskie",
+          "types": [
+              "route"
+          ]
+      },
+      {
+          "long_name": "Ochota",
+          "short_name": "Ochota",
+          "types": [
+              "sublocality_level_1",
+              "sublocality",
+              "political"
+          ]
+      },
+      {
+          "long_name": "Warszawa",
+          "short_name": "Warszawa",
+          "types": [
+              "locality",
+              "political"
+          ]
+      },
+      {
+          "long_name": "Warszawa",
+          "short_name": "Warszawa",
+          "types": [
+              "administrative_area_level_2",
+              "political"
+          ]
+      },
+      {
+          "long_name": "Mazowieckie",
+          "short_name": "Mazowieckie",
+          "types": [
+              "administrative_area_level_1",
+              "political"
+          ]
+      },
+      {
+          "long_name": "Poland",
+          "short_name": "PL",
+          "types": [
+              "country",
+              "political"
+          ]
+      },
+      {
+          "long_name": "00-807",
+          "short_name": "00-807",
+          "types": [
+              "postal_code"
+          ]
+      }
+  ],
+  "adr_address": "<span class=\"street-address\">al. Jerozolimskie 96</span>, <span class=\"postal-code\">00-807</span> <span class=\"locality\">Warszawa</span>, <span class=\"country-name\">Poland</span>",
+  "business_status": "OPERATIONAL",
+  "current_opening_hours": {
+      "open_now": false,
+      "periods": [
+          {
+              "close": {
+                  "date": "2023-12-18",
+                  "day": 1,
+                  "time": "2000"
+              },
+              "open": {
+                  "date": "2023-12-18",
+                  "day": 1,
+                  "time": "0700"
+              }
+          },
+          {
+              "close": {
+                  "date": "2023-12-19",
+                  "day": 2,
+                  "time": "2000"
+              },
+              "open": {
+                  "date": "2023-12-19",
+                  "day": 2,
+                  "time": "0700"
+              }
+          },
+          {
+              "close": {
+                  "date": "2023-12-20",
+                  "day": 3,
+                  "time": "2000"
+              },
+              "open": {
+                  "date": "2023-12-20",
+                  "day": 3,
+                  "time": "0700"
+              }
+          },
+          {
+              "close": {
+                  "date": "2023-12-21",
+                  "day": 4,
+                  "time": "2000"
+              },
+              "open": {
+                  "date": "2023-12-21",
+                  "day": 4,
+                  "time": "0700"
+              }
+          },
+          {
+              "close": {
+                  "date": "2023-12-22",
+                  "day": 5,
+                  "time": "2000"
+              },
+              "open": {
+                  "date": "2023-12-22",
+                  "day": 5,
+                  "time": "0700"
+              }
+          },
+          {
+              "close": {
+                  "date": "2023-12-23",
+                  "day": 6,
+                  "time": "1400"
+              },
+              "open": {
+                  "date": "2023-12-23",
+                  "day": 6,
+                  "time": "0800"
+              }
+          }
+      ],
+      "weekday_text": [
+          "Monday: 7:00 AM – 8:00 PM",
+          "Tuesday: 7:00 AM – 8:00 PM",
+          "Wednesday: 7:00 AM – 8:00 PM",
+          "Thursday: 7:00 AM – 8:00 PM",
+          "Friday: 7:00 AM – 8:00 PM",
+          "Saturday: 8:00 AM – 2:00 PM",
+          "Sunday: Closed"
+      ]
+  },
+  "formatted_address": "al. Jerozolimskie 96, 00-807 Warszawa, Poland",
+  "formatted_phone_number": "882 623 151",
+  "geometry": {
+      "location": {
+          "lat": 52.2225665,
+          "lng": 20.978485
+      },
+      "viewport": {
+          "south": 52.2211166697085,
+          "west": 20.9773297697085,
+          "north": 52.2238146302915,
+          "east": 20.9800277302915
+      }
+  },
+  "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/pharmacy-71.png",
+  "icon_background_color": "#F88181",
+  "icon_mask_base_uri": "https://maps.gstatic.com/mapfiles/place_api/icons/v2/pharmacy_pinlet",
+  "international_phone_number": "+48 882 623 151",
+  "name": "Apteka Medicover Ochota",
+  "opening_hours": {
+      "open_now": false,
+      "periods": [
+          {
+              "close": {
+                  "day": 1,
+                  "time": "2000",
+                  "hours": 20,
+                  "minutes": 0,
+                  "nextDate": 1702926000000
+              },
+              "open": {
+                  "day": 1,
+                  "time": "0700",
+                  "hours": 7,
+                  "minutes": 0,
+                  "nextDate": 1702879200000
+              }
+          },
+          {
+              "close": {
+                  "day": 2,
+                  "time": "2000",
+                  "hours": 20,
+                  "minutes": 0,
+                  "nextDate": 1703012400000
+              },
+              "open": {
+                  "day": 2,
+                  "time": "0700",
+                  "hours": 7,
+                  "minutes": 0,
+                  "nextDate": 1702965600000
+              }
+          },
+          {
+              "close": {
+                  "day": 3,
+                  "time": "2000",
+                  "hours": 20,
+                  "minutes": 0,
+                  "nextDate": 1703098800000
+              },
+              "open": {
+                  "day": 3,
+                  "time": "0700",
+                  "hours": 7,
+                  "minutes": 0,
+                  "nextDate": 1703052000000
+              }
+          },
+          {
+              "close": {
+                  "day": 4,
+                  "time": "2000",
+                  "hours": 20,
+                  "minutes": 0,
+                  "nextDate": 1703185200000
+              },
+              "open": {
+                  "day": 4,
+                  "time": "0700",
+                  "hours": 7,
+                  "minutes": 0,
+                  "nextDate": 1703138400000
+              }
+          },
+          {
+              "close": {
+                  "day": 5,
+                  "time": "2000",
+                  "hours": 20,
+                  "minutes": 0,
+                  "nextDate": 1703271600000
+              },
+              "open": {
+                  "day": 5,
+                  "time": "0700",
+                  "hours": 7,
+                  "minutes": 0,
+                  "nextDate": 1703224800000
+              }
+          },
+          {
+              "close": {
+                  "day": 6,
+                  "time": "1400",
+                  "hours": 14,
+                  "minutes": 0,
+                  "nextDate": 1703336400000
+              },
+              "open": {
+                  "day": 6,
+                  "time": "0800",
+                  "hours": 8,
+                  "minutes": 0,
+                  "nextDate": 1703314800000
+              }
+          }
+      ],
+      "weekday_text": [
+          "Monday: 7:00 AM – 8:00 PM",
+          "Tuesday: 7:00 AM – 8:00 PM",
+          "Wednesday: 7:00 AM – 8:00 PM",
+          "Thursday: 7:00 AM – 8:00 PM",
+          "Friday: 7:00 AM – 8:00 PM",
+          "Saturday: 8:00 AM – 2:00 PM",
+          "Sunday: Closed"
+      ]
+  },
+  "photos": [
+      {
+          "height": 720,
+          "html_attributions": [
+              "<a href=\"https://maps.google.com/maps/contrib/115756569207373896256\">Apteka Medicover Ochota</a>"
+          ],
+          "width": 1080
+      },
+      {
+          "height": 640,
+          "html_attributions": [
+              "<a href=\"https://maps.google.com/maps/contrib/115756569207373896256\">Apteka Medicover Ochota</a>"
+          ],
+          "width": 960
+      },
+      {
+          "height": 640,
+          "html_attributions": [
+              "<a href=\"https://maps.google.com/maps/contrib/115756569207373896256\">Apteka Medicover Ochota</a>"
+          ],
+          "width": 960
+      },
+      {
+          "height": 720,
+          "html_attributions": [
+              "<a href=\"https://maps.google.com/maps/contrib/115756569207373896256\">Apteka Medicover Ochota</a>"
+          ],
+          "width": 1080
+      },
+      {
+          "height": 640,
+          "html_attributions": [
+              "<a href=\"https://maps.google.com/maps/contrib/115756569207373896256\">Apteka Medicover Ochota</a>"
+          ],
+          "width": 960
+      }
+  ],
+  "place_id": "ChIJAQBAk5jMHkcRRtq3q_Ek1NQ",
+  "plus_code": {
+      "compound_code": "6XFH+29 Warsaw, Poland",
+      "global_code": "9G426XFH+29"
+  },
+  "rating": 2.1,
+  "reference": "ChIJAQBAk5jMHkcRRtq3q_Ek1NQ",
+  "reviews": [
+      {
+          "author_name": "Алина Белоусова",
+          "author_url": "https://www.google.com/maps/contrib/105313554566403888637/reviews",
+          "language": "en",
+          "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocLsXG5iq_oooBxIxO-7AJ0vWDlUnQH5dtrV2DDJOh-S=s128-c0x00000000-cc-rp-mo",
+          "rating": 1,
+          "relative_time_description": "3 months ago",
+          "text": "I couldn’t imagine that in pharmacy could be prices twice higher then in any other one. If you thought that Super-Pharm is overpriced, you have never been in Medicover pharmacy!!! Just to compare Kerabione booster in Super Pharm is 50 zl, I’ve paid here 96 zl. For a hair serum in Super Pharm I would pay 130 zl, here it was 270zl. That is just insane. Definitely the pharmacy to be avoided!!!",
+          "time": 1693997567
+      },
+      {
+          "author_name": "Hanna Mostowiak",
+          "author_url": "https://www.google.com/maps/contrib/107745935441615889869/reviews",
+          "language": "en",
+          "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocKoPn4EG9msfsMuViKq0BYdA5N4MjGeneJh3BBgM3DZ=s128-c0x00000000-cc-rp-mo",
+          "rating": 1,
+          "relative_time_description": "in the last week",
+          "text": "Prices are overpriced by AT LEAST 100%. How are you not ashamed??",
+          "time": 1702308369
+      },
+      {
+          "author_name": "Bartłomiej Szuba",
+          "author_url": "https://www.google.com/maps/contrib/100412838251247183666/reviews",
+          "language": "en",
+          "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjW0LrS0oI9tKCanPsOdgtSrmTaLonJ-a2d6jsKePHb_B1A=s128-c0x00000000-cc-rp-mo-ba3",
+          "rating": 1,
+          "relative_time_description": "3 months ago",
+          "text": "The pharmacy speculates on drug prices to such an extent that a drug costing PLN 370 costs PLN 900...",
+          "time": 1694428785
+      },
+      {
+          "author_name": "Ralph Smith",
+          "author_url": "https://www.google.com/maps/contrib/112097020158447044345/reviews",
+          "language": "en",
+          "profile_photo_url": "https://lh3.googleusercontent.com/a/ACg8ocLaeBHFhuRbSlUVtY453D1I_Ir3v3RRQhJLuu1PPchuPA=s128-c0x00000000-cc-rp-mo",
+          "rating": 1,
+          "relative_time_description": "a year ago",
+          "text": "PLN 31 for nasal drops that cost PLN 13.99 per dose only after asking for\na cheaper substitute for drops for independent application without a dispenser.\nRude service, which is a punishment at work.\nI DO NOT RECOMMEND 0.9 /// 10",
+          "time": 1666463161
+      },
+      {
+          "author_name": "Mrtz JB",
+          "author_url": "https://www.google.com/maps/contrib/116728667724899001886/reviews",
+          "language": "en",
+          "profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjXRAdCIHPmUaB0tMXLeZDR8LaFUaqrEmAecQ_DjVXI0Y0A=s128-c0x00000000-cc-rp-mo-ba4",
+          "rating": 1,
+          "relative_time_description": "3 months ago",
+          "text": "2x more expensive. Avoid wide arc.",
+          "time": 1694069122
+      }
+  ],
+  "types": [
+      "pharmacy",
+      "point_of_interest",
+      "health",
+      "store",
+      "establishment"
+  ],
+  "url": "https://maps.google.com/?cid=15335923251490052678",
+  "user_ratings_total": 28,
+  "utc_offset": 60,
+  "vicinity": "Aleje Jerozolimskie 96, Warszawa",
+  "website": "https://www.medicover.pl/placowki/apteka-medicover-warszawa-jerozolimskie,894,d,1022",
+  "html_attributions": [],
+  "utc_offset_minutes": 60
+}

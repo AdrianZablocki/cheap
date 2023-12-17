@@ -1,24 +1,31 @@
 @font-face {
-  font-family: "IBMPlexLight";
-  src: url('../public/fonts/IBMPlexSansCondensed-Light.ttf');
+  font-family: "MontserratThin";
+  src: url('../public/fonts/Montserrat-Thin.ttf');
 }
 
 @font-face {
-  font-family: "IBMPlexMedium";
-  src: url('../public/fonts/IBMPlexSansCondensed-Medium.ttf');
+  font-family: "MontserratLight";
+  src: url('../public/fonts/Montserrat-Light.ttf');
 }
 
 @font-face {
-  font-family: "IBMPlexSemiBold";
-  src: url('../public/fonts/IBMPlexSansCondensed-SemiBold.ttf');
+  font-family: "MontserratMedium";
+  src: url('../public/fonts/Montserrat-Medium.ttf');
 }
 
 @font-face {
-  font-family: "IBMPlexThin";
-  src: url('../public/fonts/IBMPlexSansCondensed-Thin.ttf');
+  font-family: "MontserratSemiBold";
+  src: url('../public/fonts/Montserrat-SemiBold.ttf');
 }
 
-$ibm-plex-light: 'IBMPlexLight', sans-serif;
-$ibm-plex-medium :'IBMPlexMedium', sans-serif;
-$ibm-plex-semi-bold: 'IBMPlexSemiBold', sans-serif;
-$ibm-plex-thin: 'IBMPlexThin', sans-serif;
+@font-face {
+  font-family: "MontserratBold";
+  src: url('../public/fonts/Montserrat-Bold.ttf');
+}
+
+$mont-thin: 'MontserratThin', sans-serif;
+$mont-light: 'MontserratLight', sans-serif;
+$mont-medium: 'MontserratMedium', sans-serif;
+$mont-semi-bold: 'MontserratSemiBold', sans-serif;
+$mont-bold :'MontserratBold', sans-serif;
+

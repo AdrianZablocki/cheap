@@ -27,10 +27,10 @@ const Header = ({ logoWidth, logoHeight }) => {
         action={() => setShowModal(true)}
       />
       {showModal &&
-          <Modal onClose={() => setShowModal(false)}>
-            user, links, login, logout, etc...
-          </Modal>
-        }
+        <Modal onClose={() => setShowModal(false)}>
+          user, links, login, logout, etc...
+        </Modal>
+      }
     </div>
   )
 }
