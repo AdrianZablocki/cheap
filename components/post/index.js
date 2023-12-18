@@ -6,14 +6,33 @@ import dayjs from 'dayjs'
 
 import { date } from '@/utils'
 import sadIcon from '@/public/icons/sad.svg'
-import redNo2Image from '@/public/images/red-no-2.webp'
-import IconButton from '../layout/icon-button'
+import happyIcon from '@/public/icons/happy.svg'
+import redNo2Image from '@/public/images/red-no-2.jpeg'
+import IconButton from '../UI/icon-button'
 import Modal from '../layout/modal'
 
 import styles from './post.module.scss'
+import ConfirmPrice from '../confirm-price'
+import ChangePrice from '../change-price'
 
 const Post = ({ post }) => {
-  const [showModal, setShowModal] = useState(false)
+  const [ showModal, setShowModal ] = useState(false)
+  const [ modalContent, setModalContent] = useState(<div> modal content</div>)
+  const modalContentMap = {
+    confirm: <ConfirmPrice post={post} action={() => onAction('change')}/>,
+    change: <ChangePrice post={post} />
+  }
+
+  const renderModalContent = (contentType) => {
+    return (
+      modalContentMap[contentType] || ''
+    )
+  }
+
+  const onAction = (actionType) => {
+    setShowModal(true)
+    setModalContent(renderModalContent(actionType))
+  }
 
   return (
     <>
@@ -38,8 +57,9 @@ const Post = ({ post }) => {
         </div>
 
         <div className={styles.actions}>
-          <IconButton alt="sad icon" icon={sadIcon} padding={'8px'} action={()=>setShowModal(true)} />
-
+          <IconButton alt="happy icon" icon={happyIcon} padding={'8px'} action={()=>onAction('confirm')} />
+          <IconButton alt="sad icon" icon={sadIcon} padding={'8px'} action={()=>onAction('change')} />
+          
           {/* <div>
             <Link href="tel:515107460">telefon</Link>
           </div> */}
@@ -48,11 +68,10 @@ const Post = ({ post }) => {
 
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
-          formularze zmiany ceny
+          {modalContent}
         </Modal>
       }
     </>
-
   )
 }
 

@@ -16,12 +16,12 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="pl">
-      <body>
+      <body id="modal-root">
         <Header logoWidth={80} logoHeight={40} />
         <LayoutWrapper>
           {children}      
         </LayoutWrapper>
-        <div id="modal-root"></div>
+        {/* <div id="modal-root"></div> */}
       </body>
     </html>
   )

@@ -7,7 +7,7 @@ import { useState } from 'react'
 import filtersIcon from '@/public/icons/filters.svg'
 import SearchBar from '../searchbar'
 import Modal from '../modal'
-import IconButton from '../icon-button'
+import IconButton from '../../UI/icon-button'
 
 import styles from './navbar.module.scss'
 

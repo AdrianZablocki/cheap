@@ -9,6 +9,10 @@ body {
   font-family: $mont-medium;
 }
 
+.disableScroll {
+  overflow: hidden;
+}
+
 button {
   border: none;
   background-color: transparent;

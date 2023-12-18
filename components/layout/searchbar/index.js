@@ -5,7 +5,7 @@ import { useState } from 'react'
 import styles from './searchbar.module.scss'
 import searchIcon from '@/public/icons/search.svg'
 import Modal from '../modal'
-import IconButton from '../icon-button'
+import IconButton from '../../UI/icon-button'
 
 const SearchBar = () => {
   const [showModal, setShowModal] = useState(false)

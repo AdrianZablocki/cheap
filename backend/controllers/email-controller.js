@@ -6,7 +6,7 @@ export const sendVerificationEmail = async (req, res) => {
   const pass = process.env.NEXT_PUBLIC_PASSWORD
 
   const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: 'serwer2343321.home.pl', // 'smtp.gmail.com',
     port: 465,
     secure: true,
     auth: { user, pass }
@@ -15,7 +15,8 @@ export const sendVerificationEmail = async (req, res) => {
   try {
     // TODO add stylish email template
     const emailToSend = await transporter.sendMail({
-      // TODO add irganization email from: 'info@cheap-weed.pl', 
+      // TODO add irganization email 
+      from: 'kontakt@cheapweed.pl', 
       to: email,
       subject: `Zweryfikuj konto załozone na cheap weed`,
       html: `

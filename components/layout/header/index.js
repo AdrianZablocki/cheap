@@ -7,7 +7,7 @@ import Logo from '../logo'
 import Modal from '../modal'
 
 import styles from './header.module.scss'
-import IconButton from '../icon-button'
+import IconButton from '../../UI/icon-button'
 
 const Header = ({ logoWidth, logoHeight }) => {
   const [showModal, setShowModal] = useState(false)

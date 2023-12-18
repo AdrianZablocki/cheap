@@ -13,12 +13,12 @@
 }
 
 .header {
-  @include font($mont-medium, 16px);
+  @include font($mont-bold, 16px);
   padding: 12px 16px 8px;
 }
 
 .price {
-  @include font($mont-light, 14px);
+  @include font($mont-medium, 14px);
   display: flex;
   justify-content: space-between;
   margin-top: 4px;
@@ -49,4 +49,5 @@
 
 .actions {
   padding: 0 4px;
+  display: flex;
 }

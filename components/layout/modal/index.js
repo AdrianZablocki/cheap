@@ -4,33 +4,36 @@ import React from 'react'
 import { createPortal } from 'react-dom'
 
 import closeIcon from '@/public/icons/close.svg'
-import IconButton from '../icon-button'
+import IconButton from '../../UI/icon-button'
 import styles from './modal.module.scss'
 
 const Modal = ({ onClose, children, title }) => {
-    const handleCloseClick = (e) => {
-      e.preventDefault()
-      onClose()
-    }
+  document.body.classList.add('disableScroll')
+  
+  const handleCloseClick = (e) => {
+    e.preventDefault()
+    document.body.classList.remove('disableScroll')
+    onClose()
+  }
 
-    const modalContent = (
-      <div className={styles.modal}>
-        <div className={styles.modalHeader}>
-          <IconButton
-            icon={closeIcon}
-            alt="closeIcon"
-            action={(e) => handleCloseClick(e)}
-          />
-        </div>
-        {title && <h1>{title}</h1>}
-        <div className={styles.modalBody}>{children}</div>
+  const modalContent = (
+    <div className={styles.modal}>
+      <div className={styles.modalHeader}>
+        <IconButton
+          icon={closeIcon}
+          alt="closeIcon"
+          action={(e) => handleCloseClick(e)}
+        />
       </div>
-    )
+      {title && <h1>{title}</h1>}
+      <div className={styles.modalBody}>{children}</div>
+    </div>
+  )
 
-    return createPortal(
-        modalContent,
-        document.getElementById("modal-root")
-    )
+  return createPortal(
+      modalContent,
+      document.getElementById("modal-root")
+  )
 }
 
 export default Modal
