@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import dayjs from 'dayjs'
 
-import { date } from '@/utils'
+import { date, dateWithTime } from '@/utils'
 import sadIcon from '@/public/icons/sad.svg'
 import happyIcon from '@/public/icons/happy.svg'
 import redNo2Image from '@/public/images/red-no-2.jpeg'
@@ -20,7 +20,7 @@ const Post = ({ post }) => {
   const [ modalContent, setModalContent] = useState(<div> modal content</div>)
   const modalContentMap = {
     confirm: <ConfirmPrice post={post} action={() => onAction('change')}/>,
-    change: <ChangePrice post={post} />
+    change: <ChangePrice post={post} showModal={() => setShowModal(false)}/>
   }
 
   const renderModalContent = (contentType) => {
@@ -41,7 +41,7 @@ const Post = ({ post }) => {
           <div>{post.strainName}</div>
           <div className={styles.price}>
             <div>{post.price} zł/gram</div>
-            <div>{dayjs(post.date).format(date)}</div>
+            <div>{dayjs(post.date).format(dateWithTime)}</div>
           </div>
         </div>
 

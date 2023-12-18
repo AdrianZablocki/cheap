@@ -6,7 +6,7 @@ const SnackbarMessage = ({ isOpen, message, severity }) => {
       <div 
         className={`${styles.snackbar} ${styles[severity]} ${isOpen ? styles.open : styles.hidden}`} 
       >
-        { message }<span>{ severity }</span>
+        { message }
       </div> 
     </div>
 

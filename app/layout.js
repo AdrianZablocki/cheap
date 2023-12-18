@@ -21,7 +21,6 @@ export default function RootLayout({ children }) {
         <LayoutWrapper>
           {children}      
         </LayoutWrapper>
-        {/* <div id="modal-root"></div> */}
       </body>
     </html>
   )

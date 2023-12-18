@@ -1,6 +1,6 @@
 'use-client'
 
-const UserForm = ({handleSubmit, setEmail, setPassword, setRegion, errorMessage}) => {
+const UserForm = ({ handleSubmit, setEmail, setPassword, setRegion }) => {
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <fieldset>
@@ -22,7 +22,6 @@ const UserForm = ({handleSubmit, setEmail, setPassword, setRegion, errorMessage}
           </select>
         </fieldset>
       }
-      <div>{errorMessage}</div>
       <button type="submit">Wyślij</button>
     </form>
   )

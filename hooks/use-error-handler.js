@@ -18,6 +18,8 @@ export const SEVERITY = {
 const ERROR_CODES = {
   NO_CONTENT: 204,
   UNAUTHORIZED: 401,
+  DUPPLICATED: 409,
+  DUPPLICATED_ERROR: 405,
   SERVER_500: 500
 }
 
@@ -27,22 +29,28 @@ const useErrorHandler = (snackbarHandler) => {
   const handleError = (error) => {
     console.log('ERROR: ', error)
 
-    if ((error).response.status === ERROR_CODES.UNAUTHORIZED) {
+    if ((error)?.response?.status === ERROR_CODES.UNAUTHORIZED) {
 
       // TODO handle with 401 error
       console.log('handle 401 error')
 
       snackbarHandler(getErrorMessage('Unauthorized'), SEVERITY.ERROR)
 
-    } else if (error.response.status === 400) {
+    } else if (error?.response?.status === 400) {
 
       snackbarHandler(getErrorMessage(error.response.data), SEVERITY.ERROR)
-    } else if (error.response.status === ERROR_CODES.SERVER_500) {
-      console.log(Object.keys(error.response.data.error.errors))
-      const message = Object.keys(error.response.data.error.errors).map(key => {
-        return error.response.data.error.errors[key].message
-      })
-      snackbarHandler(message.join(', '), SEVERITY.ERROR)
+    } else if (error?.response?.status === ERROR_CODES.SERVER_500) {
+      // console.log(Object.keys(error.response.data.error.errors))
+
+
+      if (error.response?.data?.error?.errors) {
+        console.log('HUJ')
+        const message = Object.keys(error.response.data.error.errors).map(key => {
+          return error.response.data.error.errors[key].message
+        })
+        return snackbarHandler(message.join(', '), SEVERITY.ERROR)
+      }
+      snackbarHandler('Coś poszło nie tak', SEVERITY.ERROR)
     }
   }
 

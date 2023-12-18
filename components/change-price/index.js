@@ -1,19 +1,27 @@
+import { useState, useContext } from 'react'
 import dayjs from 'dayjs'
-import { useState } from 'react'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
 
-import { dateWithTime } from '@/utils'
+import SpinnerContext from '@/context/spinner-context'
+import SnackbarContext from '@/context/snackbar-context'
+import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
+import { dateWithTime, updatePost } from '@/utils'
 import Button from '../UI/button'
 import Input from '../UI/input'
 
 import styles from './change-price.module.scss'
 
-const ChangePrice = ({post}) => {
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
+const ChangePrice = ({post, showModal}) => {
   const { price } = post
   const [ newPrice, setNewPrice ] = useState(price)
-  const [ amount, setAmount ] = useState()
-
-  const joinWith = ' zł / '
-
+  const [ amount, setAmount ] = useState(1)
+  const { setOpenSpinner } = useContext(SpinnerContext)
+  const { snackbarHandler } = useContext(SnackbarContext)
+  const { handleError } = useErrorHandler(snackbarHandler)
   const dateNow = dayjs().format(dateWithTime)
 
   const onPriceChange = (e) => {
@@ -29,13 +37,27 @@ const ChangePrice = ({post}) => {
 
   const isPriceUpdated = (price, amount) => (price > 0 && amount > 0)
 
+  const onUpdatePost = async(price) => {
+    setOpenSpinner(true)
+    try {
+      const data = await updatePost(post._id, {price, date: dayjs().utc().format(dateWithTime)})
+      setOpenSpinner(false)
+      snackbarHandler('Post został zaktualizowany', SEVERITY.SUCCESS)
+      showModal(false)
+    } catch (error) {
+      console.log('UPDATE PRICE', error)
+      setOpenSpinner(false)
+      handleError(error)
+    }
+  }
+
   return (
     <div>
       <div>{dateNow}</div>
       <form className={styles.form}>
         <Input
           type="number"
-          value={price}
+          value={newPrice}
           label="Cena"
           min={0}
           onChange={(e) => onPriceChange(e)}
@@ -50,10 +72,21 @@ const ChangePrice = ({post}) => {
       </form>
 
       {isPriceUpdated(newPrice, amount) && <div>zaktualizowana cena: {newPrice/amount} zł</div>}
-      
+
       <div>
-        <Button text="Aktualizuj" bgColor={'success'} />
-        <Button text="Promocja nieaktualna" bgColor={'error'} />
+        <Button
+          text="Aktualizuj"
+          bgColor={'success'}
+          disabled={!isPriceUpdated(newPrice, amount)}
+          action={() => onUpdatePost(newPrice/amount)}
+        />
+        <br></br>
+        <br></br>
+        <Button
+          text="Promocja nieaktualna"
+          bgColor={'error'}
+          action={() => onUpdatePost()}
+        />
       </div>
     </div>
   )
