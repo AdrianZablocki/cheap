@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import timezone from 'dayjs/plugin/timezone'
 
 import SpinnerContext from '@/context/spinner-context'
 import SnackbarContext from '@/context/snackbar-context'
@@ -13,11 +12,9 @@ import Input from '../UI/input'
 import styles from './change-price.module.scss'
 
 dayjs.extend(utc)
-dayjs.extend(timezone)
 
-const ChangePrice = ({post, showModal}) => {
-  const { price } = post
-  const [ newPrice, setNewPrice ] = useState(price)
+const ChangePrice = ({ post, showModal, setChanges }) => {
+  const [ newPrice, setNewPrice ] = useState(post.price)
   const [ amount, setAmount ] = useState(1)
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
@@ -25,7 +22,6 @@ const ChangePrice = ({post, showModal}) => {
   const dateNow = dayjs().format(dateWithTime)
 
   const onPriceChange = (e) => {
-    console.log(e)
     e.preventDefault()
     setNewPrice(Number(e.target.value))
   }
@@ -37,15 +33,20 @@ const ChangePrice = ({post, showModal}) => {
 
   const isPriceUpdated = (price, amount) => (price > 0 && amount > 0)
 
-  const onUpdatePost = async(price) => {
+  const onUpdatePost = async(price, isInvalid) => {
     setOpenSpinner(true)
+
+    const body = isInvalid ? {isValid: false} : { price, date: dayjs().utc().format(), isValid: true }
+    const message = isInvalid ? 'Post oznaczono jako nieaktualny': 'Post został zaktualizowany'
+
     try {
-      const data = await updatePost(post._id, {price, date: dayjs().utc().format(dateWithTime)})
+      const data = await updatePost(post._id, body)
       setOpenSpinner(false)
-      snackbarHandler('Post został zaktualizowany', SEVERITY.SUCCESS)
+      snackbarHandler(message, SEVERITY.SUCCESS)
+      setChanges({...post, ...data.changed})
       showModal(false)
     } catch (error) {
-      console.log('UPDATE PRICE', error)
+      console.log('UPDATE PRICE ERROR', error)
       setOpenSpinner(false)
       handleError(error)
     }
@@ -68,24 +69,24 @@ const ChangePrice = ({post, showModal}) => {
           label="Waga"
           min={0}
           onChange={(e) => onAmountChange(e)}
-        /> gram 
+        /> gram
       </form>
 
-      {isPriceUpdated(newPrice, amount) && <div>zaktualizowana cena: {newPrice/amount} zł</div>}
+      {isPriceUpdated(newPrice, amount) && <div>zaktualizowana cena: {(newPrice/amount).toFixed(2)} zł</div>}
 
       <div>
         <Button
           text="Aktualizuj"
           bgColor={'success'}
           disabled={!isPriceUpdated(newPrice, amount)}
-          action={() => onUpdatePost(newPrice/amount)}
+          action={() => onUpdatePost((newPrice/amount).toFixed(2))}
         />
         <br></br>
         <br></br>
         <Button
           text="Promocja nieaktualna"
           bgColor={'error'}
-          action={() => onUpdatePost()}
+          action={() => onUpdatePost(null, true)}
         />
       </div>
     </div>

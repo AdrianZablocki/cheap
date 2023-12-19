@@ -43,11 +43,14 @@ export const deletePost = async(req, res, next) => {
 }
 
 export const updatePost = async(req, res, next) => {
-  const post = await Post.findByIdAndUpdate(req.query.id, req.body)
-
-  if (!post) {
-    res.status(404).json({ error: 'Post not found' })
+  try {
+    const post = await Post.findByIdAndUpdate(req.query.id, req.body)
+    if (!post) {
+      return res.status(404).json({ error: 'Post not found' })
+    }
+    console.log(post)
+    res.status(200).json({ changed: req.body })
+  } catch (error) {
+    res.status(500).json({ error })
   }
-
-  res.status(200).json({ success: 'Post updated' })
 }

@@ -43,6 +43,9 @@ const postSchema = new mongoose.Schema({
   },
   lng: {
     type: Number
+  },
+  isValid: {
+    type: Boolean
   }
 })
 
