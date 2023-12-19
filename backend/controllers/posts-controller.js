@@ -48,7 +48,6 @@ export const updatePost = async(req, res, next) => {
     if (!post) {
       return res.status(404).json({ error: 'Post not found' })
     }
-    console.log(post)
     res.status(200).json({ changed: req.body })
   } catch (error) {
     res.status(500).json({ error })

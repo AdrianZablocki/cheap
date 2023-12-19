@@ -1,13 +1,17 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 
+import SpinnerContext from '@/context/spinner-context'
+import SnackbarContext from '@/context/snackbar-context'
+import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import sadIcon from '@/public/icons/sad.svg'
 import happyIcon from '@/public/icons/happy.svg'
 import redNo2Image from '@/public/images/red-no-2.jpeg'
-import { date } from '@/utils'
+import { date, dateWithTime, updatePost } from '@/utils'
 import ConfirmPrice from '../confirm-price'
 import ChangePrice from '../change-price'
 import IconButton from '../UI/icon-button'
@@ -15,13 +19,49 @@ import Modal from '../layout/modal'
 
 import styles from './post.module.scss'
 
+dayjs.extend(utc)
+
 const Post = ({ post }) => {
   const [ postCopy, setPostCopy ] = useState(post)
   const [ showModal, setShowModal ] = useState(false)
   const [ modalContent, setModalContent] = useState(<div> modal content</div>)
+  const { setOpenSpinner } = useContext(SpinnerContext)
+  const { snackbarHandler } = useContext(SnackbarContext)
+  const { handleError } = useErrorHandler(snackbarHandler)
+
+  const dateNow = dayjs().format(dateWithTime)
+
+  const onUpdatePost = async(payload, invalid) => {
+    setOpenSpinner(true)
+
+    const body = invalid ? { isValid: false } : { ...payload, date: dayjs().utc().format(), isValid: true }
+    const message = invalid ? 'Post oznaczono jako nieaktualny' : 'Post został zaktualizowany'
+
+    try {
+      const data = await updatePost(postCopy._id, body)
+      setOpenSpinner(false)
+      snackbarHandler(message, SEVERITY.SUCCESS)
+      setPostCopy({...postCopy, ...data.changed})
+      setShowModal(false)
+    } catch (error) {
+      console.log('UPDATE PRICE ERROR', error)
+      setOpenSpinner(false)
+      handleError(error)
+    }
+  }
+
   const modalContentMap = {
-    confirm: <ConfirmPrice post={post} action={() => onAction('change')} />,
-    change: <ChangePrice post={postCopy} showModal={() => setShowModal(false)} setChanges={setPostCopy}/>
+    confirm: <ConfirmPrice
+        post={postCopy}
+        openCahngePriceModal={() => onAction('change')}
+        showModal={() => setShowModal(false)}
+        updatePost={() => onUpdatePost({confirmationCount: ++post.confirmationCount})}
+      />,
+    change: <ChangePrice
+        post={postCopy}
+        disablePost={() => onUpdatePost(null, true)}
+        updatePost={onUpdatePost}
+      />
   }
 
   const renderModalContent = (contentType) => (modalContentMap[contentType] || '')
@@ -65,6 +105,7 @@ const Post = ({ post }) => {
 
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
+          <div>{dateNow}</div>
           {modalContent}
         </Modal>
       }
