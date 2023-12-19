@@ -1,15 +1,29 @@
 import Post from '../models/post'
+import APIFilters from '../utils/api-filters'
 
 export const getPosts = async(req, res, next) => {
   const postsPerPage = 5
   const postsCount = await Post.estimatedDocumentCount()
-  const posts = await Post.find()
+
+  const apiFilters = await new APIFilters(Post.find(), req.query)
+    .search()
+    .filter();
+
+  let posts = await apiFilters.query
+  console.log('POSTS', posts)
+  const filteredPostsCount = posts.length
+
+  apiFilters.pagination(postsPerPage);
+
+  posts = await apiFilters.query.clone()
 
   res.status(200).json({ 
     postsPerPage,
     postsCount,
+    filteredPostsCount,
     posts: posts.reverse()
   })
+
 }
 
 export const getPost = async(req, res, next) => {
@@ -24,7 +38,10 @@ export const getPost = async(req, res, next) => {
 
 export const createPost = async(req, res, next) => {
   try {
-    const post = await Post.create(req.body)
+    const { name, strainName, region, city} = req.body
+    const searchedFields = `${name} ${strainName} ${region} ${city}`
+    const payload = {...req.body, searchedFields}
+    const post = await Post.create(payload)
     res.status(201).json({ post })
   } catch (error) {
     res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })

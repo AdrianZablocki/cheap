@@ -49,6 +49,9 @@ const postSchema = new mongoose.Schema({
   },
   confirmationCount: {
     type: Number
+  },
+  searchedFields: {
+    type: String
   }
 })
 
