@@ -1,18 +1,37 @@
 @import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
+@import '../../../styles/mixins.scss';
 
 .button {
+  @include font($mont-medium, 12px);
+  min-width: 120px;
   padding: 8px 32px;
+  border-radius: 34px;
+  background-color: $color-white;
+  text-transform: uppercase;
   cursor: pointer;
 }
 
 .success {
+  border: 2px solid $color-paradise-green;
+}
+
+.successFilled {
   background-color: $color-paradise-green;
 }
 
 .warning {
+  border: 2px solid $color-eagles-view;
+}
+
+.warningFilled {
   background-color: $color-eagles-view;
 }
 
 .error {
+  border: 2px solid $color-bruschetta-tomato;
+}
+
+.errorFilled {
   background-color: $color-bruschetta-tomato;
 }

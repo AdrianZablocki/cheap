@@ -29,7 +29,7 @@ const Post = ({ post }) => {
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
 
-  const dateNow = dayjs().format(dateWithTime)
+  // const dateNow = dayjs().format(dateWithTime)
 
   const onUpdatePost = async(payload, invalid) => {
     setOpenSpinner(true)
@@ -105,7 +105,7 @@ const Post = ({ post }) => {
 
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
-          <div>{dateNow}</div>
+          {/* <div>{dateNow}</div> */}
           {modalContent}
         </Modal>
       }

@@ -13,13 +13,13 @@ const ChangePrice = ({ updatePost, disablePost, post }) => {
   const buttonsConfig = [
     {
       text: 'Aktualizuj',
-      bgColor:'success',
+      buttonType:'success',
       disabled: !isPriceUpdated(newPrice, amount),
       action: () => updatePost({price: (newPrice/amount).toFixed(2)})
     },
     {
       text: 'Promocja nieaktualna',
-      bgColor:'error',
+      buttonType:'error',
       disabled: false,
       action: disablePost
     }
@@ -36,36 +36,48 @@ const ChangePrice = ({ updatePost, disablePost, post }) => {
   }
 
   return (
-    <div>
-      <form className={styles.form}>
+    <>
+      <div className={styles.content}>
+        <div className={styles.strainName}>{post.strainName}</div>
+        <div className={styles.address}>{post.address}</div>
+      </div>
+
+      <form>
         <Input
           type="number"
           value={newPrice}
-          label="Cena"
+          label="Cena (zł)"
           min={0}
+          fieldClass="filled"
           onChange={(e) => onPriceChange(e)}
-        />zł
+        />
         <Input
           type="number"
           value={1}
-          label="Waga"
+          label="Waga (gram)"
           min={0}
+          fieldClass="filled"
           onChange={(e) => onAmountChange(e)}
-        /> gram
+        />
       </form>
 
-      {isPriceUpdated(newPrice, amount) && <div>zaktualizowana cena: {(newPrice/amount).toFixed(2)} zł</div>}
+      { isPriceUpdated(newPrice, amount) && 
+        <div className={styles.newPrice}>
+          Zaktualizowana cena za gram: <span>{(newPrice/amount).toFixed(2)}zł</span>
+        </div>
+      }
 
-      <div>
+      <div className={styles.actions}>
         {buttonsConfig.map((button, index) => <Button
           key={`change-price-button-${index}`}
+          className={styles.button}
           text={button.text}
-          bgColor={button.bgColor}
+          buttonType={button.buttonType}
           disabled={button.disabled}
           action={button.action}
         />)}
       </div>
-    </div>
+    </>
   )
 }
 

@@ -1,4 +1,42 @@
-.form {
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
+
+.address, 
+.strainName {
+  color: #000;
+  text-align: center;
+  padding: 0 26px;
+}
+
+.strainName {
+  @include font($mont-bold, 16px);
+  color: $color-black-light;
+  margin-bottom: 18px;
+}
+
+.address {
+  @include font($mont-light, 14px);
+  margin-bottom: 32px;
+}
+
+.newPrice {
+  @include font($mont-light, 16px);
+  margin: 24px 0 32px;
+
+  span {
+    font-family: $mont-semi-bold;
+    padding-left: 8px;
+  }
+}
+
+.actions {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  padding: 0 32px;
+  margin-top: 32px;
+
+  button {
+    margin-bottom: 32px;
+  }
 }

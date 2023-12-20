@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
+
+.content {
+  padding: 26px;
+  color: $color-black-light;
+  border-radius: 15px;
+  border: 1px solid $color-bright-zenith;
+}
+
+.address, 
+.strainName {
+  color: $color-black;
+  text-align: center;
+}
+
+.strainName {
+  @include font($mont-bold, 16px);
+  color: $color-black-light;
+  margin-bottom: 18px;
+}
+
+.address,
+.lastActualization {
+  @include font($mont-light, 14px);
+  margin-bottom: 32px;
+}
+
+.date,
+.time,
+.price {
+  @include font($mont-medium, 14px);
+  margin-bottom: 12px;
+
+  span {
+    @include font($mont-light, 14px);
+    display: inline-block;
+    width: 90px;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}

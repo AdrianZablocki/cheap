@@ -1,12 +1,33 @@
-.input {
-  overflow: hidden;
-  
-  input {
-    width: 100%;
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+@import '../../../styles/fonts.scss';
 
-    border: 1px solid red;
-  
-    padding: 8px 16px;
-    font-size: 16px;
+.input {
+  margin-bottom: 12px;
+
+  label {
+    @include font($mont-light, 14px);
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+}
+
+.inputWrapper {
+  overflow: hidden;
+  border-radius: 5px;
+  border: 1px solid $color-paradise-green;
+
+  input {
+    @include font($mont-semi-bold, 16px);
+    width: 100%;
+    padding: 8px;
+    color: $color-black-light;
+    border: none;
+  }
+}
+
+.filled {
+  input {
+    background-color: $color-paradise-green;
   }
 }
