@@ -39,7 +39,7 @@ export const getPost = async(req, res, next) => {
 export const createPost = async(req, res, next) => {
   try {
     const { name, strainName, region, city} = req.body
-    const searchedFields = `${name} ${strainName} ${region} ${city}`
+    const searchedFields = `${name}&${strainName}&${region}&${city}`
     const payload = {...req.body, searchedFields}
     const post = await Post.create(payload)
     res.status(201).json({ post })

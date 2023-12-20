@@ -5,7 +5,7 @@ import { useState } from 'react'
 // import Link from 'next/link'
 
 import filtersIcon from '@/public/icons/filters.svg'
-import SearchBar from '../searchbar'
+import SearchBar from '../../UI/searchbar'
 import Modal from '../modal'
 import IconButton from '../../UI/icon-button'
 
