@@ -11,7 +11,7 @@ import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import sadIcon from '@/public/icons/sad.svg'
 import happyIcon from '@/public/icons/happy.svg'
 import redNo2Image from '@/public/images/red-no-2.jpeg'
-import { date, dateWithTime, updatePost } from '@/utils'
+import { date, dateWithTime, setDisabledScroll, updatePost } from '@/utils'
 import ConfirmPrice from '../confirm-price'
 import ChangePrice from '../change-price'
 import IconButton from '../UI/icon-button'
@@ -43,6 +43,7 @@ const Post = ({ post }) => {
       snackbarHandler(message, SEVERITY.SUCCESS)
       setPostCopy({...postCopy, ...data.changed})
       setShowModal(false)
+      setDisabledScroll(false)
     } catch (error) {
       console.log('UPDATE PRICE ERROR', error)
       setOpenSpinner(false)

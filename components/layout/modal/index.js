@@ -8,14 +8,15 @@ import closeIcon from '@/public/icons/close.svg'
 import IconButton from '../../UI/icon-button'
 import styles from './modal.module.scss'
 import Spinner from '../spinner'
+import { setDisabledScroll } from '@/utils'
 
 const Modal = ({ onClose, children, title }) => {
-  document.body.classList.add('disableScroll')
+  setDisabledScroll(true)
   const { openSpinner } = useContext(SpinnerContext)
   
   const handleCloseClick = (e) => {
     e.preventDefault()
-    document.body.classList.remove('disableScroll')
+    setDisabledScroll(false)
     onClose()
   }
 
