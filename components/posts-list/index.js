@@ -4,14 +4,25 @@ import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import axios from 'axios'
 
+import { getPosts } from '@/utils'
 import Post from '@/components/post'
 
 import styles from './post-list.module.scss'
+import { useEffect, useState } from 'react'
 
-const PostList = ({ postsList }) => {
+const PostList = () => {
+  const [ posts, setPosts ] = useState()
   const { push } = useRouter()
   const pathName = usePathname()
 
+  useEffect(() => {
+    const fetchData = async() => {
+      const postsData = await getPosts()
+      setPosts(postsData.posts)
+    } 
+    fetchData()
+  }, [])
+  
   // TODO TEST AUTH MIDDLEWARE - remove after implement it
   // const createPost = async () => {
   //   const body = {
@@ -44,7 +55,7 @@ const PostList = ({ postsList }) => {
       {/* <button type="button" onClick={createPost}>create post</button> */}
   
       <ul className={styles.grid}>
-        {postsList && postsList.map((post, index )=> 
+        {posts && posts.map((post, index )=> 
           // <Link href={`post/${post._id}`} passHref key={`post_${index}`}>
             <Post key={`post_${index}`} post={post} />
           // </Link>
