@@ -17,7 +17,8 @@ const NewPostForm = () => {
   })
 
   const modalContentMap = {
-    firstStep: <form>
+    firstStep: 
+      <form>
         {selectsConfig.map(select => 
           <Select
             key={`new-post-form-${select.id}`}
@@ -36,8 +37,13 @@ const NewPostForm = () => {
           />
         )}
       </form>,
-    secondStep: <AutocompleteMap  loaded={isLoaded}/>,
-    2: <div>confirmation screen</div>
+    secondStep: 
+      <>
+        <AutocompleteMap  loaded={isLoaded}/>
+        <button onClick={() => onAction('firstStep')}>back</button>
+        <button onClick={() => onAction('confirm')}>next</button>
+      </>,
+    confirm: <div>confirmation screen</div>
   }
 
 
