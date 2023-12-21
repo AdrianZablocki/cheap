@@ -11,7 +11,7 @@ import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import sadIcon from '@/public/icons/sad.svg'
 import happyIcon from '@/public/icons/happy.svg'
 import redNo2Image from '@/public/images/red-no-2.jpeg'
-import { date, dateWithTime, setDisabledScroll, updatePost } from '@/utils'
+import { date, setDisabledScroll, updatePost } from '@/utils'
 import ConfirmPrice from '../confirm-price'
 import ChangePrice from '../change-price'
 import IconButton from '../UI/icon-button'
@@ -28,8 +28,6 @@ const Post = ({ post }) => {
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
-
-  // const dateNow = dayjs().format(dateWithTime)
 
   const onUpdatePost = async(payload, invalid) => {
     setOpenSpinner(true)
@@ -104,12 +102,7 @@ const Post = ({ post }) => {
         </div>
       </li>  
 
-      {showModal &&
-        <Modal onClose={() => setShowModal(false)}>
-          {/* <div>{dateNow}</div> */}
-          {modalContent}
-        </Modal>
-      }
+      { showModal && <Modal onClose={() => setShowModal(false)}>{modalContent}</Modal> }
     </>
   )
 }

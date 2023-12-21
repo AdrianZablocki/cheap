@@ -2,23 +2,33 @@
 
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
+import { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 
 import { getPosts } from '@/utils'
 import Post from '@/components/post'
+import SpinnerContext from '@/context/spinner-context'
 
 import styles from './post-list.module.scss'
-import { useEffect, useState } from 'react'
 
 const PostList = () => {
   const [ posts, setPosts ] = useState()
+  const { setOpenSpinner } = useContext(SpinnerContext)
   const { push } = useRouter()
   const pathName = usePathname()
 
   useEffect(() => {
     const fetchData = async() => {
-      const postsData = await getPosts()
-      setPosts(postsData.posts)
+      setOpenSpinner(true)
+      try {
+        const postsData = await getPosts()
+        setPosts(postsData.posts)
+        setOpenSpinner(false)
+      } catch (error) {
+        console.log(error)
+        setOpenSpinner(false)
+      }
+      
     } 
     fetchData()
   }, [])
