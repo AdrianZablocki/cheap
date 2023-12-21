@@ -42,9 +42,11 @@ const PlacesAutocomplete = ({ onAddressSelect }) => {
     <div>
       <input
         value={value}
-        disabled={!ready}
+        // disabled={!ready}
         onChange={(e) => setValue(e.target.value)}
         placeholder="123 Stariway To Heaven"
+        autoFocus 
+        type="text"
       />
 
       {status === 'OK' && (

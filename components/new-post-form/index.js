@@ -16,7 +16,7 @@ const NewPostForm = () => {
     libraries: libraries
   })
 
-   const modalContentMap = {
+  const modalContentMap = {
     firstStep: <form>
         {selectsConfig.map(select => 
           <Select
@@ -35,23 +35,21 @@ const NewPostForm = () => {
             onChange={input.onChange}
           />
         )}
-        {/* <button type="button" onClick={nextStep}>button kurwa</button> */}
-
-        {/* <Input type="text" value="" label="Apteka" placeholder="Wyszukaj aptekę" onChange={() => nextStep('secondStep')} /> */}
       </form>,
     secondStep: <AutocompleteMap  loaded={isLoaded}/>,
-    2: 'confirm'
+    2: <div>confirmation screen</div>
   }
 
-  const [ modalContent, setModalContent] = useState(modalContentMap['firstStep'])
 
+  const [ modalContent, setModalContent] = useState(modalContentMap['firstStep'])
+  const [ step, setStep ] = useState('firstStep')
   const renderModalContent = (contentType) => (modalContentMap[contentType] || '')
 
   const onAction = (step) => {
 
     console.log(step)
     // setShowModal(true)
-    // setStep(1)
+    setStep(step)
     setModalContent(renderModalContent(step))
   }
 
@@ -59,9 +57,8 @@ const NewPostForm = () => {
 
   return (
     <>
-     <Input type="text" value="" label="Apteka" placeholder="Wyszukaj aptekę" onChange={() => onAction('secondStep')} />
-      <Button text="huj" action={() => onAction('secondStep')} />
       {modalContent}
+      {step === 'firstStep' && <Input type="text" value="" label="Apteka" placeholder="Wyszukaj aptekę" onFocus={() => onAction('secondStep')} />}
     </>
 
   )
