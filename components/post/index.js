@@ -24,7 +24,7 @@ dayjs.extend(utc)
 const Post = ({ post }) => {
   const [ postCopy, setPostCopy ] = useState(post)
   const [ showModal, setShowModal ] = useState(false)
-  const [ modalContent, setModalContent] = useState(<div> modal content</div>)
+  const [ modalContent, setModalContent] = useState()
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
@@ -52,7 +52,7 @@ const Post = ({ post }) => {
   const modalContentMap = {
     confirm: <ConfirmPrice
         post={postCopy}
-        openCahngePriceModal={() => onAction('change')}
+        openChangePriceModal={() => onAction('change')}
         showModal={() => setShowModal(false)}
         updatePost={() => onUpdatePost({confirmationCount: ++post.confirmationCount})}
       />,

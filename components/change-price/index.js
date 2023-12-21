@@ -48,7 +48,6 @@ const ChangePrice = ({ updatePost, disablePost, post }) => {
           value={newPrice}
           label="Cena (zł)"
           min={0}
-          fieldClass="filled"
           onChange={(e) => onPriceChange(e)}
         />
         <Input
@@ -56,7 +55,6 @@ const ChangePrice = ({ updatePost, disablePost, post }) => {
           value={1}
           label="Waga (gram)"
           min={0}
-          fieldClass="filled"
           onChange={(e) => onAmountChange(e)}
         />
       </form>

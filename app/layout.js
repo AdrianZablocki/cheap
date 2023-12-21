@@ -4,6 +4,7 @@ import LayoutWrapper from '@/components/layout/layout-wrapper'
 import Header from '@/components/layout/header'
 
 import './globals.scss'
+import Footer from '@/components/layout/footer'
 
 const inter = Inter({ subsets: ['latin'] })
 // add to body for inter family font className={inter.className}
@@ -19,8 +20,9 @@ export default function RootLayout({ children }) {
       <body id="modal-root">
         <Header logoWidth={80} logoHeight={40} />
         <LayoutWrapper>
-          {children}      
+          {children}    
         </LayoutWrapper>
+        <Footer />  
       </body>
     </html>
   )

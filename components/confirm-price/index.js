@@ -8,12 +8,12 @@ import styles from './confirm-proce.module.scss'
 
 dayjs.extend(utc)
 
-const ConfirmPrice = ({ post, openCahngePriceModal, showModal, updatePost }) => {
+const ConfirmPrice = ({ post, openChangePriceModal, updatePost }) => {
   const dateNow = dayjs().format(date)
   const timeNow = dayjs().format(time)
 
   const buttons = [
-    { text: 'Zmień', buttonType: 'error', action: openCahngePriceModal },
+    { text: 'Zmień', buttonType: 'error', action: openChangePriceModal },
     { text: 'Potwierdz', buttonType: 'success', action: updatePost },
   ]
   
