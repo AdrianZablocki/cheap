@@ -6,7 +6,10 @@ import Input from '../UI/input'
 import Select from '../UI/select'
 import Button from '../UI/button'
 
-const UserForm = ({ handleSubmit, setEmail, setPassword, setRegion, setName }) => {
+import styles from './user-form.module.scss'
+import Link from 'next/link'
+
+const UserForm = ({ handleSubmit, setEmail, setPassword, setRegion, setName, setConsent }) => {
   const { push } = useRouter()
 
   const formConfig = [
@@ -64,10 +67,33 @@ const UserForm = ({ handleSubmit, setEmail, setPassword, setRegion, setName }) =
           options={getRegionList()}
           onChange={(e) => setRegion(e.target.value)}
         />
-        <Button type="submit" text="Zarejstruj się" buttonType="success"/>
-      </form>    
-      <div>Masz ju konto?</div>
-      <Button type="button" text="Zaloguj" buttonType="successFilled" action={() => push('/login') }/>
+
+      
+        <fieldset className={styles.statute}>
+          <input
+            type="checkbox"
+            name="checkbox"
+            id="checkbox_id"
+            value="value"
+            onChange={(e) => setConsent(e.target.checked)}
+          />
+          <label for="checkbox_id">Akceputję
+            <Link href="/regulamin" passHref> regulamin </Link>
+            strony cheap weed&#42;
+          </label>
+        </fieldset>
+    
+
+        <div className={styles.actionsWrapper}>
+          <Button type="submit" text="Zarejstruj się" buttonType="success"/>
+        </div>  
+
+      </form>
+
+      <div className={styles.actionsWrapper}>
+        <div className={styles.activeUser}>Masz ju konto?</div>
+        <Button type="button" text="Zaloguj" buttonType="successFilled" action={() => push('/login') }/>        
+      </div>    
     </>
 
   )

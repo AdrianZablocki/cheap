@@ -17,6 +17,7 @@ const RegistrationForm = () => {
   const [ email, setEmail ] = useState()
   const [ password, setPassword ] = useState()
   const [ region, setRegion ] = useState()
+  const [ consent, setConsent ] = useState()
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
@@ -29,7 +30,7 @@ const RegistrationForm = () => {
       const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, {
         role: 'user',
         verified: false,
-        email, password, region, name
+        email, password, region, name, consent
       })
       snackbarHandler('Uytkownik zosyał utworzony', SEVERITY.SUCCESS)
       if (data) {
@@ -64,7 +65,7 @@ const RegistrationForm = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <Logo width={48} height={48}/>
+        <Logo width={80} height={40}/>
         {/* <h1>Medyczny suszu w najlepszej cenie</h1> */}
       </div>
       
@@ -75,6 +76,7 @@ const RegistrationForm = () => {
         setPassword={setPassword}
         setRegion={setRegion}
         setName={setName}
+        setConsent={setConsent}
       />
     </div>
   )
