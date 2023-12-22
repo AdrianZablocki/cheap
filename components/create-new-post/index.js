@@ -1,17 +1,31 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { jwtDecode } from 'jwt-decode'
 
+import UserContext from '@/context/user-context'
+import SnackbarContext from '@/context/snackbar-context'
+import { SEVERITY } from '@/hooks/use-error-handler'
 import Modal from '../layout/modal'
 import NewPostForm from '../new-post-form'
 import Button from '../UI/button'
 
 const CreateNewPost = ({ posts, setPosts }) => {
-  const [showModal, setShowModal] = useState(false)
+  const [ showModal, setShowModal ] = useState(false)
+  const { userToken } = useContext(UserContext)
+  const { snackbarHandler } = useContext(SnackbarContext)
+
+  const onOpenNewPostModal = (actionType) => {
+    if(!userToken || !jwtDecode(userToken).isVerified) {
+      snackbarHandler('Musisz by zalogowanya konto zweryfikowane aby dodawać, aktualizować i usuwać posty', SEVERITY.ERROR)
+      return
+    }
+    setShowModal(true)
+  }
 
   return (
     <>
-      <Button text="Utwórz nowy wpis" action={() => setShowModal(true)}/>
+      <Button text="Utwórz nowy wpis" action={() => onOpenNewPostModal()}/>
 
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>

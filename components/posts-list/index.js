@@ -40,6 +40,9 @@ const PostList = () => {
           // </Link>
         )}
       </ul>
+      <div>
+        <CreateNewPost posts={posts} setPosts={setPosts} />
+      </div>
     </>
   )
 }

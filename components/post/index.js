@@ -26,7 +26,7 @@ dayjs.extend(utc)
 const Post = ({ post }) => {
   const [ postCopy, setPostCopy ] = useState(post)
   const [ showModal, setShowModal ] = useState(false)
-  const [ modalContent, setModalContent] = useState()
+  const [ modalContent, setModalContent ] = useState()
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)

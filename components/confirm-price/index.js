@@ -16,8 +16,7 @@ const ConfirmPrice = ({ post, openChangePriceModal, updatePost }) => {
     { text: 'Zmień', buttonType: 'error', action: openChangePriceModal },
     { text: 'Potwierdz', buttonType: 'success', action: updatePost },
   ]
-  
-  console.log(post)
+
   return (
     <>
       <div className={styles.content}>

@@ -3,7 +3,7 @@ import { cookies } from 'next/headers'
 import { Inter } from 'next/font/google'
 
 import LayoutWrapper from '@/components/layout/layout-wrapper'
-import Header from '@/components/layout/header'
+// import Header from '@/components/layout/header'
 
 import './globals.scss'
 import Footer from '@/components/layout/footer'
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pl">
       <body id="modal-root">
-        <Header logoWidth={80} logoHeight={40} />
+        {/* <Header logoWidth={80} logoHeight={40} /> */}
         <LayoutWrapper token={token}>
           {children}    
         </LayoutWrapper>

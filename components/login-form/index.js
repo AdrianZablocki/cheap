@@ -11,7 +11,7 @@ const LoginForm = () => {
   const [ email, setEmail ] = useState()
   const [ password, setPassword ] = useState()
   const [ errorMessage, setErrorMesage ] = useState()
-  const { push } = useRouter();
+  const { push } = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -22,7 +22,6 @@ const LoginForm = () => {
       push('/')
     } catch (error) {
       // TODO errors handler
-
       setErrorMesage(error?.response?.data.message)
       console.log('Coś poszło nie tak', error)
     }

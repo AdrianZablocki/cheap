@@ -1,7 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useContext, useState } from 'react'
 
+import UserContext from '@/context/user-context'
 import userIcon from '@/public/icons/user.svg'
 import Logo from '../logo'
 import Modal from '../modal'
@@ -10,7 +12,11 @@ import styles from './header.module.scss'
 import IconButton from '../../UI/icon-button'
 
 const Header = ({ logoWidth, logoHeight }) => {
-  const [showModal, setShowModal] = useState(false)
+  const [ showModal, setShowModal ] = useState(false)
+  const { userToken } = useContext(UserContext)
+  const { push } = useRouter();
+
+  const onUserIcon = () => userToken ? setShowModal(true) : push('/login')
 
   return (
     <div className={styles.wrapper}>
@@ -24,7 +30,7 @@ const Header = ({ logoWidth, logoHeight }) => {
         icon={userIcon}
         alt="logo"
         priority
-        action={() => setShowModal(true)}
+        action={() => onUserIcon()}
       />
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
