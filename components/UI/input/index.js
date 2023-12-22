@@ -1,6 +1,6 @@
 import styles from './input.module.scss'
 
-const Input = ({ id, type, value, onChange, onFocus, placeholder, label, min, error }) => {
+const Input = ({ id, type, value, onChange, onFocus, placeholder, label, min, error, autoComplete }) => {
   return (
     <fieldset className={styles.input}>
       <label>{label}</label>
@@ -11,6 +11,7 @@ const Input = ({ id, type, value, onChange, onFocus, placeholder, label, min, er
           defaultValue={value}
           placeholder={placeholder}
           min={min}
+          autoComplete={autoComplete}
           onChange={onChange}
           onFocus={onFocus}
         />

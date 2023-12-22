@@ -19,6 +19,8 @@ const LayoutWrapper = ({ children, token }) => {
 
   const { snackbarHandler, openSnackbar, snackbarMessage, snackbarSeverity } = useSnackbar()
 
+  const headerlessViews = [ '/login', '/registration' ]
+
   return (
     <UserContext.Provider value={{ userToken, setUserToken }}>
       <SpinnerContext.Provider value={{ openSpinner, setOpenSpinner }}>
@@ -27,7 +29,7 @@ const LayoutWrapper = ({ children, token }) => {
           snackbarMessage, 
           snackbarSeverity
         }, snackbarHandler}}>
-          <Header logoWidth={80} logoHeight={40} />
+          { !headerlessViews.includes(pathname) && <Header logoWidth={80} logoHeight={40} />}
           { pathname === '/' && <Navbar /> }
           { children }
           <Spinner isOpen={openSpinner} background="rgba(0, 0, 0, .5)" />

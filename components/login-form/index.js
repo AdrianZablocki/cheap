@@ -13,6 +13,8 @@ const LoginForm = () => {
   const [ errorMessage, setErrorMesage ] = useState()
   const { push } = useRouter()
 
+  push('/registration')
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {

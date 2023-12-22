@@ -1,41 +1,4 @@
-export const newPostFormHelper = {
-
-  getRegionList: () => {
-    return [
-      'Dolnośląskie',
-      'Kujawsko-pomorskie',
-      'Lubelskie',
-      'Lubuskie',
-      'Łódzkie',
-      'Małopolskie',
-      'Mazowieckie',
-      'Opolskie',
-      'Podkarpackie',
-      'Podlaskie',
-      'Pomorskie',
-      'Śląskie',
-      'Świętokrzyskie',
-      'Warmińsko-mazurskie',
-      'Wielkopolskie',
-      'Zachodniopomorskie'
-    ].map(reg => ({
-      value: reg
-    }))
-  },
-
-  getStrainList: () => {
-    return [
-      'Red no 2',
-      'Aurora 22',
-      'Aurora 20',
-      'S-lab Jack Herrer',
-      'Gorila Glue 420 Pharmacy'
-    ].map(strain => ({
-      value: strain
-    }))
-  }
-  
-}
+import { getRegionList, getStrainList } from '@/utils'
 
 export const selectsConfig = (actions) => {
   return [
@@ -44,7 +7,7 @@ export const selectsConfig = (actions) => {
       label: 'Nazwa suszu:',
       value: actions.strainName,
       placeholder: 'Wybierz nazwę suszu',
-      options: newPostFormHelper.getStrainList(),
+      options: getStrainList(),
       action: actions.setStrainName
     },
     { 
@@ -52,7 +15,7 @@ export const selectsConfig = (actions) => {
       label: 'Województwo:',
       value: actions.region,
       placeholder: 'Wybierz województwo',
-      options: newPostFormHelper.getRegionList(),
+      options: getRegionList(),
       action: actions.setRegion
     }
   ]

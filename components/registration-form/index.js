@@ -9,6 +9,9 @@ import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import SpinnerContext from '@/context/spinner-context'
 import UserForm from '../user-form'
 
+import styles from './registration-form.module.scss'
+import Logo from '../layout/logo'
+
 const RegistrationForm = () => {
   const [ name, setName ] = useState()
   const [ email, setEmail ] = useState()
@@ -59,7 +62,13 @@ const RegistrationForm = () => {
   }
 
   return (
-    <>
+    <div className={styles.wrapper}>
+      <div className={styles.header}>
+        <Logo width={48} height={48}/>
+        {/* <h1>Medyczny suszu w najlepszej cenie</h1> */}
+      </div>
+      
+      
       <UserForm
         handleSubmit={handleSubmit}
         setEmail={setEmail}
@@ -67,7 +76,7 @@ const RegistrationForm = () => {
         setRegion={setRegion}
         setName={setName}
       />
-    </>
+    </div>
   )
 }
 

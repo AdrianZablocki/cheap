@@ -21,7 +21,7 @@ export const createUser = async (req, res) => {
       }
     })
   } else {
-    res.status(409).json({ message: `Urytkownik: ${req.body.email} istnieje` })
+    res.status(409).json({ message: `Użytkownik: ${req.body.email} istnieje` })
   }
 }
 

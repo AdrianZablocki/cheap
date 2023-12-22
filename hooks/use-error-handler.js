@@ -2,7 +2,8 @@ import { useRouter, usePathname } from 'next/navigation'
 
 export const errorStrategy = new Map([
   ['Unauthorized', 'Uytkownik jest niezalogowany'],
-  ['Request failed with status code 500', 'fak jutu']
+  ['Request failed with status code 500', 'Coś poszło nie tak, spróbuj później'],
+  ['Request failed with status code 409', 'Zasób istnieje w bazie danych']
 ])
 
 export const getErrorMessage = (error) => {
@@ -42,8 +43,15 @@ const useErrorHandler = (snackbarHandler) => {
     } else if (error?.response?.status === 400) {
 
       snackbarHandler(getErrorMessage(error.response.data), SEVERITY.ERROR)
+
+    } else if(error?.response?.status === ERROR_CODES.DUPPLICATED) {
+      
+      error.response.data?.message
+        ? snackbarHandler(error.response.data?.message, SEVERITY.ERROR)
+        : snackbarHandler(getErrorMessage(error.response.data), SEVERITY.ERROR)
+
     } else if (error?.response?.status === ERROR_CODES.SERVER_500) {
-      // console.log(Object.keys(error.response.data.error.errors))
+
 
       if (error.response?.data?.error?.errors) {
         const message = Object.keys(error.response.data.error.errors).map(key => {
@@ -51,6 +59,7 @@ const useErrorHandler = (snackbarHandler) => {
         })
         return snackbarHandler(message.join(', '), SEVERITY.ERROR)
       }
+
       snackbarHandler('Coś poszło nie tak', SEVERITY.ERROR)
     }
   }

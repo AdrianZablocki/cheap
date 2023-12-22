@@ -1,33 +1,44 @@
 'use-client'
 
+import { getRegionList } from '@/utils'
+import Input from '../UI/input'
+import Select from '../UI/select'
+
 const UserForm = ({ handleSubmit, setEmail, setPassword, setRegion, setName }) => {
+
+  const formConfig = [
+    { id: 'name', value: '', type: 'text', label: 'Nazwa', onChange: setName, placeholder: 'Wpisz nick', autoComplete: 'username' },
+    { id: 'email', value: '', type: 'email', label: 'Adres e-mail', onChange: setEmail, placeholder: 'Podaj email' , autoComplete: 'username'},
+    { id: 'password', value: '', type: 'password', label: 'Hasło', onChange: setPassword, placeholder: 'Wpisz hasło', autoComplete: 'current-password' }
+  ]
+
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      <fieldset>
-        <label>name</label>
-        <input onChange={(value) => setName(value.target.value)} />
-      </fieldset>
-      <fieldset>
-        <label>email</label>
-        <input onChange={(value) => setEmail(value.target.value)} />
-      </fieldset>
-      <fieldset>
-        <label>hasło</label>
-        <input onChange={(value) => setPassword(value.target.value)} />
-      </fieldset>
-      {setRegion &&
-        <fieldset>
-          <label>region</label>
-          <select onChange={(value) => setRegion(value.target.value)}>
-            <option value="">Wybierz region</option>
-            <option value="Lubelskie">Lubelskie</option>
-            <option value="Małopolskie">Małopolskie</option>
-            <option value="Mazowieckie">Mazowieckie</option>
-          </select>
-        </fieldset>
+      {
+        formConfig.map(field => 
+          <Input
+            key={`registrtion-form-${field.id}`}
+            id={field.id}
+            value={field.value}
+            label={field.label}
+            type={field.type}
+            autoComplete={field.autoComplete}
+            placeholder={field.placeholder}
+            onChange={(e) => field.onChange(e.target.value)}
+          />  
+        )
       }
+      <Select
+        id="region"
+        label="Region"
+        value=""
+        placeholder="Wybierz województwo"
+        options={getRegionList()}
+        onChange={(e) => setRegion(e.target.value)}
+      />
       <button type="submit">Wyślij</button>
     </form>
   )
 }
+
 export default UserForm
