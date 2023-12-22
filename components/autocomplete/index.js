@@ -44,7 +44,7 @@ const PlacesAutocomplete = ({ onAddressSelect }) => {
         value={value}
         // disabled={!ready}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="123 Stariway To Heaven"
+        placeholder="Wyszukaj aptekę"
         autoFocus 
         type="text"
       />

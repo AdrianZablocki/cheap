@@ -21,13 +21,13 @@
   overflow: hidden;
   border-radius: 5px;
   border: 1px solid $color-paradise-green;
-
+  background-color: $color-misty-lawn;
+  
   select {
     @include font($mont-semi-bold, 16px);
     width: 100%;
     padding: 8px;
     color: $color-black-light;
-    background-color: $color-misty-lawn;
     border: none;
   }
 }
