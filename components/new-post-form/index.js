@@ -97,7 +97,7 @@ const NewPostForm = ({ setShowModal, posts, setPosts, token }) => {
     try {
       const data = await createPost(body)
       setShowModal(false)
-      setPosts([...posts, data.post])
+      setPosts([data.post, ...posts])
       setDisabledScroll(false)
       setOpenSpinner(false)
       snackbarHandler('Post został utworzony', SEVERITY.SUCCESS)
