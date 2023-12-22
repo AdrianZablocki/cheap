@@ -42,16 +42,18 @@ export const selectsConfig = (actions) => {
     { 
       id: 'strainName',
       label: 'Nazwa suszu:',
+      value: actions.strainName,
       placeholder: 'Wybierz nazwę suszu',
       options: newPostFormHelper.getStrainList(),
-      action: actions.strainName
+      action: actions.setStrainName
     },
     { 
       id: 'region',
       label: 'Województwo:',
+      value: actions.region,
       placeholder: 'Wybierz województwo',
       options: newPostFormHelper.getRegionList(),
-      action: actions.region
+      action: actions.setRegion
     }
   ]
 }

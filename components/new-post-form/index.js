@@ -25,10 +25,11 @@ const NewPostForm = () => {
   const modalContentMap = {
     firstStep: 
       <form>
-        {selectsConfig({strainName: setStrainName, region: setRegion}).map(select => 
+        {selectsConfig({strainName, setStrainName, region, setRegion}).map(select => 
           <Select
             key={`new-post-form-${select.id}`}
             id={select.id}
+            value={select.value[select.id]}
             label={select.label}
             placeholder={select.placeholder}
             options={select.options}
