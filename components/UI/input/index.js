@@ -1,11 +1,12 @@
 import styles from './input.module.scss'
 
-const Input = ({ type, value, onChange, onFocus, placeholder, label, min, error }) => {
+const Input = ({ id, type, value, onChange, onFocus, placeholder, label, min, error }) => {
   return (
     <fieldset className={styles.input}>
       <label>{label}</label>
       <div className={styles.inputWrapper}>
         <input
+          id={id}
           type={type}
           defaultValue={value}
           placeholder={placeholder}

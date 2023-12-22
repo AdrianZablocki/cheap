@@ -1,12 +1,12 @@
 import styles from './select.module.scss'
 
-const Select = ({ id, label, placeholder, options }) => {
+const Select = ({ id, label, placeholder, options, onChange }) => {
 
   return (
     <fieldset className={styles.select}>
       <label htmlFor={id}>{label}</label>
       <div className={styles.selectWrapper}>
-        <select id={id}>
+        <select id={id} onChange={onChange}>
           <option value="">{placeholder}</option>
           {options && options.map((option, index) =>  
             <option 

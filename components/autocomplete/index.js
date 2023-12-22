@@ -2,6 +2,8 @@
 
 import usePlacesAutocomplete from 'use-places-autocomplete'
 
+import styles from './autocomplete.module.scss'
+
 const PlacesAutocomplete = ({ onAddressSelect }) => {
   const {
     ready,
@@ -40,14 +42,20 @@ const PlacesAutocomplete = ({ onAddressSelect }) => {
 
   return (
     <div>
-      <input
-        value={value}
-        // disabled={!ready}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder="Wyszukaj aptekę"
-        autoFocus 
-        type="text"
-      />
+      <fieldset className={styles.input}>
+        <label>Wyszukaj aptekę:</label>
+        <div className={styles.inputWrapper}>
+          <input
+            value={value}
+            // disabled={!ready}
+            onChange={(e) => setValue(e.target.value)}
+            onFocus={() => setValue('')}
+            placeholder="Zacznij wpisywać adres"
+            autoFocus 
+            type="text"
+          />
+        </div>
+      </fieldset>
 
       {status === 'OK' && (
         <ul>{renderSuggestions()}</ul>

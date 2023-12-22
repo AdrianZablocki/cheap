@@ -27,3 +27,32 @@
   font-size: $size;
   line-height: normal;
 }
+
+%field {
+  margin-bottom: 12px;
+
+  label {
+    @include font($mont-light, 14px);
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+}
+
+%field-wrapper {
+  overflow: hidden;
+  border-radius: 5px;
+  border: 1px solid $color-paradise-green;
+  background-color: $color-misty-lawn;
+  
+  select,
+  input {
+    @include font($mont-medium, 16px);
+    width: 100%;
+    height: 35px;
+    padding: 8px;
+    color: $color-black-light;
+    border: none;
+    background-color: $color-misty-lawn;
+    text-transform: capitalize;
+  }
+}
