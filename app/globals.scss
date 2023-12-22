@@ -1,5 +1,6 @@
 @import '../styles//reset.scss';
 @import '../styles/fonts.scss';
+@import '../styles/variables.scss';
 
 * {
   box-sizing: border-box;
@@ -7,6 +8,7 @@
 
 body {
   font-family: $mont-medium;
+  background-color: $color-emtiness;
 }
 
 .disableScroll {

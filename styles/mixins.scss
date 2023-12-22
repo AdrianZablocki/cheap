@@ -40,9 +40,9 @@
 
 %field-wrapper {
   overflow: hidden;
-  border-radius: 5px;
-  border: 1px solid $color-paradise-green;
-  background-color: $color-misty-lawn;
+  border-radius: 10px;
+  border: 1px solid $color-orochimaru;
+  background-color: $color-white;
   
   select,
   input {
@@ -52,6 +52,7 @@
     padding: 8px;
     color: $color-black-light;
     border: none;
-    background-color: $color-misty-lawn;
+    background-color: $color-white!important;
+
   }
 }

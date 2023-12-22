@@ -13,7 +13,7 @@ const LoginForm = () => {
   const [ errorMessage, setErrorMesage ] = useState()
   const { push } = useRouter()
 
-  push('/registration')
+  // push('/registration')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -43,6 +43,7 @@ const LoginForm = () => {
         <div>{errorMessage}</div>
         <button type="submit">submit</button>
       </form>
+      <button onClick={() => push('/registration')}>move to registration</button>
     </>
   )
 }
