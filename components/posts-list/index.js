@@ -4,12 +4,13 @@ import { useContext, useEffect, useState } from 'react'
 
 import { getPosts } from '@/utils'
 import Post from '@/components/post'
+import UserContext from '@/context/user-context'
 import SpinnerContext from '@/context/spinner-context'
 
 import styles from './post-list.module.scss'
 import CreateNewPost from '../create-new-post'
 
-const PostList = ({token}) => {
+const PostList = () => {
   const [ posts, setPosts ] = useState()
   const { setOpenSpinner } = useContext(SpinnerContext)
 
@@ -31,7 +32,7 @@ const PostList = ({token}) => {
   
   return (
     <>
-      <CreateNewPost posts={posts} setPosts={setPosts} token={token} />
+      <CreateNewPost posts={posts} setPosts={setPosts} />
       <ul className={styles.grid}>
         {posts && posts.map((post, index )=> 
           // <Link href={`post/${post._id}`} passHref key={`post_${index}`}>

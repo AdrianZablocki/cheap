@@ -13,12 +13,14 @@ const IconButton = ({
   padding,
   bgColor,
   color,
-  borderRadius
+  borderRadius,
+  disabled
 }) => (
   <button
     className={styles.button}
     type="button" 
     onClick={action}
+    disabled={disabled}
     style={{
       padding: padding,
       backgroundColor: bgColor,

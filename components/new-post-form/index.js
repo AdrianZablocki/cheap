@@ -4,6 +4,7 @@ import { useLoadScript } from '@react-google-maps/api'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
+import UserContext from '@/context/user-context'
 import SpinnerContext from '@/context/spinner-context'
 import SnackbarContext from '@/context/snackbar-context'
 import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
@@ -16,11 +17,11 @@ import { inputsConfig, selectsConfig } from './new-post-form.helper'
 
 dayjs.extend(utc)
 
-const NewPostForm = ({ setShowModal, posts, setPosts, token }) => {
+const NewPostForm = ({ setShowModal, posts, setPosts }) => {
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
   const { setOpenSpinner } = useContext(SpinnerContext)
-
+  const { userToken } = useContext(UserContext)
   const libraries = useMemo(() => ['places'], [])
 
   const { isLoaded } = useLoadScript({
@@ -82,12 +83,13 @@ const NewPostForm = ({ setShowModal, posts, setPosts, token }) => {
 
   const onCreateNewPost = async() => {
     setOpenSpinner(true)
+  
     const body = {
       ...strainName,
       ...region,
       ...drugStore,
       ...city,
-      author: token ? jwtDecode(token).name : '',
+      author: userToken ? jwtDecode(userToken).name : '',
       date: dayjs().utc().format(),
       price: (price.price/amount.amount).toFixed(2),
       isValid: true,

@@ -6,7 +6,7 @@ import Modal from '../layout/modal'
 import NewPostForm from '../new-post-form'
 import Button from '../UI/button'
 
-const CreateNewPost = ({posts, setPosts, token}) => {
+const CreateNewPost = ({ posts, setPosts }) => {
   const [showModal, setShowModal] = useState(false)
 
   return (
@@ -15,7 +15,7 @@ const CreateNewPost = ({posts, setPosts, token}) => {
 
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
-          <NewPostForm setShowModal={setShowModal} posts={posts} setPosts={setPosts} token={token} />
+          <NewPostForm setShowModal={setShowModal} posts={posts} setPosts={setPosts} />
         </Modal>
       }
     </>

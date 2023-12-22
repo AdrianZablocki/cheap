@@ -4,7 +4,9 @@ import Image from 'next/image'
 import { useContext, useState } from 'react'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import { jwtDecode } from 'jwt-decode'
 
+import UserContext from '@/context/user-context'
 import SpinnerContext from '@/context/spinner-context'
 import SnackbarContext from '@/context/snackbar-context'
 import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
@@ -28,6 +30,7 @@ const Post = ({ post }) => {
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
+  const { userToken } = useContext(UserContext)
 
   const onUpdatePost = async(payload, invalid) => {
     setOpenSpinner(true)
@@ -66,6 +69,10 @@ const Post = ({ post }) => {
   const renderModalContent = (contentType) => (modalContentMap[contentType] || '')
 
   const onAction = (actionType) => {
+    if(!userToken || !jwtDecode(userToken).isVerified) {
+      snackbarHandler('Musisz by zalogowanya konto zweryfikowane aby dodawać, aktualizować i usuwać posty', SEVERITY.ERROR)
+      return
+    }
     setShowModal(true)
     setModalContent(renderModalContent(actionType))
   }
@@ -93,9 +100,18 @@ const Post = ({ post }) => {
         </div>
 
         <div className={styles.actions}>
-          <IconButton alt="happy icon" icon={happyIcon} padding={'8px'} action={()=>onAction('confirm')} />
-          <IconButton alt="sad icon" icon={sadIcon} padding={'8px'} action={()=>onAction('change')} />
-          
+          <IconButton
+            alt="happy icon"
+            icon={happyIcon}
+            padding={'8px'}
+            action={()=>onAction('confirm')}
+          />
+          <IconButton
+            alt="sad icon"
+            icon={sadIcon}
+            padding={'8px'}
+            action={()=>onAction('change')}
+          />
           {/* <div>
             <Link href="tel:515107460">telefon</Link>
           </div> */}

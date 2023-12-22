@@ -1,3 +1,5 @@
+import { cookies } from 'next/headers'
+
 import { Inter } from 'next/font/google'
 
 import LayoutWrapper from '@/components/layout/layout-wrapper'
@@ -14,11 +16,12 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  const token = cookies().get('token')
   return (
     <html lang="pl">
       <body id="modal-root">
         <Header logoWidth={80} logoHeight={40} />
-        <LayoutWrapper>
+        <LayoutWrapper token={token}>
           {children}    
         </LayoutWrapper>
         <Footer />  
