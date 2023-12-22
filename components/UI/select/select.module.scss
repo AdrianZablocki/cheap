@@ -26,6 +26,7 @@
   select {
     @include font($mont-semi-bold, 16px);
     width: 100%;
+    height: 35px;
     padding: 8px;
     color: $color-black-light;
     border: none;
