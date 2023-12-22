@@ -1,8 +1,12 @@
 'use-client'
 
-const UserForm = ({ handleSubmit, setEmail, setPassword, setRegion }) => {
+const UserForm = ({ handleSubmit, setEmail, setPassword, setRegion, setName }) => {
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
+      <fieldset>
+        <label>name</label>
+        <input onChange={(value) => setName(value.target.value)} />
+      </fieldset>
       <fieldset>
         <label>email</label>
         <input onChange={(value) => setEmail(value.target.value)} />

@@ -34,10 +34,6 @@ const postSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Cena jest polem wymaganym']
   },
-  amount: {
-    type: Number,
-    required: [true, 'Ilość wagowa suszu jest polem wymaganym']
-  },
   lat: {
     type: Number
   },

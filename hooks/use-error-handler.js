@@ -1,3 +1,5 @@
+import { useRouter, usePathname } from 'next/navigation'
+
 export const errorStrategy = new Map([
   ['Unauthorized', 'Uytkownik jest niezalogowany'],
   ['Request failed with status code 500', 'fak jutu']
@@ -18,33 +20,32 @@ export const SEVERITY = {
 const ERROR_CODES = {
   NO_CONTENT: 204,
   UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
   DUPPLICATED: 409,
   DUPPLICATED_ERROR: 405,
   SERVER_500: 500
 }
 
-
 const useErrorHandler = (snackbarHandler) => {
+
+  const { push } = useRouter()
+  const pathName = usePathname()
 
   const handleError = (error) => {
     console.log('ERROR: ', error)
 
-    if ((error)?.response?.status === ERROR_CODES.UNAUTHORIZED) {
-
-      // TODO handle with 401 error
-      console.log('handle 401 error')
+    if ((error)?.response?.status === ERROR_CODES.UNAUTHORIZED || (error)?.response?.status === ERROR_CODES.FORBIDDEN || error.response.status === 405) {
 
       snackbarHandler(getErrorMessage('Unauthorized'), SEVERITY.ERROR)
-
+      push(`/refresh?location=${pathName}`)
+      
     } else if (error?.response?.status === 400) {
 
       snackbarHandler(getErrorMessage(error.response.data), SEVERITY.ERROR)
     } else if (error?.response?.status === ERROR_CODES.SERVER_500) {
       // console.log(Object.keys(error.response.data.error.errors))
 
-
       if (error.response?.data?.error?.errors) {
-        console.log('HUJ')
         const message = Object.keys(error.response.data.error.errors).map(key => {
           return error.response.data.error.errors[key].message
         })

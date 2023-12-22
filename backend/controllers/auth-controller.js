@@ -23,15 +23,16 @@ export const authUser = async (req, res) => {
   const user = await User.findOne({email: req.body.email});
 
   if (user) {
+    console.log(user)
     const validPassword = await bcrypt.compare(req.body.password, user.password);
 
     if (validPassword) {
       const accessToken = jwt.sign(
-        { id: user.id, email: user.email }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: tokenExpires }
+        { id: user.id, email: user.email, name: user.name }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: tokenExpires }
       );
 
       const refreshToken = jwt.sign(
-        { id: user.id, email: user.email }, process.env.NEXT_PUBLIC_REFRESH_TOKEN_SECRET, { expiresIn: refreshTokenExpires }
+        { id: user.id, email: user.email, name: user.name }, process.env.NEXT_PUBLIC_REFRESH_TOKEN_SECRET, { expiresIn: refreshTokenExpires }
       );
 
       await User.findOneAndUpdate({ email: req.body.email }, { refreshToken }, { new: true })
@@ -67,7 +68,7 @@ export const refreshToken = async (req, res) => {
 
     if (user) {
       const accessToken = jwt.sign(
-        { id: user.id, email: user.email }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: tokenExpires}
+        { id: user.id, email: user.email, name: user.name }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: tokenExpires}
       )
 
       res.setHeader('Set-Cookie', [

@@ -1,13 +1,26 @@
-import { useMemo,useState } from 'react'
+import { useContext, useMemo,useState } from 'react'
+import { jwtDecode } from 'jwt-decode'
+import { useLoadScript } from '@react-google-maps/api'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+
+import SpinnerContext from '@/context/spinner-context'
+import SnackbarContext from '@/context/snackbar-context'
+import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
+import { createPost, setDisabledScroll } from '@/utils'
 import Input from '../UI/input'
 import Select from '../UI/select'
-import { inputsConfig, selectsConfig } from './new-post-form.helper'
 import Button from '../UI/button'
 import AutocompleteMap from '../autocomplete-map'
+import { inputsConfig, selectsConfig } from './new-post-form.helper'
 
-import { useLoadScript } from '@react-google-maps/api'
+dayjs.extend(utc)
 
-const NewPostForm = () => {
+const NewPostForm = ({ setShowModal, posts, setPosts, token }) => {
+  const { snackbarHandler } = useContext(SnackbarContext)
+  const { handleError } = useErrorHandler(snackbarHandler)
+  const { setOpenSpinner } = useContext(SpinnerContext)
+
   const libraries = useMemo(() => ['places'], [])
 
   const { isLoaded } = useLoadScript({
@@ -67,14 +80,49 @@ const NewPostForm = () => {
     setModalContent(renderModalContent(step))
   }
 
+  const onCreateNewPost = async() => {
+    setOpenSpinner(true)
+    const body = {
+      ...strainName,
+      ...region,
+      ...drugStore,
+      ...city,
+      author: token ? jwtDecode(token).name : '',
+      date: dayjs().utc().format(),
+      price: (price.price/amount.amount).toFixed(2),
+      isValid: true,
+      confirmationCount: 0
+    }
+ 
+    try {
+      const data = await createPost(body)
+      setShowModal(false)
+      setPosts([...posts, data.post])
+      setDisabledScroll(false)
+      setOpenSpinner(false)
+      snackbarHandler('Post został utworzony', SEVERITY.SUCCESS)
+    } catch (error) {
+      setOpenSpinner(false)
+      handleError(error)
+    }
+  }
+
   
   return (
     <>
       {modalContent}
-      {step === 'firstStep' && <Input type="text" value="" label="Apteka" placeholder="Wyszukaj aptekę" onFocus={() => onAction('secondStep')} />}
+      {step === 'firstStep' && 
+        <Input
+          type="text"
+          value={drugStore.name}
+          label="Apteka"
+          placeholder="Wyszukaj aptekę"
+          onFocus={() => onAction('secondStep')}
+        />
+      }
       <br></br>
       <br></br>
-      <button type="button" onClick={() => console.log({...strainName, ...region, ...price, ...amount, ...drugStore, ...city})}>show data</button>
+      <button type="button" onClick={() => onCreateNewPost()}>show data</button>
     </>
 
   )

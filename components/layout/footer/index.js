@@ -3,7 +3,8 @@ import CreateNewPost from '@/components/create-new-post'
 const Footer = ({}) => {
   return (
     <footer>
-      <CreateNewPost />
+      {/* <CreateNewPost /> */}
+      footer
     </footer>
   )
 } 

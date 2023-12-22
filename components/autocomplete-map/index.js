@@ -32,7 +32,7 @@ const AutocompleteMap = ({ loaded, onComplete }) => {
             address: result.formatted_address,
             contact: result.international_phone_number,
             website: result.website,
-            openingHours: result.opening_hours.periods,
+            openingHours: result.opening_hours?.periods,
             lat,
             lng,
           }))

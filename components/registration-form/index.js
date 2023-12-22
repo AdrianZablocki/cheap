@@ -10,6 +10,7 @@ import SpinnerContext from '@/context/spinner-context'
 import UserForm from '../user-form'
 
 const RegistrationForm = () => {
+  const [ name, setName ] = useState()
   const [ email, setEmail ] = useState()
   const [ password, setPassword ] = useState()
   const [ region, setRegion ] = useState()
@@ -25,7 +26,7 @@ const RegistrationForm = () => {
       const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, {
         role: 'user',
         verified: false,
-        email, password, region
+        email, password, region, name
       })
       snackbarHandler('Uytkownik zosyał utworzony', SEVERITY.SUCCESS)
       if (data) {
@@ -64,6 +65,7 @@ const RegistrationForm = () => {
         setEmail={setEmail}
         setPassword={setPassword}
         setRegion={setRegion}
+        setName={setName}
       />
     </>
   )

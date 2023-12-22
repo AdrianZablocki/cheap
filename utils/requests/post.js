@@ -11,3 +11,8 @@ export const updatePost = async (id, body ) => {
   const  { data } = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`, body)
   return data
 }
+
+export const createPost = async (body) => {
+  const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, body)
+  return data
+}
