@@ -64,16 +64,16 @@ const LoginForm = () => {
   const handleSubmit = async (body) => {
     setOpenSpinner(true)
 
-    try {
-      const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, body)
-      setUserToken(data.accessToken)
-      setOpenSpinner(false)
-      snackbarHandler('Witamy ponownie! Czego specjalnego poszukujesz?', SEVERITY.SUCCESS)
-      push('/')
-    } catch (error) {
-      setOpenSpinner(false)
-      handleError(error)
-    }
+    // try {
+    //   const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, body)
+    //   setUserToken(data.accessToken)
+    //   setOpenSpinner(false)
+    //   snackbarHandler('Witamy ponownie! Czego specjalnego poszukujesz?', SEVERITY.SUCCESS)
+    //   push('/')
+    // } catch (error) {
+    //   setOpenSpinner(false)
+    //   handleError(error)
+    // }
   }
 
   return (
