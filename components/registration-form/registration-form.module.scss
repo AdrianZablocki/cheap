@@ -1,17 +1,9 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
 @import '../../styles/mixins.scss';
 
 .wrapper {
-  padding: 16px 32px;
+  @extend %form-wrapper;
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-bottom: 16px;;
-  h1 {
-    @include font($mont-medium, 12px)
-  }
+  @extend %form-header;
 }

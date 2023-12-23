@@ -21,16 +21,18 @@
 
 .statute {
   padding-top: 8px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+
+  label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
   input {
     margin-right: 5px;
   }
 
   a {
-    // text-decoration: none;
     display: inline-block;
     margin: 0 5px;
   }

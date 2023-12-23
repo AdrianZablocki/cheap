@@ -8,9 +8,9 @@ import SnackbarContext from '@/context/snackbar-context'
 import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import SpinnerContext from '@/context/spinner-context'
 import UserForm from '../user-form'
+import Logo from '../layout/logo'
 
 import styles from './registration-form.module.scss'
-import Logo from '../layout/logo'
 
 const RegistrationForm = () => {
   const [ name, setName ] = useState()
@@ -66,9 +66,7 @@ const RegistrationForm = () => {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <Logo width={80} height={40}/>
-        {/* <h1>Medyczny suszu w najlepszej cenie</h1> */}
       </div>
-      
       
       <UserForm
         handleSubmit={handleSubmit}

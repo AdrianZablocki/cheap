@@ -44,10 +44,10 @@ export const authUser = async (req, res) => {
       res.status(200).json({ accessToken, refreshToken })
 
     } else {
-      res.status(404).json({ message: 'Wrong password' })
+      res.status(404).json({ message: 'Niepoprawne hasło' })
     }
   } else {
-    res.status(404).json({ message: 'Wrong email' })
+    res.status(404).json({ message: 'Niepoprawny email' })
   }
 
 

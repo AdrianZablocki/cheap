@@ -67,27 +67,25 @@ const UserForm = ({ handleSubmit, setEmail, setPassword, setRegion, setName, set
           options={getRegionList()}
           onChange={(e) => setRegion(e.target.value)}
         />
-
       
         <fieldset className={styles.statute}>
-          <input
-            type="checkbox"
-            name="checkbox"
-            id="checkbox_id"
-            value="value"
-            onChange={(e) => setConsent(e.target.checked)}
-          />
-          <label for="checkbox_id">Akceputję
+          <label forhtml="checkbox_id">
+            <input
+              type="checkbox"
+              name="checkbox"
+              id="checkbox_id"
+              value="value"
+              onChange={(e) => setConsent(e.target.checked)}
+            />
+            Akceputję
             <Link href="/regulamin" passHref>regulamin</Link>
             strony cheap weed&#42;
           </label>
         </fieldset>
     
-
         <div className={styles.actionsWrapper}>
           <Button type="submit" text="Zarejstruj się" buttonType="successFilled"/>
         </div>  
-
       </form>
 
       <div className={styles.actionsWrapper}>
@@ -95,7 +93,6 @@ const UserForm = ({ handleSubmit, setEmail, setPassword, setRegion, setName, set
         <Button type="button" text="Zaloguj" buttonType="success" action={() => push('/login') }/>        
       </div>    
     </>
-
   )
 }
 

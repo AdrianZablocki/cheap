@@ -1,0 +1,32 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
+
+.wrapper {
+  @extend %form-wrapper;
+}
+
+.header {
+  @extend %form-header;
+}
+
+.welcome {
+  @include font($mont-medium, 16px);
+  margin: 32px 0 24px;
+  text-align: center;
+}
+
+.actionsWrapper {
+  margin: 24px 0;
+}
+
+.actionsWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0 60px;
+}
+
+.activeUser {
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 24px;
+}
