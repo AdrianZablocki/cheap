@@ -3,7 +3,7 @@
 @import '../../../styles/mixins.scss';
 
 .button {
-  @include font($mont-medium, 12px);
+  @include font($mont-medium, 14px);
   min-width: 120px;
   padding: 8px 32px;
   border-radius: 34px;
