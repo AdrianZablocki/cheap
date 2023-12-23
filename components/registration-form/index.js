@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios'
 
 import SnackbarContext from '@/context/snackbar-context'
@@ -11,8 +11,10 @@ import UserForm from '../user-form'
 import Logo from '../layout/logo'
 
 import styles from './registration-form.module.scss'
+import MailConfirmationPopup from '../mail-confirmation-popup'
 
 const RegistrationForm = () => {
+  const [ openPopup, setOpenPopup ] = useState(false)
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
@@ -20,6 +22,7 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (body) => {
     setOpenSpinner(true)
+    
     try {
       const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, body)
       snackbarHandler('Uytkownik zosyał utworzony', SEVERITY.SUCCESS)
@@ -39,7 +42,7 @@ const RegistrationForm = () => {
         email, region, id
       })
       setOpenSpinner(false)
-      push('/')
+      setOpenPopup(true)
       console.log('WYSŁANO EMAIL WERUFIKACYNY', test)
     } catch (error) {
       setOpenSpinner(false)
@@ -52,6 +55,7 @@ const RegistrationForm = () => {
     <div className={styles.wrapper}>
       <div className={styles.header}><Logo width={80} height={40}/></div>
       <UserForm handleSubmit={handleSubmit}/>
+      <MailConfirmationPopup openPopup={openPopup} setOpenPopup={setOpenPopup} />
     </div>
   )
 }

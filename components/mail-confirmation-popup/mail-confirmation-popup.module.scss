@@ -1,0 +1,46 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 100%;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  border: 1px solid $color-orochimaru;
+  border-radius: 15px;
+  background-color: $color-white;
+  transition: all 300ms ease;
+
+  @media screen and (min-width: 360px) {
+    right: 24px;
+    bottom: 24px;
+    left: 24px;
+  }
+
+  @media screen and (min-width: 375px) {
+    right: 32px;
+    bottom: 32px;
+    left: 32px;
+  }
+
+  p {
+    @include font($mont-light, 16px);
+    padding: 0 16px;
+    line-height: 1.7;
+    margin-bottom: 58px;
+  }
+}
+
+.openPopup {
+  top: 70px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 28px 16px 65px;
+}
