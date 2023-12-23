@@ -1,6 +1,7 @@
 import styles from './input.module.scss'
 
 const Input = ({ id, type, value, onChange, onFocus, placeholder, label, min, error, autoComplete }) => {
+  console.log(error)
   return (
     <fieldset className={styles.input}>
       <label>{label}</label>
@@ -16,7 +17,7 @@ const Input = ({ id, type, value, onChange, onFocus, placeholder, label, min, er
           onFocus={onFocus}
         />
       </div>
-      {error && <div>{error}</div>}
+      {error && <div className={styles.error}>{error}</div>}
     </fieldset>
   )
 }

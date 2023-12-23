@@ -1,4 +1,6 @@
 @import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+@import '../../../styles/fonts.scss';
 
 .input {
   @extend %field;
@@ -6,4 +8,10 @@
 
 .inputWrapper {
   @extend %field-wrapper;
+}
+
+.error {
+  @include font($mont-light, 12px);
+  margin-top: 4px;
+  color: $color-bruschetta-tomato;
 }
