@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import axios from 'axios'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -26,8 +26,6 @@ const validation = Yup.object({
 
 const LoginForm = () => {
   const { setUserToken } = useContext(UserContext)
-  // const [ email, setEmail ] = useState()
-  // const [ password, setPassword ] = useState()
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
@@ -40,7 +38,6 @@ const LoginForm = () => {
     },
     validationSchema: validation,
     onSubmit: (values) => {
-      console.log(values);
       handleSubmit(values)
     }
   })
@@ -52,7 +49,6 @@ const LoginForm = () => {
       value: '',
       type: 'email',
       label: 'Adres e-mail',
-      // onChange: setEmail,
       placeholder: 'Podaj email',
       autoComplete: 'username'
     },
@@ -62,14 +58,12 @@ const LoginForm = () => {
       value: '',
       type: 'password',
       label: 'Hasło',
-      // onChange: setPassword,
       placeholder: 'Wpisz hasło',
       autoComplete: 'current-password'
     }
   ]
 
   const handleSubmit = async (body) => {
-    // e.preventDefault()
     setOpenSpinner(true)
 
     try {
@@ -85,7 +79,7 @@ const LoginForm = () => {
   }
 
   const getFormikValue = (controlName) => {
-    return formik.values[controlName]
+    return formik.errors[controlName] && formik.touched[controlName] ? formik.errors[controlName] : ''
   }
 
   return (
@@ -95,25 +89,23 @@ const LoginForm = () => {
       </div>
       <div className={styles.welcome}>Witaj po przerwie!</div>
 
-      {/* <form onSubmit={(e) => handleSubmit(e)}> */}
       <form onSubmit={formik.handleSubmit}>
         {
           formConfig.map(field =>
             <div key={`login-form-${field.id}`}>
               <Input 
                 id={field.id}
-                // value={field.value}
-                value={getFormikValue(field.name)}
+                name={field.id}
+                value={getFormikValue(field.id)}
                 label={field.label}
                 type={field.type}
                 autoComplete={field.autoComplete}
                 placeholder={field.placeholder}
                 onChange={formik.handleChange}
-                error={formik.errors[field.name]}
-                // onChange={(e) => field.onChange(e.target.value)}
+                error={formik.errors[field.id]}
+                onFocus={() => formik.setFieldTouched(field.id)}
               />
             </div>
-
           )
         }
 
