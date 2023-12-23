@@ -17,7 +17,7 @@ const CreateNewPost = ({ posts, setPosts }) => {
 
   const onOpenNewPostModal = (actionType) => {
     if(!userToken || !jwtDecode(userToken).isVerified) {
-      snackbarHandler('Musisz by zalogowanya konto zweryfikowane aby dodawać, aktualizować i usuwać posty', SEVERITY.ERROR)
+      snackbarHandler('Musisz być zalogowany, a konto zweryfikowane aby móc dodawać, aktualizować i usuwać posty', SEVERITY.ERROR)
       return
     }
     setShowModal(true)
