@@ -2,7 +2,7 @@
 @import '../../styles/fonts.scss';
 
 .wrapper {
-  @extend %form-wrapper;
+  @extend %main-container;
 }
 
 .header {
@@ -16,13 +16,7 @@
 }
 
 .actionsWrapper {
-  margin: 24px 0;
-}
-
-.actionsWrapper {
-  display: flex;
-  flex-direction: column;
-  padding: 0 60px;
+  @extend %form-actions-wrapper;
 }
 
 .activeUser {

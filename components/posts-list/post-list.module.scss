@@ -2,15 +2,16 @@
 @import '../../styles/grid.scss';
 
 .grid {
-  @include drawGrid(3);
+  @include drawGrid(1);
   @extend .gap;
   padding-bottom: 20px;
 
-  @media (max-width: 992px) {
+  @media screen and (min-width: 560px) {
     @include drawGrid(2);
   }
-  
-  @media (max-width: 560px) {
-    @include drawGrid(1);
+
+  @media screen and (min-width: 992px) {
+    @include drawGrid(3);
   }
+
 }

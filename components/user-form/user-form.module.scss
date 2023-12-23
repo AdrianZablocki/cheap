@@ -1,11 +1,7 @@
-.actionsWrapper {
-  margin: 16px 0;
-}
+@import '../../styles/mixins.scss';
 
 .actionsWrapper {
-  display: flex;
-  flex-direction: column;
-  padding: 0 60px;
+  @extend %form-actions-wrapper;
 }
 
 .activeUser,

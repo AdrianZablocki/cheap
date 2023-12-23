@@ -1,7 +1,7 @@
 @import '../../styles/mixins.scss';
 
 .wrapper {
-  @extend %form-wrapper;
+  @extend %main-container;
 }
 
 .header {

@@ -47,13 +47,16 @@
   }
 }
 
-%form-wrapper {
-  padding: 16px 32px;
-}
-
 %form-header {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
+}
+
+%form-actions-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 220px;
+  margin: 24px auto;
 }

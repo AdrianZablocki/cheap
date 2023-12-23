@@ -39,7 +39,7 @@
 .post {
   @include drawGrid(4);
   @extend .gap;
-  padding-bottom: 20px;
+  padding-bottom: 20px;    
 
   @media (max-width: 992px) {
     @include drawGrid(2);
