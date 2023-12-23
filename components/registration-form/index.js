@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import axios from 'axios'
 
 import SnackbarContext from '@/context/snackbar-context'
@@ -13,31 +13,19 @@ import Logo from '../layout/logo'
 import styles from './registration-form.module.scss'
 
 const RegistrationForm = () => {
-  const [ name, setName ] = useState()
-  const [ email, setEmail ] = useState()
-  const [ password, setPassword ] = useState()
-  const [ region, setRegion ] = useState()
-  const [ consent, setConsent ] = useState()
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
   const { push } = useRouter()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async (body) => {
     setOpenSpinner(true)
     try {
-      const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, {
-        role: 'user',
-        verified: false,
-        email, password, region, name, consent
-      })
+      const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, body)
       snackbarHandler('Uytkownik zosyał utworzony', SEVERITY.SUCCESS)
       if (data) {
         await sendEmail(data.userData.email, data.userData.region, data.userData._id)
       }
-      console.log(data)
-      console.log('UTWORZONO UZYTKOWNIKA', data)
     } catch (error) {
       console.log('REGISTER USER', error)
       handleError(error)
@@ -46,12 +34,10 @@ const RegistrationForm = () => {
   }
 
   const sendEmail = async (email, region, id) => {
-    console.log(email, region, id)
     try {
       const test = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/verification`, {
         email, region, id
       })
-
       setOpenSpinner(false)
       push('/')
       console.log('WYSŁANO EMAIL WERUFIKACYNY', test)
@@ -64,18 +50,8 @@ const RegistrationForm = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <Logo width={80} height={40}/>
-      </div>
-      
-      <UserForm
-        handleSubmit={handleSubmit}
-        setEmail={setEmail}
-        setPassword={setPassword}
-        setRegion={setRegion}
-        setName={setName}
-        setConsent={setConsent}
-      />
+      <div className={styles.header}><Logo width={80} height={40}/></div>
+      <UserForm handleSubmit={handleSubmit}/>
     </div>
   )
 }

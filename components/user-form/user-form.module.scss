@@ -33,3 +33,10 @@
     margin: 0 5px;
   }
 }
+
+.error {
+  @include font($mont-light, 12px);
+  margin-top: 4px;
+  color: $color-bruschetta-tomato;
+  text-align: left;
+}

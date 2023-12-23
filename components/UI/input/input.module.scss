@@ -10,6 +10,10 @@
   @extend %field-wrapper;
 }
 
+.errorBorder {
+  border-color: $color-bruschetta-tomato;
+}
+
 .error {
   @include font($mont-light, 12px);
   margin-top: 4px;
