@@ -78,21 +78,21 @@ const UserForm = ({ handleSubmit, setEmail, setPassword, setRegion, setName, set
             onChange={(e) => setConsent(e.target.checked)}
           />
           <label for="checkbox_id">Akceputję
-            <Link href="/regulamin" passHref> regulamin </Link>
+            <Link href="/regulamin" passHref>regulamin</Link>
             strony cheap weed&#42;
           </label>
         </fieldset>
     
 
         <div className={styles.actionsWrapper}>
-          <Button type="submit" text="Zarejstruj się" buttonType="success"/>
+          <Button type="submit" text="Zarejstruj się" buttonType="successFilled"/>
         </div>  
 
       </form>
 
       <div className={styles.actionsWrapper}>
-        <div className={styles.activeUser}>Masz ju konto?</div>
-        <Button type="button" text="Zaloguj" buttonType="successFilled" action={() => push('/login') }/>        
+        <div className={styles.activeUser}>Masz już konto?</div>
+        <Button type="button" text="Zaloguj" buttonType="success" action={() => push('/login') }/>        
       </div>    
     </>
 
