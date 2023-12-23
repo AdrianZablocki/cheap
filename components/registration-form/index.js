@@ -53,6 +53,7 @@ const RegistrationForm = () => {
     <div className={styles.wrapper}>
       <div className={styles.header}><Logo width={80} height={40}/></div>
       <UserForm handleSubmit={handleSubmit}/>
+      <button onClick={() => setOpenPopup(true)}>open</button>
       <MailConfirmationPopup openPopup={openPopup} setOpenPopup={setOpenPopup} />
     </div>
   )
