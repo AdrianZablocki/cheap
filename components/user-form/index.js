@@ -20,7 +20,10 @@ const validation = Yup.object({
     .matches(EMAIL_REGEX, 'Adres e-mail musi być prawidłowy'),
   password: Yup.string().min(8, 'Hasło musi mieć przynajmniej 8 znaków').required('Hasło jest polem wymagane'),
   region: Yup.string().required('Region jest polem wymaganym'),
-  consent: Yup.boolean().required('Zgoda jest wymagana')
+  consent: Yup
+    .bool()
+    .required('Zgoda musi być zaznaczona')
+    .oneOf([true], 'Zgoda musi być zaznaczona')//Yup.boolean().required('Zgoda jest wymagana')
 })
 
 const UserForm = ({ handleSubmit }) => {
@@ -84,9 +87,14 @@ const UserForm = ({ handleSubmit }) => {
           </label>
           <div className={styles.error}>{getFormikError(formik, 'consent')}</div>
         </fieldset>
-    
+
         <div className={styles.actionsWrapper}>
-          <Button type="submit" text="Zarejstruj się" buttonType="successFilled" disabled={!formik.isValid || !formik.dirty} />
+          <Button
+            type="submit"
+            text="Zarejstruj się"
+            buttonType="successFilled" 
+            disabled={!(formik.isValid && formik.dirty)}
+          />
         </div>  
       </form>
 

@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useContext, useState } from 'react'
 import axios from 'axios'
 
@@ -9,16 +8,15 @@ import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import SpinnerContext from '@/context/spinner-context'
 import UserForm from '../user-form'
 import Logo from '../layout/logo'
+import MailConfirmationPopup from '../mail-confirmation-popup'
 
 import styles from './registration-form.module.scss'
-import MailConfirmationPopup from '../mail-confirmation-popup'
 
 const RegistrationForm = () => {
   const [ openPopup, setOpenPopup ] = useState(false)
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
-  const { push } = useRouter()
 
   const handleSubmit = async (body) => {
     setOpenSpinner(true)

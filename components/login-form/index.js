@@ -19,9 +19,9 @@ import Button from '../UI/button'
 const validation = Yup.object({
   email: Yup
     .string()
-    .required('Email wymagany')
+    .required('Email jest wymagany')
     .matches(EMAIL_REGEX, 'Adres e-mail musi być prawidłowy'),
-  password: Yup.string().required('Hasło wymagane')
+  password: Yup.string().required('Hasło jest wymagane')
 })
 
 const LoginForm = () => {
@@ -103,7 +103,7 @@ const LoginForm = () => {
         }
 
         <div className={styles.actionsWrapper}>
-          <Button type="submit" text="Zaloguj" buttonType="successFilled" disabled={!formik.isValid || !formik.dirty} />
+          <Button type="submit" text="Zaloguj" buttonType="successFilled" disabled={!(formik.isValid && formik.dirty)} />
         </div>
       </form>
 
