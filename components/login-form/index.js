@@ -103,7 +103,7 @@ const LoginForm = () => {
         }
 
         <div className={styles.actionsWrapper}>
-          <Button type="submit" text="Zaloguj" buttonType="successFilled" disabled={!formik.isValid} />
+          <Button type="submit" text="Zaloguj" buttonType="successFilled" disabled={!formik.isValid || !formik.dirty} />
         </div>
       </form>
 
