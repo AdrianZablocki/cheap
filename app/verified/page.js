@@ -12,18 +12,7 @@ const VerifiedPage = async({ searchParams }) => {
 
   const verified = await setValidationFlag(searchParams.user)
 
-  if (verified) {
-    console.log(verified)
-    redirect('/', 'replace')
-  } else {
-    console.log('VERIFICATION FAILED')
-  }
-
-  try {
-
-  } catch (error) {
-    console.log('VERIFICATION FAILED', error)
-  }
+  verified ? redirect('/login', 'replace') : console.log('VERIFICATION FAILED')
   
   return (
     (verified ? <div>Uzytkownik {searchParams.user}, został zweryfikowany. 
