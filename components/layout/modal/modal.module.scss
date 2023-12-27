@@ -1,11 +1,25 @@
 @import '../../../styles/variables.scss';
 
-.modal {
-  position: fixed;
-  top: 0;
+.modalWrapper {
+  position: absolute;
+  top:0;
   left: 0;
   bottom: 0;
   right: 0;
+  background-color: rgba(0, 0, 0, .5);
+  padding-top: 55px;
+
+  @media screen and (min-width: 768px) {
+    padding: 50px;
+  }
+
+  @media screen and (min-width: 992px) {
+    padding: 100px;
+  }
+}
+
+.modal {
+  height: 100%;
   padding: 24px;
   background-color: $color-emtiness;
 }

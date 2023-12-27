@@ -21,18 +21,21 @@ const Modal = ({ onClose, children, title }) => {
   }
 
   const modalContent = (
-    <div className={styles.modal}>
-      <div className={styles.modalHeader}>
-        <IconButton
-          icon={closeIcon}
-          alt="closeIcon"
-          action={(e) => handleCloseClick(e)}
-        />
-      </div>
-      {title && <h1>{title}</h1>}
-      <div className={styles.modalBody}>{children}</div>
-      <Spinner isOpen={openSpinner} background="rgba(0, 0, 0, .5)" />
+    <div className={styles.modalWrapper}>
+      <div className={styles.modal}>
+        <div className={styles.modalHeader}>
+          <IconButton
+            icon={closeIcon}
+            alt="closeIcon"
+            action={(e) => handleCloseClick(e)}
+          />
+        </div>
+        {title && <h1>{title}</h1>}
+        <div className={styles.modalBody}>{children}</div>
+        <Spinner isOpen={openSpinner} background="rgba(0, 0, 0, .5)" />
+      </div>      
     </div>
+
   )
 
   return createPortal(
