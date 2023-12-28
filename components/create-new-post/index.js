@@ -12,6 +12,7 @@ import Button from '../UI/button'
 
 const CreateNewPost = ({ posts, setPosts }) => {
   const [ showModal, setShowModal ] = useState(false)
+  const [ step, setStep ] = useState('firstStep')
   const { userToken } = useContext(UserContext)
   const { snackbarHandler } = useContext(SnackbarContext)
 
@@ -23,13 +24,24 @@ const CreateNewPost = ({ posts, setPosts }) => {
     setShowModal(true)
   }
 
+  const getStep = (prevStep) => {
+    console.log(prevStep)
+    const map = {
+      firstStep: '',
+      secondStep: 'firstStep',
+      submit: 'secondStep'
+    }
+
+    setStep(map[prevStep] || '')
+  }
+
   return (
     <>
       <Button text="Utwórz nowy wpis" action={() => onOpenNewPostModal()}/>
 
       {showModal &&
-        <Modal onClose={() => setShowModal(false)}>
-          <NewPostForm setShowModal={setShowModal} posts={posts} setPosts={setPosts} />
+        <Modal onClose={() => setShowModal(false)} backButton onBackButton={() => getStep(step)} >
+          <NewPostForm setShowModal={setShowModal} posts={posts} setPosts={setPosts} step={step} setStep={setStep} />
         </Modal>
       }
     </>

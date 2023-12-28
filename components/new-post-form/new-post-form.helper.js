@@ -1,54 +1,54 @@
 import { getRegionList, getStrainList } from '@/utils'
 
-export const selectsConfig = (actions) => {
+export const selectsConfig = () => {
   return [
     { 
       id: 'strainName',
       label: 'Nazwa suszu:',
-      value: actions.strainName,
+      // value: actions.strainName,
       placeholder: 'Wybierz nazwę suszu',
       options: getStrainList(),
-      action: actions.setStrainName
+      // action: actions.setStrainName
     },
     { 
       id: 'region',
       label: 'Województwo:',
-      value: actions.region,
+      // value: actions.region,
       placeholder: 'Wybierz województwo',
       options: getRegionList(),
-      action: actions.setRegion
+      // action: actions.setRegion
     }
   ]
 }
 
-export const inputsConfig = (actions) => {
+export const inputsConfig = () => {
   return [
     {
       id: 'city',
       type: 'text',
-      value: actions.city,
+      // value: actions.city,
       label: 'Miasto:',
       placeholder: 'Podaj miasto',
       min: 0,
-      onChange: actions.setCity
+      // onChange: actions.setCity
     },
     {
       id: 'price',
       type: 'number',
-      value: actions.price,
+      // value: actions.price,
       label: 'Cena opakowania:',
       placeholder: 'Podaj cenę opakowania',
       min: 0,
-      onChange: actions.setPrice
+      // onChange: actions.setPrice
     },
     {
       id: 'amount',
       type: 'number',
-      value: actions.amount,
+      // value: actions.amount,
       label: 'Waga opakowania:',
       placeholder: 'Podaj wagę opakowania',
       min: 0,
-      onChange: actions.setAmount
+      // onChange: actions.setAmount
     }
   ] 
 }

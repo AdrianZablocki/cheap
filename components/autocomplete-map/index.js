@@ -9,7 +9,7 @@ import Map from '@/components/map'
 
 import styles from './autocomplete-map.module.scss'
 
-const AutocompleteMap = ({ loaded, onComplete }) => {
+const AutocompleteMap = ({ loaded, onComplete, field }) => {
   const [lat, setLat] = useState(52.0739930770121)
   const [lng, setLng] = useState(18.740554811748666)
   const [zoom, setZoom] =useState(5)
@@ -26,7 +26,7 @@ const AutocompleteMap = ({ loaded, onComplete }) => {
             setLat(lat)
             setLng(lng)
           });
-          getDetails({placeId}).then((result) => onComplete({
+          getDetails({placeId}).then((result) => onComplete(field, {
             // result,
             name: result.name,
             address: result.formatted_address,

@@ -5,12 +5,13 @@ import { createPortal } from 'react-dom'
 
 import SpinnerContext from '@/context/spinner-context'
 import closeIcon from '@/public/icons/close.svg'
+import backIcon from '@/public/icons/back.svg'
 import IconButton from '../../UI/icon-button'
 import styles from './modal.module.scss'
 import Spinner from '../spinner'
 import { setDisabledScroll } from '@/utils'
 
-const Modal = ({ onClose, children, title }) => {
+const Modal = ({ onClose, children, title, backButton, onBackButton }) => {
   setDisabledScroll(true)
   const { openSpinner } = useContext(SpinnerContext)
   
@@ -24,9 +25,16 @@ const Modal = ({ onClose, children, title }) => {
     <div className={styles.modalWrapper}>
       <div className={styles.modal}>
         <div className={styles.modalHeader}>
+          {backButton && 
+            <IconButton
+              icon={backIcon}
+              alt="back icon"
+              action={() => onBackButton()}
+            />
+          }
           <IconButton
             icon={closeIcon}
-            alt="closeIcon"
+            alt="close icon"
             action={(e) => handleCloseClick(e)}
           />
         </div>
