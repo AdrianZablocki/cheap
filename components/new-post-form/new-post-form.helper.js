@@ -5,18 +5,14 @@ export const selectsConfig = () => {
     { 
       id: 'strainName',
       label: 'Nazwa suszu:',
-      // value: actions.strainName,
       placeholder: 'Wybierz nazwę suszu',
-      options: getStrainList(),
-      // action: actions.setStrainName
+      options: getStrainList()
     },
     { 
       id: 'region',
       label: 'Województwo:',
-      // value: actions.region,
       placeholder: 'Wybierz województwo',
-      options: getRegionList(),
-      // action: actions.setRegion
+      options: getRegionList()
     }
   ]
 }
@@ -26,29 +22,23 @@ export const inputsConfig = () => {
     {
       id: 'city',
       type: 'text',
-      // value: actions.city,
       label: 'Miasto:',
       placeholder: 'Podaj miasto',
-      min: 0,
-      // onChange: actions.setCity
+      min: 0
     },
     {
       id: 'price',
       type: 'number',
-      // value: actions.price,
       label: 'Cena opakowania:',
       placeholder: 'Podaj cenę opakowania',
-      min: 0,
-      // onChange: actions.setPrice
+      min: 0
     },
     {
       id: 'amount',
       type: 'number',
-      // value: actions.amount,
       label: 'Waga opakowania:',
       placeholder: 'Podaj wagę opakowania',
-      min: 0,
-      // onChange: actions.setAmount
+      min: 0
     }
   ] 
 }

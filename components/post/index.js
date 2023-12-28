@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { useContext, useState } from 'react'
 import dayjs from 'dayjs'
@@ -12,6 +13,7 @@ import SnackbarContext from '@/context/snackbar-context'
 import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import sadIcon from '@/public/icons/sad.svg'
 import happyIcon from '@/public/icons/happy.svg'
+import phoneIcon from '@/public/icons/phone.svg'
 import redNo2Image from '@/public/images/red-no-2.jpeg'
 import { date, setDisabledScroll, updatePost } from '@/utils'
 import ConfirmPrice from '../confirm-price'
@@ -20,6 +22,7 @@ import IconButton from '../UI/icon-button'
 import Modal from '../layout/modal'
 
 import styles from './post.module.scss'
+import Link from 'next/link'
 
 dayjs.extend(utc)
 
@@ -31,7 +34,11 @@ const Post = ({ post }) => {
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
   const { userToken } = useContext(UserContext)
+  const { push } = useRouter()
+  const pathName = usePathname()
 
+
+  console.log(post)
   const onUpdatePost = async(payload, invalid) => {
     setOpenSpinner(true)
 
@@ -70,7 +77,7 @@ const Post = ({ post }) => {
 
   const onAction = (actionType) => {
     if(!userToken || !jwtDecode(userToken).isVerified) {
-      snackbarHandler('Musisz być zalogowany, a konto zweryfikowane aby móc dodawać, aktualizować i usuwać posty', SEVERITY.ERROR)
+      push(`/refresh?location=${pathName}`)
       return
     }
     setShowModal(true)
@@ -112,9 +119,15 @@ const Post = ({ post }) => {
             padding={'8px'}
             action={()=>onAction('change')}
           />
-          {/* <div>
-            <Link href="tel:515107460">telefon</Link>
-          </div> */}
+         {/* "tel:515107460" */}
+          <Link href={`tel:${post.contact}`}>
+            <IconButton
+              alt="phone icon"
+              icon={phoneIcon}
+              padding={'8px'}
+            />
+          </Link>
+        
         </div>
       </li>  
 
