@@ -39,7 +39,7 @@ const AutocompleteMap = ({ loaded, onComplete, field }) => {
         }}
       />}
       <div className={styles.map}>
-        <Map mapCenter={mapCenter} isLoaded={loaded} width="100%" height="300px" zoom={zoom} /> 
+        <Map mapCenter={mapCenter} isLoaded={loaded} width="100%" height="350px" zoom={zoom} /> 
       </div>
 
     </>

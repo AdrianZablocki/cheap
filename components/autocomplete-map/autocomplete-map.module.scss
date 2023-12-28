@@ -1,12 +1,15 @@
 .map {
-  // position: relative;
+  border-radius: 5px;
+  border: 1px solid #A39E9E;
+  overflow: hidden;
+  height: 350px;
   
-  // &::after {
-  //   content: '';
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   bottom: 0;
-  //   left: 0;
+
+  // @media screen and (min-width: 768px) {
+  //   height: 250px;
+  // }
+
+  // @media screen and (min-width: 992px) {
+  //   height: 350px;
   // }
 }
