@@ -1,21 +1,36 @@
 import styles from './input.module.scss'
 
-const Input = ({ id, type, value, onChange, onFocus, placeholder, label, min, error, autoComplete, name, onBlur }) => {
+const Input = ({
+  autoComplete,
+  disabled,
+  error,
+  id,
+  label,
+  min,
+  name,
+  onBlur,
+  onChange,
+  onFocus,
+  placeholder,
+  type,
+  value
+}) => {
   return (
     <fieldset className={styles.input}>
       <label>{label}</label>
       <div className={`${styles.inputWrapper} ${error ? styles.errorBorder : ''}`}>
         <input
-          id={id}
-          name={name}
-          type={type}
-          defaultValue={value}
-          placeholder={placeholder}
-          min={min}
           autoComplete={autoComplete}
+          defaultValue={value}
+          disabled={disabled}
+          id={id}
+          min={min}
+          name={name}
+          placeholder={placeholder}
+          type={type}
+          onBlur={onBlur}
           onChange={onChange}
           onFocus={onFocus}
-          onBlur={onBlur}
         />
       </div>
       {error && <div className={styles.error}>{error}</div>}

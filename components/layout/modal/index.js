@@ -32,11 +32,14 @@ const Modal = ({ onClose, children, title, backButton, onBackButton }) => {
               action={() => onBackButton()}
             />
           }
-          <IconButton
-            icon={closeIcon}
-            alt="close icon"
-            action={(e) => handleCloseClick(e)}
-          />
+          <div className={styles.closeButton}>
+            <IconButton
+              icon={closeIcon}
+              alt="close icon"
+              action={(e) => handleCloseClick(e)}
+            />            
+          </div>
+
         </div>
         {title && <h1>{title}</h1>}
         <div className={styles.modalBody}>{children}</div>

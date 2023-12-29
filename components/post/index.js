@@ -37,8 +37,6 @@ const Post = ({ post }) => {
   const { push } = useRouter()
   const pathName = usePathname()
 
-
-  console.log(post)
   const onUpdatePost = async(payload, invalid) => {
     setOpenSpinner(true)
 

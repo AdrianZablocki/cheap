@@ -17,7 +17,7 @@ const Map = ({
     () => ({
       disableDefaultUI: true,
       clickableIcons: true,
-      scrollwheel: false
+      scrollwheel: true
     }),
     []
   )

@@ -2,7 +2,7 @@ import Post from '../models/post'
 import APIFilters from '../utils/api-filters'
 
 export const getPosts = async(req, res, next) => {
-  const postsPerPage = 5
+  const postsPerPage = 25
   const postsCount = await Post.estimatedDocumentCount()
 
   const apiFilters = await new APIFilters(Post.find(), req.query)

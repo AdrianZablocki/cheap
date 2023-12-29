@@ -24,22 +24,26 @@ const CreateNewPost = ({ posts, setPosts }) => {
   }
 
   const getStep = (prevStep) => {
-    console.log(prevStep)
     const map = {
-      firstStep: '',
+      firstStep: 'firstStep',
       secondStep: 'firstStep',
       submit: 'secondStep'
     }
 
-    setStep(map[prevStep] || '')
+    setStep(map[prevStep] || 'firstStep')
   }
+
+  const onClose = () => {
+    setShowModal(false)
+    setStep('firstStep')
+  } 
 
   return (
     <>
       <Button text="Utwórz nowy wpis" action={() => onOpenNewPostModal()}/>
 
       {showModal &&
-        <Modal onClose={() => setShowModal(false)} backButton onBackButton={() => getStep(step)} >
+        <Modal onClose={() => onClose()} backButton={step !== 'firstStep'} onBackButton={() => getStep(step)} >
           <NewPostForm setShowModal={setShowModal} posts={posts} setPosts={setPosts} step={step} setStep={setStep} />
         </Modal>
       }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { getGeocode, getLatLng, getDetails } from 'use-places-autocomplete'
 
 
@@ -9,18 +9,29 @@ import Map from '@/components/map'
 
 import styles from './autocomplete-map.module.scss'
 
-const AutocompleteMap = ({ loaded, onComplete, field }) => {
+const AutocompleteMap = ({ loaded, onComplete, field, selectedAdress, setSelectedValue }) => {
   const [lat, setLat] = useState(52.0739930770121)
   const [lng, setLng] = useState(18.740554811748666)
-  const [zoom, setZoom] =useState(5)
+  const [zoom, setZoom] = useState(5)
 
   const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng])
+
+  useEffect(() => {
+    getGeocode({ address: selectedAdress }).then((results) => {
+      const { lat, lng } = getLatLng(results[0])
+      setZoom(15)
+      setLat(lat)
+      setLng(lng)
+    })
+  },[selectedAdress])
 
   return (
     <>
       {loaded && <PlacesAutocomplete
         onAddressSelect={(address, placeId) => {
+          console.log('ADRESS', address)
           getGeocode({ address: address }).then((results) => {
+            console.log(results[0])
             const { lat, lng } = getLatLng(results[0])
             setZoom(15)
             setLat(lat)
@@ -37,6 +48,8 @@ const AutocompleteMap = ({ loaded, onComplete, field }) => {
             lng,
           }))
         }}
+        selectedValue={selectedAdress}
+        setSelectedValue={setSelectedValue}
       />}
       <div className={styles.map}>
         <Map mapCenter={mapCenter} isLoaded={loaded} width="100%" height="350px" zoom={zoom} /> 

@@ -1,4 +1,5 @@
 @import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
 
 .modalWrapper {
   position: absolute;
@@ -34,8 +35,13 @@
 }
 
 .modalHeader {
-  display: flex;
-  justify-content: space-between;
+  @include drawGrid(2);
   font-size: 25px;
   padding: 0 24px 20px;
+}
+
+.closeButton {
+  display: grid;
+  grid-column-start: 2;
+  justify-content: end;
 }

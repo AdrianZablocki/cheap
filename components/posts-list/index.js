@@ -28,7 +28,7 @@ const PostList = () => {
       
     } 
     fetchData()
-  }, [])
+  }, [setOpenSpinner])
   
   return (
     <>

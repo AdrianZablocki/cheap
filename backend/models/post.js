@@ -48,6 +48,9 @@ const postSchema = new mongoose.Schema({
   },
   searchedFields: {
     type: String
+  },
+  openingHours: {
+    type: Array
   }
 })
 

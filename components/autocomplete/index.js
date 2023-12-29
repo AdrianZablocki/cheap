@@ -4,7 +4,7 @@ import usePlacesAutocomplete from 'use-places-autocomplete'
 
 import styles from './autocomplete.module.scss'
 
-const PlacesAutocomplete = ({ onAddressSelect }) => {
+const PlacesAutocomplete = ({ onAddressSelect, selectedValue, setSelectedValue }) => {
   const {
     ready,
     value,
@@ -46,10 +46,14 @@ const PlacesAutocomplete = ({ onAddressSelect }) => {
         <label>Wyszukaj aptekę:</label>
         <div className={styles.inputWrapper}>
           <input
-            value={value}
-            // disabled={!ready}
-            onChange={(e) => setValue(e.target.value)}
-            onFocus={() => setValue('')}
+            value={value || selectedValue}
+            onChange={(e) => {
+              setValue(e.target.value)
+              !e.target.value ? setSelectedValue('drugStore', undefined) : null
+            }}
+            onFocus={() => {
+              setValue('')
+            }}
             placeholder="Zacznij wpisywać adres"
             autoFocus 
             type="text"

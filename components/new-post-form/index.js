@@ -1,3 +1,6 @@
+'use client'
+
+import { useRouter } from 'next/navigation';
 import { useContext, useMemo } from 'react'
 import { jwtDecode } from 'jwt-decode'
 import { useLoadScript } from '@react-google-maps/api'
@@ -17,6 +20,8 @@ import Button from '../UI/button'
 import AutocompleteMap from '../autocomplete-map'
 import { inputsConfig, selectsConfig } from './new-post-form.helper'
 
+import styles from './new-post-form.module.scss'
+
 dayjs.extend(utc)
 
 const validation = Yup.object({
@@ -34,6 +39,7 @@ const NewPostForm = ({ setShowModal, posts, setPosts, step, setStep }) => {
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { userToken } = useContext(UserContext)
   const libraries = useMemo(() => ['places'], [])
+  const router = useRouter();
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
@@ -51,40 +57,51 @@ const NewPostForm = ({ setShowModal, posts, setPosts, step, setStep }) => {
 
     },
     validationSchema: validation,
-    onSubmit: (values) => {
-      
-      console.log('huj', formik.errors)
-      console.log(values)
-      // handleSubmit(values)
-    }
+    onSubmit: (values) => onCreateNewPost(values)
   })
 
-  const onAction = (step) => {
-    setStep(step)
-  }
+  const onAction = (step) => setStep(step)
 
-  const onCreateNewPost = async() => {
-    setOpenSpinner(true)
+  const check = () => formik.values.strainName 
+    && formik.values.city
+    && formik.values.region 
+    && formik.values.amount
+    && formik.values.price
+
+  const onCreateNewPost = async(values) => {
+    // setOpenSpinner(true)
   
     const body = {
-      ...strainName,
-      ...region,
-      ...drugStore,
-      ...city,
+      name: values.drugStore.name,
+      openingHours: values.drugStore.openingHours,
+      address: values.drugStore.address,
+      contact: values.drugStore.contact,
+      lat: values.drugStore.lat,
+      lng: values.drugStore.lng,
+      strainName: values.strainName,
+      region: values.region,
+      drugStore: values.drugStore,
+      city: values.city,
       author: userToken ? jwtDecode(userToken).name : '',
       date: dayjs().utc().format(),
-      price: (price.price/amount.amount).toFixed(2),
+      price: (values.price/values.amount).toFixed(2),
       isValid: true,
       confirmationCount: 0
     }
+// address, conntact, lat, lng, name
+    console.log(body)
  
     try {
       const data = await createPost(body)
+      console.log(data)
       setShowModal(false)
-      setPosts([data.post, ...posts])
+      // setPosts()
+      setPosts([...posts, data.post])
       setDisabledScroll(false)
       setOpenSpinner(false)
+      setStep('firstStep')
       snackbarHandler('Post został utworzony', SEVERITY.SUCCESS)
+      router.replace('/')
     } catch (error) {
       setOpenSpinner(false)
       handleError(error)
@@ -124,22 +141,60 @@ const NewPostForm = ({ setShowModal, posts, setPosts, step, setStep }) => {
       }
       {step === 'firstStep' && 
         <Input
+          disabled={!check()}
           type="text"
-          value={formik.values.drugStore.name}
+          value={formik.values.drugStore?.name || ''}
           label="Apteka"
           placeholder="Wyszukaj aptekę"
           error={getFormikError(formik, 'drugStore')}
           onChange={formik.handleChange}
           onFocus={() => {
-            onAction('secondStep')
+            setStep('secondStep')
             formik.setFieldTouched('drugStore')
           }}
         />
       }
-      {step === 'submit' && <div>submit</div>}
-      {step === 'secondStep' && <AutocompleteMap  loaded={isLoaded} onComplete={formik.setFieldValue} field="drugStore" />}
-      {step === 'firstStep' && <Button type="button" text="Dalej" buttonType="successFilled" action={() => setStep('secondStep')}/>}
-      {step === 'secondStep' && <Button type="button" text="Dalej" buttonType="successFilled" action={() => setStep('submit')}/>}
+      {step === 'submit' && 
+        <div>
+        </div>
+      }
+      {step === 'secondStep' && 
+        <AutocompleteMap
+          loaded={isLoaded}
+          onComplete={formik.setFieldValue}
+          field="drugStore"
+          selectedAdress={formik.values.drugStore?.address || ''}
+          setSelectedValue={formik.setFieldValue}
+        />
+      }
+      <div className={styles.actionButtons}>
+        {step === 'firstStep' && 
+          <Button
+            type="button"
+            text="Dalej"
+            buttonType="success"
+            action={() => setStep('secondStep')}
+            disabled={!check()}
+          />
+        }
+        {step === 'secondStep' && 
+          <Button
+            disabled={!(formik.isValid && formik.dirty)}
+            type="button"
+            text="Dalej"
+            buttonType="success"
+            action={() => setStep('submit')}
+          />
+        }
+        {step === 'submit' && 
+          <Button
+            disabled={!(formik.isValid && formik.dirty)}
+            type="submit"
+            text="Utwórz wpis"
+            buttonType="success"
+          />
+        }
+      </div>
     </form>
   )
 }
