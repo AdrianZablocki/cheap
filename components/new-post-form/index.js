@@ -69,33 +69,22 @@ const NewPostForm = ({ setShowModal, posts, setPosts, step, setStep }) => {
     && formik.values.price
 
   const onCreateNewPost = async(values) => {
-    // setOpenSpinner(true)
-  
+    setOpenSpinner(true)
+    const { name, openingHours, address, contact, lat, lng } = values.drugStore
+    const { strainName, region, city } = values
     const body = {
-      name: values.drugStore.name,
-      openingHours: values.drugStore.openingHours,
-      address: values.drugStore.address,
-      contact: values.drugStore.contact,
-      lat: values.drugStore.lat,
-      lng: values.drugStore.lng,
-      strainName: values.strainName,
-      region: values.region,
-      drugStore: values.drugStore,
-      city: values.city,
+      name, openingHours, address, contact, lat, lng, strainName, region, city,
       author: userToken ? jwtDecode(userToken).name : '',
       date: dayjs().utc().format(),
       price: (values.price/values.amount).toFixed(2),
       isValid: true,
       confirmationCount: 0
     }
-// address, conntact, lat, lng, name
-    console.log(body)
  
     try {
       const data = await createPost(body)
       console.log(data)
       setShowModal(false)
-      // setPosts()
       setPosts([...posts, data.post])
       setDisabledScroll(false)
       setOpenSpinner(false)
