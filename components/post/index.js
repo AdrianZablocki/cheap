@@ -14,7 +14,7 @@ import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import sadIcon from '@/public/icons/sad.svg'
 import happyIcon from '@/public/icons/happy.svg'
 import phoneIcon from '@/public/icons/phone.svg'
-import redNo2Image from '@/public/images/red-no-2.jpeg'
+import redNo2Image from '@/public/images/red.jpeg'
 import { date, setDisabledScroll, updatePost } from '@/utils'
 import ConfirmPrice from '../confirm-price'
 import ChangePrice from '../change-price'
@@ -94,7 +94,7 @@ const Post = ({ post }) => {
         </div>
 
         <div className={styles.imageContainer}>
-          <Image className={styles.image} src={redNo2Image} alt="red" fill={false} />
+          <Image className={styles.image} src={redNo2Image} alt="red" fill={false} priority />
         </div>
 
         <div className={styles.content}>
