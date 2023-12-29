@@ -43,7 +43,8 @@ const NewPostForm = ({ setShowModal, posts, setPosts, step, setStep }) => {
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
-    libraries: libraries
+    libraries: libraries,
+    type: ['drugstore', 'health', 'store'],
   })
 
   const formik = useFormik({

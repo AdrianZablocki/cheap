@@ -16,7 +16,23 @@ const PostList = () => {
 
   useEffect(() => {
     const fetchData = async() => {
-      setOpenSpinner(true)
+      test()
+      // setOpenSpinner(true)
+      // try {
+      //   const postsData = await getPosts()
+      //   setPosts(postsData.posts)
+      //   setOpenSpinner(false)
+      // } catch (error) {
+      //   console.log(error)
+      //   setOpenSpinner(false)
+      // }
+      
+    } 
+    fetchData()
+  }, [])
+
+  const test = async() => {
+    setOpenSpinner(true)
       try {
         const postsData = await getPosts()
         setPosts(postsData.posts)
@@ -25,10 +41,7 @@ const PostList = () => {
         console.log(error)
         setOpenSpinner(false)
       }
-      
-    } 
-    fetchData()
-  }, [setOpenSpinner])
+  }
   
   return (
     <>

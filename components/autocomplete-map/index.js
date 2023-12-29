@@ -29,7 +29,6 @@ const AutocompleteMap = ({ loaded, onComplete, field, selectedAdress, setSelecte
     <>
       {loaded && <PlacesAutocomplete
         onAddressSelect={(address, placeId) => {
-          console.log('ADRESS', address)
           getGeocode({ address: address }).then((results) => {
             console.log(results[0])
             const { lat, lng } = getLatLng(results[0])
@@ -38,7 +37,6 @@ const AutocompleteMap = ({ loaded, onComplete, field, selectedAdress, setSelecte
             setLng(lng)
           });
           getDetails({placeId}).then((result) => onComplete(field, {
-            // result,
             name: result.name,
             address: result.formatted_address,
             contact: result.international_phone_number,
