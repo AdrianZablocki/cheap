@@ -1,0 +1,19 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles//variables.scss';
+
+.wrapper {
+  @include font($mont-medium, 16px);
+  margin-bottom: 18px;
+}
+
+.label {
+  padding-bottom: 8px;
+  font-size: 12px;
+  color: $color-black-light;
+}
+
+.value, 
+.label {
+  color: $color-black-light;
+}

@@ -4,11 +4,10 @@ import { useContext, useEffect, useState } from 'react'
 
 import { getPosts } from '@/utils'
 import Post from '@/components/post'
-import UserContext from '@/context/user-context'
 import SpinnerContext from '@/context/spinner-context'
+import CreateNewPost from '../create-new-post'
 
 import styles from './post-list.module.scss'
-import CreateNewPost from '../create-new-post'
 
 const PostList = () => {
   const [ posts, setPosts ] = useState()
@@ -16,23 +15,7 @@ const PostList = () => {
 
   useEffect(() => {
     const fetchData = async() => {
-      test()
-      // setOpenSpinner(true)
-      // try {
-      //   const postsData = await getPosts()
-      //   setPosts(postsData.posts)
-      //   setOpenSpinner(false)
-      // } catch (error) {
-      //   console.log(error)
-      //   setOpenSpinner(false)
-      // }
-      
-    } 
-    fetchData()
-  }, [])
-
-  const test = async() => {
-    setOpenSpinner(true)
+      setOpenSpinner(true)
       try {
         const postsData = await getPosts()
         setPosts(postsData.posts)
@@ -41,8 +24,11 @@ const PostList = () => {
         console.log(error)
         setOpenSpinner(false)
       }
-  }
-  
+      
+    } 
+    fetchData()
+  }, [])
+
   return (
     <>
       <CreateNewPost posts={posts} setPosts={setPosts} />
@@ -53,9 +39,6 @@ const PostList = () => {
           // </Link>
         )}
       </ul>
-      <div>
-        <CreateNewPost posts={posts} setPosts={setPosts} />
-      </div>
     </>
   )
 }

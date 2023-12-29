@@ -40,11 +40,21 @@ const CreateNewPost = ({ posts, setPosts }) => {
 
   return (
     <>
-      <Button text="Utwórz nowy wpis" action={() => onOpenNewPostModal()}/>
+      <Button text="Utwórz nowy wpis" action={() => onOpenNewPostModal()} />
 
       {showModal &&
-        <Modal onClose={() => onClose()} backButton={step !== 'firstStep'} onBackButton={() => getStep(step)} >
-          <NewPostForm setShowModal={setShowModal} posts={posts} setPosts={setPosts} step={step} setStep={setStep} />
+        <Modal
+          onClose={() => onClose()}
+          backButton={step !== 'firstStep'}
+          onBackButton={() => getStep(step)}
+        >
+          <NewPostForm
+            setShowModal={setShowModal}
+            posts={posts}
+            setPosts={setPosts}
+            step={step}
+            setStep={setStep}
+          />
         </Modal>
       }
     </>

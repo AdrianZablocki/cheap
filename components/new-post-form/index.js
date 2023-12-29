@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation';
 import { useContext, useMemo } from 'react'
 import { jwtDecode } from 'jwt-decode'
 import { useLoadScript } from '@react-google-maps/api'
@@ -21,6 +20,7 @@ import AutocompleteMap from '../autocomplete-map'
 import { inputsConfig, selectsConfig } from './new-post-form.helper'
 
 import styles from './new-post-form.module.scss'
+import NewPostConfirmation from '../new-post-confirmation'
 
 dayjs.extend(utc)
 
@@ -39,7 +39,6 @@ const NewPostForm = ({ setShowModal, posts, setPosts, step, setStep }) => {
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { userToken } = useContext(UserContext)
   const libraries = useMemo(() => ['places'], [])
-  const router = useRouter();
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
@@ -60,8 +59,6 @@ const NewPostForm = ({ setShowModal, posts, setPosts, step, setStep }) => {
     validationSchema: validation,
     onSubmit: (values) => onCreateNewPost(values)
   })
-
-  const onAction = (step) => setStep(step)
 
   const check = () => formik.values.strainName 
     && formik.values.city
@@ -84,14 +81,12 @@ const NewPostForm = ({ setShowModal, posts, setPosts, step, setStep }) => {
  
     try {
       const data = await createPost(body)
-      console.log(data)
       setShowModal(false)
       setPosts([...posts, data.post])
       setDisabledScroll(false)
       setOpenSpinner(false)
       setStep('firstStep')
       snackbarHandler('Post został utworzony', SEVERITY.SUCCESS)
-      router.replace('/')
     } catch (error) {
       setOpenSpinner(false)
       handleError(error)
@@ -145,8 +140,7 @@ const NewPostForm = ({ setShowModal, posts, setPosts, step, setStep }) => {
         />
       }
       {step === 'submit' && 
-        <div>
-        </div>
+        <NewPostConfirmation data={formik.values} />
       }
       {step === 'secondStep' && 
         <AutocompleteMap
