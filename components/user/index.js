@@ -1,9 +1,12 @@
 'use client'
 
+import Link from 'next/link'
 import  { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 
 import SpinnerContext from '@/context/spinner-context'
+
+import styles from './user.module.scss'
 
 const User = ({ params }) => {
   const [ user, setUser ] = useState()
@@ -27,7 +30,15 @@ const User = ({ params }) => {
 
   console.log(user)
   return (
-    <div>user page</div>
+    <div className={styles.wrapper}>
+      <div className={styles.name}>{user?.name}</div>
+      <Link href="/">Edytuj dane konta</Link>
+      <Link href="/logout">Wyloguj</Link>
+      <div className={styles.postsWrapper}>
+        <span>Twoje publikacje</span>
+        {user?.posts.map((post, index) => <div key={`user-post-${index}-${post._id}`}>{post.strainName}</div>)}
+      </div>
+    </div>
   )
 } 
 
