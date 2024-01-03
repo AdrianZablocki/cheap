@@ -100,6 +100,7 @@ const NewPostForm = () => {
   
   return (
     <form onSubmit={formik.handleSubmit}>
+      <div>backs</div>
       {step === 'firstStep' && selectsConfig().map(select => 
         <Select
           key={`new-post-form-${select.id}`}

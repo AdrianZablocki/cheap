@@ -14,20 +14,19 @@ import styles from './header.module.scss'
 const Header = () => {
   const { userToken } = useContext(UserContext)
 
+  const url = userToken ? `/user/${jwtDecode(userToken).id}` : '/refresh?location=/'
   return (
     <div className={styles.wrapper}>
       <Logo />
-      {userToken && 
-        <Link href={`/user/${jwtDecode(userToken).id}`}>
-          <IconButton
-            width={40}
-            height={40}
-            icon={userIcon}
-            alt="logo"
-            priority
-          />
-        </Link>
-      }
+      <Link href={url}>
+        <IconButton
+          width={40}
+          height={40}
+          icon={userIcon}
+          alt="logo"
+          priority
+        />
+      </Link>
     </div>
   )
 }
