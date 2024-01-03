@@ -2,11 +2,11 @@
 @import '../../../styles/variables.scss';
 
 .logo {
-  @include font($hind-semi-bold, 32px);
+  @include font($hind-semi-bold, 24px);
   display: inline-flex;
   flex-direction: column;
-  line-height: 20px;
-
+  line-height: 16px;
+  letter-spacing: -2px;
   span {
     color: $color-paradise-green;
   }
