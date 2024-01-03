@@ -4,6 +4,9 @@ const postSchema = new mongoose.Schema({
   author: {
     type: String
   },
+  authorId: {
+    type: String
+  },
   date: {
     type: Date
   },

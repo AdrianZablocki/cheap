@@ -23,6 +23,7 @@ import Modal from '../layout/modal'
 
 import styles from './post.module.scss'
 import Link from 'next/link'
+import Button from '../UI/button'
 
 dayjs.extend(utc)
 
@@ -74,13 +75,19 @@ const Post = ({ post }) => {
   const renderModalContent = (contentType) => (modalContentMap[contentType] || '')
 
   const onAction = (actionType) => {
+    checkAuth()
+    setShowModal(true)
+    setModalContent(renderModalContent(actionType))
+  }
+
+  const checkAuth = () => {
     if(!userToken || !jwtDecode(userToken).isVerified) {
       push(`/refresh?location=${pathName}`)
       return
     }
-    setShowModal(true)
-    setModalContent(renderModalContent(actionType))
   }
+
+  const onMore = (id) => push(`/post/${id}`)
 
   return (
     <>
@@ -125,6 +132,8 @@ const Post = ({ post }) => {
               padding={'8px'}
             />
           </Link>
+
+          <Button text="Więcej" buttonType="successFilled" action={() => onMore(postCopy._id)} />
         
         </div>
       </li>  

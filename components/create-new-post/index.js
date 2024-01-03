@@ -13,7 +13,6 @@ const CreateNewPost = () => {
   const pathName = usePathname()
 
   useEffect(() => {
-    console.log(pathName)
     if(!userToken || !jwtDecode(userToken).isVerified) {
       push(`/refresh?location=${pathName}`)
     }

@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt'
 
 import User from '../models/user'
+import Post from '../models/post'
 import { removePassword } from '../utils/remove-password'
 
 const saltRounds = 12
@@ -26,12 +27,14 @@ export const createUser = async (req, res) => {
 }
 
 export const getUser = async (req, res) => {
+  const user = await User.findById(req.query.id)
+  const posts = await Post.find({ authorId: req.query.id}).exec()
+
   try {
-    const user = await User.findById(req.query.id)
-    const userData = removePassword(user)
+    const userData = { ...removePassword(user), posts }
 
     user
-    ? res.json({ user: userData })
+    ? res.status(200).json({ user: userData })
     : res.status(404).json({ message: 'Nieznaleziono konta' })
 
   } catch (error) {

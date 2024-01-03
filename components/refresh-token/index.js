@@ -26,7 +26,7 @@ const RefreshToken = ({ refreshToken }) => {
         console.log('REFRESH TOKEN ERROR', error)
         
         if (error.response.status === 401 || error.response.status === 405) {
-          push('/welcome')
+          push('/login')
         }
       }
     }

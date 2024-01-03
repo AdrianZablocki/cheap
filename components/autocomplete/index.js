@@ -62,7 +62,7 @@ const PlacesAutocomplete = ({ onAddressSelect, selectedValue, setSelectedValue }
       </fieldset>
 
       {status === 'OK' && (
-        <ul>{renderSuggestions()}</ul>
+        <ul className={styles.suggestions}>{renderSuggestions()}</ul>
       )}
     </div>
   );

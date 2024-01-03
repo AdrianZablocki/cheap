@@ -10,7 +10,7 @@ export const getPosts = async(req, res, next) => {
     .filter();
 
   let posts = await apiFilters.query
-  console.log('POSTS', posts)
+
   const filteredPostsCount = posts.length
 
   apiFilters.pagination(postsPerPage);

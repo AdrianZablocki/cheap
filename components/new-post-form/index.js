@@ -71,11 +71,13 @@ const NewPostForm = () => {
 
   const onCreateNewPost = async(values) => {
     setOpenSpinner(true)
+    console.log(jwtDecode(userToken).id )
     const { name, openingHours, address, contact, lat, lng } = values.drugStore
     const { strainName, region, city } = values
     const body = {
       name, openingHours, address, contact, lat, lng, strainName, region, city,
       author: userToken ? jwtDecode(userToken).name : '',
+      authorId: userToken ? jwtDecode(userToken).id : '',
       date: dayjs().utc().format(),
       price: (values.price/values.amount).toFixed(2),
       isValid: true,

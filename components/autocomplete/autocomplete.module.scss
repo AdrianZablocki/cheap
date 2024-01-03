@@ -1,4 +1,6 @@
 @import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles/variables.scss';
 
 .input {
   @extend %field;
@@ -6,4 +8,27 @@
 
 .inputWrapper {
   @extend %field-wrapper;
+}
+
+.suggestions {
+  margin-bottom: 16px;
+
+  li {
+    @include font($mont-medium, 14px);
+    border: $border-1-orochimaru;
+    border-bottom: none;
+    padding: 8px;
+    background-color: $color-white;
+
+    &:last-child {
+      border-bottom: $border-1-orochimaru;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
+  }
 }
