@@ -1,19 +1,13 @@
-import Image from 'next/image'
 import Link from 'next/link'
+import styles from './logo.module.scss'
 
-import logoIcon from '@/public/icons/logo.svg'
-
-const Logo = ({width, height}) => (
-  <Link href="/" passHref>
-    <Image
-      width={width}
-      height={height}
-      src={logoIcon}
-      alt="logo"
-      priority
-    />
-  </Link>
-
+const Logo = () => (
+  <h1 className={styles.logo}>
+    <Link href="/" passHref>
+      <div>chea<span>p</span></div>
+      <div className={styles.weed}>wee<span>d</span></div>    
+    </Link>
+  </h1>
 )
 
 export default Logo

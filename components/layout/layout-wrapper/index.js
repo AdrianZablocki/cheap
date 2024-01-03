@@ -29,7 +29,7 @@ const LayoutWrapper = ({ children, token }) => {
           snackbarMessage, 
           snackbarSeverity
         }, snackbarHandler}}>
-          { !headerlessViews.includes(pathname) && <Header logoWidth={80} logoHeight={40} />}
+          { !headerlessViews.includes(pathname) && <Header />}
           { pathname === '/' && <Navbar /> }
           { children }
           <Spinner isOpen={openSpinner} background="rgba(0, 0, 0, .5)" />

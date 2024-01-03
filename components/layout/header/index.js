@@ -11,7 +11,7 @@ import Modal from '../modal'
 import styles from './header.module.scss'
 import IconButton from '../../UI/icon-button'
 
-const Header = ({ logoWidth, logoHeight }) => {
+const Header = () => {
   const [ showModal, setShowModal ] = useState(false)
   const { userToken } = useContext(UserContext)
   const { push } = useRouter();
@@ -20,10 +20,7 @@ const Header = ({ logoWidth, logoHeight }) => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 aria-label="Cheap weed">
-        <Logo width={logoWidth} height={logoHeight} />
-        <span className={styles.title}>Cheap weed</span>
-      </h1>
+      <Logo />
       <IconButton
         width={40}
         height={40}

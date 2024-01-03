@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, useMemo } from 'react'
+import { useContext, useMemo, useState } from 'react'
 import { jwtDecode } from 'jwt-decode'
 import { useLoadScript } from '@react-google-maps/api'
 import dayjs from 'dayjs'
@@ -21,6 +21,7 @@ import { inputsConfig, selectsConfig } from './new-post-form.helper'
 
 import styles from './new-post-form.module.scss'
 import NewPostConfirmation from '../new-post-confirmation'
+import { useRouter } from 'next/navigation'
 
 dayjs.extend(utc)
 
@@ -33,12 +34,14 @@ const validation = Yup.object({
   strainName: Yup.string().required('Nazwa szuszu jest wymgana')
 })
 
-const NewPostForm = ({ setShowModal, posts, setPosts, step, setStep }) => {
+const NewPostForm = () => {
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { userToken } = useContext(UserContext)
+  const [ step, setStep ] = useState('firstStep')
   const libraries = useMemo(() => ['places'], [])
+  const { push } = useRouter()
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
@@ -81,12 +84,11 @@ const NewPostForm = ({ setShowModal, posts, setPosts, step, setStep }) => {
  
     try {
       const data = await createPost(body)
-      setShowModal(false)
-      setPosts([...posts, data.post])
       setDisabledScroll(false)
       setOpenSpinner(false)
       setStep('firstStep')
       snackbarHandler('Post został utworzony', SEVERITY.SUCCESS)
+      push('/')
     } catch (error) {
       setOpenSpinner(false)
       handleError(error)

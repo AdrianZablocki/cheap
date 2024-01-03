@@ -51,7 +51,7 @@ const RegistrationForm = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.header}><Logo width={80} height={40}/></div>
+      <div className={styles.header}><Logo /></div>
       <UserForm handleSubmit={handleSubmit}/>
       <MailConfirmationPopup openPopup={openPopup} setOpenPopup={setOpenPopup} />
     </div>

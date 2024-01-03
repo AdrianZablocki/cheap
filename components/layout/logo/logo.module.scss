@@ -1,0 +1,22 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.scss';
+
+.logo {
+  @include font($mont-medium, 32px);
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 18px;
+
+  span {
+    color: $color-paradise-green;
+  }
+
+  a {
+    text-decoration: none;
+    color: $color-black-light;
+  }
+}
+
+.weed {
+  text-align: right;
+}

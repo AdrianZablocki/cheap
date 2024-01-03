@@ -1,0 +1,7 @@
+@import '../../styles/mixins.scss';
+
+
+.wrapper {
+  @extend %main-container;
+  margin-top: 50px;
+}

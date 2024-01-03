@@ -10,7 +10,7 @@ const WelcomeScreen = () => (
 
     <div className={styles.logo}>
       <div className={styles.title}>WITAJ W</div>
-      <Logo width={160} height={80} />
+      <Logo />
     </div>
 
     <h2 className={styles.subtitle}>NASZYM wspólnym celem jest zakup medycznego suszu w najlepszej cenie</h2>
