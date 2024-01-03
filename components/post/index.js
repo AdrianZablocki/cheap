@@ -124,7 +124,6 @@ const Post = ({ post }) => {
             padding={'8px'}
             action={()=>onAction('change')}
           />
-         {/* "tel:515107460" */}
           <Link href={`tel:${post.contact}`}>
             <IconButton
               alt="phone icon"

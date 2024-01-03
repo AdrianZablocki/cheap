@@ -13,6 +13,7 @@ import SpinnerContext from '@/context/spinner-context'
 import SnackbarContext from '@/context/snackbar-context'
 import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import { createPost, getFormikError, setDisabledScroll } from '@/utils'
+import backIcon from '@/public/icons/back.svg'
 import Input from '../UI/input'
 import Select from '../UI/select'
 import Button from '../UI/button'
@@ -22,6 +23,7 @@ import { inputsConfig, selectsConfig } from './new-post-form.helper'
 import styles from './new-post-form.module.scss'
 import NewPostConfirmation from '../new-post-confirmation'
 import { useRouter } from 'next/navigation'
+import IconButton from '../UI/icon-button'
 
 dayjs.extend(utc)
 
@@ -97,10 +99,19 @@ const NewPostForm = () => {
     }
   }
 
+  const onBack = (step) => {
+    const stepMap = {
+      firstStep: 'firstStep',
+      secondStep: 'firstStep',
+      submit: 'secondStep'
+    }
+
+    return setStep(stepMap[step] || 'firstStep')
+  }
   
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div>backs</div>
+      {step !== 'firstStep' && <IconButton icon={backIcon} action={() => onBack(step)} alt="back icon" padding="0 0 32px" />}
       {step === 'firstStep' && selectsConfig().map(select => 
         <Select
           key={`new-post-form-${select.id}`}
