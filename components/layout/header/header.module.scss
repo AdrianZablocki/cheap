@@ -1,14 +1,18 @@
 @import '../../../styles/mixins.scss';
+@import '../../../styles//variables.scss';
 
 .wrapper {
+  padding: 16px 0;
+  border-bottom: $border-1-orochimaru;
+  box-shadow: $shadow-box;
+  background-color: $color-misty-lawn;
+}
+
+.header {
   @extend %main-container;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 12px;
-  // position: sticky;
-  // top: 0;
-  // z-index: 1000;
 }
 
 .title {

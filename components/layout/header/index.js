@@ -20,29 +20,32 @@ const Header = () => {
   const url = userToken ? `/user/${jwtDecode(userToken).id}` : '/refresh?location=/'
   return (
     <div className={styles.wrapper}>
-      <Logo />
-      {pathName.includes('user') ? (
-        <Link href="/">
-          <IconButton
-            width={30}
-            height={30}
-            padding="8px"
-            icon={backIcon}
-            alt="back icon"
-            priority
-          />
-        </Link>
-      ) : (
-        <Link href={url}>
-          <IconButton
-            width={40}
-            height={40}
-            icon={userIcon}
-            alt="user icon"
-            priority
-          />
-        </Link>
-      )}
+      <div className={styles.header}>
+        <Logo />
+        {pathName.includes('user') ? (
+          <Link href="/">
+            <IconButton
+              width={30}
+              height={30}
+              padding="8px"
+              icon={backIcon}
+              alt="back icon"
+              priority
+            />
+          </Link>
+        ) : (
+          <Link href={url}>
+            <IconButton
+              width={40}
+              height={40}
+              icon={userIcon}
+              alt="user icon"
+              priority
+            />
+          </Link>
+        )}
+      </div>
+
     </div>
   )
 }

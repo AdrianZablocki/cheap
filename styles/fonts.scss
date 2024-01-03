@@ -23,9 +23,15 @@
   src: url('../public/fonts/Montserrat-Bold.ttf');
 }
 
+@font-face {
+  font-family: "HindSemiBold";
+  src: url('../public/fonts/Hind-SemiBold.ttf');
+}
+
 $mont-thin: 'MontserratThin', sans-serif;
 $mont-light: 'MontserratLight', sans-serif;
 $mont-medium: 'MontserratMedium', sans-serif;
 $mont-semi-bold: 'MontserratSemiBold', sans-serif;
 $mont-bold :'MontserratBold', sans-serif;
 
+$hind-semi-bold: 'HindSemiBold', sans-serif;
