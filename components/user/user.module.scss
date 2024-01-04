@@ -8,7 +8,7 @@
 
   a {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     font-size: 14px;
     text-align: right;
     text-decoration: none;
@@ -18,11 +18,10 @@
 
 .name {
   text-align: right;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .postsWrapper {
-  margin-top: 32px;
 
   ul {
     @include drawGrid(1);
