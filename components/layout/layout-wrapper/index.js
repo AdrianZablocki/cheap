@@ -11,6 +11,7 @@ import Header from '../header'
 import Navbar from '../navbar'
 import Spinner from '../spinner'
 import SnackbarMessage from '../snackbar'
+import Footer from '../footer'
 
 const LayoutWrapper = ({ children, token }) => {
   const [ openSpinner, setOpenSpinner ] = useState(false)
@@ -32,6 +33,7 @@ const LayoutWrapper = ({ children, token }) => {
           { !headerlessViews.includes(pathname) && <Header />}
           { pathname === '/' && <Navbar /> }
           { children }
+          { pathname === '/' && <Footer /> }
           <Spinner isOpen={openSpinner} background="rgba(0, 0, 0, .5)" />
           <SnackbarMessage isOpen={openSnackbar} message={snackbarMessage} severity={snackbarSeverity} />      
         </SnackbarContext.Provider>

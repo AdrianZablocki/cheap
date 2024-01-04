@@ -36,7 +36,7 @@ const User = ({ params }) => {
       <Link href="/">Edytuj dane konta</Link>
       <Link href="/logout">Wyloguj</Link>
       <div className={styles.postsWrapper}>
-        <span>Moje wrzótki</span>
+        <span>Moje wpisy</span>
         <ul>
           {user && user?.posts.map((post, index) => 
             <UserPost key={`user-post-${index}-${post._id}`} post={post} />
