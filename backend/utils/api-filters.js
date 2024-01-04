@@ -34,6 +34,7 @@ class APIFilters {
 
     this.query = this.query.limit(resPerPage).skip(skip)
 
+    console.log('PAGINATION', this.queryStr, this.query.options)
     return this
 
   }

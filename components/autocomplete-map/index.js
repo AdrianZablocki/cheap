@@ -30,21 +30,25 @@ const AutocompleteMap = ({ loaded, onComplete, field, selectedAdress, setSelecte
       {loaded && <PlacesAutocomplete
         onAddressSelect={(address, placeId) => {
           getGeocode({ address: address }).then((results) => {
-            console.log(results[0])
             const { lat, lng } = getLatLng(results[0])
             setZoom(15)
             setLat(lat)
             setLng(lng)
           });
-          getDetails({placeId}).then((result) => onComplete(field, {
-            name: result.name,
-            address: result.formatted_address,
-            contact: result.international_phone_number,
-            website: result.website,
-            openingHours: result.opening_hours?.periods,
-            lat,
-            lng,
-          }))
+          getDetails({placeId}).then((result) => {
+            console.log('Details', result)
+            onComplete(field, {
+              mapUrl: result.url,
+              websiteUrl: result.website,
+              name: result.name,
+              address: result.formatted_address,
+              contact: result.international_phone_number,
+              website: result.website,
+              openingHours: result.opening_hours?.periods,
+              lat,
+              lng,
+            })
+          })
         }}
         selectedValue={selectedAdress}
         setSelectedValue={setSelectedValue}

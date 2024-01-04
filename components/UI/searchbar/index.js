@@ -18,7 +18,7 @@ const SearchBar = ({ onSearch }) => {
     const subscription = onSearch$.pipe(
       debounceTime(500),
       distinctUntilChanged(),
-      tap(query => onSearch(query ? `keyword=${query}` : ''))
+      tap(query => onSearch(query ? `keyword=${query}&page=1` : ''))
     ).subscribe(setDebouncedName);
   }, [])
 

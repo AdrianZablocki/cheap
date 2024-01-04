@@ -54,6 +54,12 @@ const postSchema = new mongoose.Schema({
   },
   openingHours: {
     type: Array
+  },
+  mapUrl: {
+    type: String
+  },
+  websiteUrl: {
+    type: String
   }
 })
 

@@ -74,10 +74,10 @@ const NewPostForm = () => {
   const onCreateNewPost = async(values) => {
     setOpenSpinner(true)
     console.log(jwtDecode(userToken).id )
-    const { name, openingHours, address, contact, lat, lng } = values.drugStore
+    const { name, openingHours, address, contact, lat, lng, mapUrl, websiteUrl } = values.drugStore
     const { strainName, region, city } = values
     const body = {
-      name, openingHours, address, contact, lat, lng, strainName, region, city,
+      name, openingHours, address, contact, lat, lng, strainName, region, city, mapUrl, websiteUrl,
       author: userToken ? jwtDecode(userToken).name : '',
       authorId: userToken ? jwtDecode(userToken).id : '',
       date: dayjs().utc().format(),
