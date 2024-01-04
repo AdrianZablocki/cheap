@@ -11,6 +11,10 @@
   color: $color-black-light;
   text-transform: uppercase;
   cursor: pointer;
+
+  &:disabled {
+    opacity: .4;
+  }
 }
 
 .success {
