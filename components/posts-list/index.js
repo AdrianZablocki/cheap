@@ -30,13 +30,9 @@ const PostList = () => {
   }, [])
 
   return (
-    <>
-      <Link href="/create-post" passHref>Utwórz wpis</Link>
-      
-      <ul className={styles.grid}>
-        {posts && posts.map((post, index )=> <Post key={`post_${index}`} post={post} />)}
-      </ul>
-    </>
+    <ul className={styles.grid}>
+      {posts && posts.map((post, index )=> <Post key={`post_${index}`} post={post} />)}
+    </ul>
   )
 }
 

@@ -23,3 +23,28 @@ $border-1-orochimaru: 1px solid $color-orochimaru;
 $shadow-box: rgba($color-orochimaru, 0.3) 0px 10px 3px -6px,
   rgba($color-orochimaru, 0.3) 0px 1px 1px 0px,
   rgba($color-orochimaru, 0.12) 0px 1px 3px 0px;
+
+  $shadow-box-top: 0px -5px 6px -5px rgba($color-orochimaru, 1);
+
+
+/* *
+ * Z-index
+ */
+// List of core elements used in project
+$list:
+  basic,
+  modal,
+  spinner,
+  special;
+
+// Return z-index of element from list, return null if there is no element
+@function z-index($list, $element) {
+
+  $z-index: index($list, $element);
+
+  @if $z-index {
+    @return $z-index;
+  }
+
+  @return null;
+}

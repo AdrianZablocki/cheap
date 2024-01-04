@@ -1,0 +1,27 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+@import '../../../styles/fonts.scss';
+
+.footerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: $color-white;
+  border-top: $border-1-orochimaru;
+  box-shadow: $shadow-box-top;
+
+  a {
+    @include font($mont-medium, 14px);
+    padding: 12px 20px;
+    color: $color-black-light;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 34px;
+    border: 2px solid $color-paradise-green;
+  }
+}
