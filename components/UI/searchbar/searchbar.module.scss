@@ -2,10 +2,17 @@
 @import '../../../styles/mixins.scss';
 @import '../../../styles/grid.scss';
 
-.searchInModal {
+.search {
   position: relative;
+  width: 100%;
+  margin-right: 8px;
+
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
 
   input {
+    width: 100%;
     padding: 8px 20px;
     font-size: 16px;
     background-color: $color-misty-lawn;

@@ -33,7 +33,7 @@ const SearchBar = ({ onSearch }) => {
   }
   
   return (
-    <div className={styles.searchInModal}>
+    <div className={styles.search}>
       <input
         type="text"
         value={queryName || ''}
