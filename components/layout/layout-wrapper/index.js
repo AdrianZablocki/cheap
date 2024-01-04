@@ -8,7 +8,6 @@ import SnackbarContext from '@/context/snackbar-context'
 import UserContext from '@/context/user-context'
 import useSnackbar from '@/hooks/use-snackbar'
 import Header from '../header'
-import Navbar from '../navbar'
 import Spinner from '../spinner'
 import SnackbarMessage from '../snackbar'
 import Footer from '../footer'
@@ -31,7 +30,6 @@ const LayoutWrapper = ({ children, token }) => {
           snackbarSeverity
         }, snackbarHandler}}>
           { !headerlessViews.includes(pathname) && <Header />}
-          { pathname === '/' && <Navbar /> }
           { children }
           { pathname === '/' && <Footer /> }
           <Spinner isOpen={openSpinner} background="rgba(0, 0, 0, .5)" />

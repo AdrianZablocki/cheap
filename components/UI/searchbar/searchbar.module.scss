@@ -3,19 +3,12 @@
 @import '../../../styles/grid.scss';
 
 .searchInModal {
-  margin-top: 50px;
-  padding: 0;
-  background-color: $color-paradise-green;
-  border-radius: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 
   input {
-    width: 100%;
     padding: 8px 20px;
     font-size: 16px;
-    background-color: transparent;
+    background-color: $color-misty-lawn;
     border-radius: 50px;
     border: none;
 
@@ -27,25 +20,7 @@
 
 .clearButton {
   position: absolute;
-  right: 32px;
-}
-
-.note {
-  margin-top: 24px;
-  text-align: center;
-}
-
-
-.post {
-  @include drawGrid(4);
-  @extend .gap;
-  padding-bottom: 20px;    
-
-  @media (max-width: 992px) {
-    @include drawGrid(2);
-  }
-  
-  @media (max-width: 560px) {
-    @include drawGrid(1);
-  }
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
 }

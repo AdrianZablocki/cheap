@@ -1,44 +1,26 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { debounceTime, map, tap, distinctUntilChanged } from 'rxjs/operators'
-import { fromEvent, Subject } from 'rxjs'
+import { debounceTime, tap, distinctUntilChanged } from 'rxjs/operators'
+import { Subject } from 'rxjs'
+
+import closeIcon from '@/public/icons/close.svg'
+import IconButton from '../icon-button'
 
 import styles from './searchbar.module.scss'
-import searchIcon from '@/public/icons/search.svg'
-import Modal from '../../layout/modal'
-import IconButton from '../icon-button'
-import { getPosts } from '@/utils'
-import Post from '@/components/post'
 
-const SearchBar = () => {
-  const [queryName, setQueryName] = useState('')
-  const [debouncedName, setDebouncedName] = useState('')
-  const [onSearch$] = useState(()=>new Subject())
-  const [showModal, setShowModal] = useState(false)
-  const [posts, setPosts] = useState([])
+const SearchBar = ({ onSearch }) => {
+  const [ queryName, setQueryName ] = useState('')
+  const [ debouncedName, setDebouncedName ] = useState('')
+  const [ onSearch$ ] = useState(()=>new Subject())
 
   useEffect(() => {
     const subscription = onSearch$.pipe(
-      debounceTime(400),
+      debounceTime(500),
       distinctUntilChanged(),
-      tap(a => {
-        console.log(a)
-        fetch(a)
-        // const test = await getPosts(`keyword=${a}`)
-      })
+      tap(query => onSearch(query ? `keyword=${query}` : ''))
     ).subscribe(setDebouncedName);
   }, [])
-
-  const fetch = async(query) => {
-    try {
-      const res = await getPosts(`keyword=${query}`)
-      setPosts(res.posts)
-      console.log(res.posts)
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   const handleSearch = e => {
     setQueryName(e.target.value)
@@ -47,49 +29,30 @@ const SearchBar = () => {
 
   const onClear = () => {
     setQueryName('')
-    setPosts([])
+    onSearch$.next('')
   }
   
   return (
-    <>
-      <IconButton
-        priority
-        icon={searchIcon}
-        alt="search"
-        text="Wyszukaj nazwę suszu lub miejsce"
-        padding="8px 20px"
-        color="#000"
-        bgColor="#A3EF97"
-        borderRadius="50px"
-        action={() => setShowModal(true)}
+    <div className={styles.searchInModal}>
+      <input
+        type="text"
+        value={queryName || ''}
+        placeholder="Szukaj"
+        onChange={(e) => handleSearch(e)}
       />
-      {showModal &&
-        <Modal onClose={() => setShowModal(false)}>
-          <div className={styles.searchInModal}>
-            <input
-              type="text"
-              value={queryName}
-              placeholder="Wyszukaj nazwę suszu lub miejsce"
-              onChange={handleSearch}
-            />
-            <div className={styles.clearButton}>
-              <IconButton
-                priority
-                icon={searchIcon}
-                alt="clear"
-                action={onClear}
-              />              
-            </div>
-          </div>
-          <div className={styles.post}>
-            {posts.length && posts.map(post => <Post key={`searched-post-${post._id}`} post={post} /> )}
-          </div>
-          {/* <p>Debounced: {debouncedName} {queryName}</p> */}
-          {/* {Boolean(posts.length) && <div className={styles.note}>Niestety nic nie znaleźliśmy, spróbuj coś innego</div>} */}
-          
-        </Modal>
+      {queryName && 
+        <div className={styles.clearButton}>
+          <IconButton
+            width={12}
+            height={12}
+            priority
+            icon={closeIcon }
+            alt="clear icon"
+            action={onClear}
+          />              
+        </div>
       }
-    </>
+    </div>
   )
 }
 
