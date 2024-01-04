@@ -16,7 +16,11 @@
     @include font($mont-medium, 16px);
     display: flex;
     justify-content: space-between;
-    align-items: center;
+
+    span {
+      @include font($mont-medium, 14px);
+      margin: 0;
+    }
   }
 
   h3 {
