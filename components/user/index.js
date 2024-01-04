@@ -7,6 +7,7 @@ import axios from 'axios'
 import SpinnerContext from '@/context/spinner-context'
 
 import styles from './user.module.scss'
+import UserPost from '../user-post'
 
 const User = ({ params }) => {
   const [ user, setUser ] = useState()
@@ -35,8 +36,12 @@ const User = ({ params }) => {
       <Link href="/">Edytuj dane konta</Link>
       <Link href="/logout">Wyloguj</Link>
       <div className={styles.postsWrapper}>
-        <span>Twoje publikacje</span>
-        {user?.posts.map((post, index) => <div key={`user-post-${index}-${post._id}`}>{post.strainName}</div>)}
+        <span>Moje wrzótki</span>
+        <ul>
+          {user && user?.posts.map((post, index) => 
+            <UserPost key={`user-post-${index}-${post._id}`} post={post} />
+          )}          
+        </ul>
       </div>
     </div>
   )

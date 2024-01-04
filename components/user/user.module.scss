@@ -1,6 +1,6 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/variables.scss';
-
+@import '../../styles/grid.scss';
 
 .wrapper {
   @extend %main-container;
@@ -18,14 +18,28 @@
 
 .name {
   text-align: right;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
 
 .postsWrapper {
   margin-top: 32px;
 
+  ul {
+    @include drawGrid(1);
+    @extend .gap;
+
+    @media screen and (min-width: 560px) {
+      @include drawGrid(2);
+    }
+
+    @media screen and (min-width: 992px) {
+      @include drawGrid(3);
+    }
+  }
 
   span {
     @include font($mont-light, 14px);
+    display: inline-block;
+    margin-bottom: 8px;
   }
 }

@@ -17,6 +17,11 @@
   border: 2px solid $color-paradise-green;
 }
 
+.successNoBord {
+  border: none;
+  color: $color-paradise-green;
+}
+
 .successFilled {
   background-color: $color-paradise-green;
 }
@@ -31,6 +36,11 @@
 
 .error {
   border: 2px solid $color-bruschetta-tomato;
+}
+
+.errorNoBoard {
+  border: none;
+  color: $color-bruschetta-tomato;
 }
 
 .errorFilled {
