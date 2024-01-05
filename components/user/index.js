@@ -17,19 +17,17 @@ const User = ({ params }) => {
     const fetchData = async() => {
       setOpenSpinner(true)
       try {
-        const  { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/${params.id}`)
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/${params.id}`)
         setUser(data.user)
         setOpenSpinner(false)
       } catch (error) {
         console.log(error)
         setOpenSpinner(false)
       }
-      
     } 
     fetchData()
   }, [])
 
-  console.log(user)
   return (
     <div className={styles.wrapper}>
       <div className={styles.name}>{user?.name}</div>

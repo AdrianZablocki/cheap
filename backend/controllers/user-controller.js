@@ -33,12 +33,12 @@ export const getUser = async (req, res) => {
   try {
     const userData = { ...removePassword(user), posts }
 
-    user
+    return user
     ? res.status(200).json({ user: userData })
     : res.status(404).json({ message: 'Nieznaleziono konta' })
 
   } catch (error) {
-    res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
+    return res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
   }
 }
 
@@ -75,8 +75,8 @@ export const getUsers = async (req, res) => {
       const updatedUser = removePassword(user)
       return updatedUser
     })
-    res.json(updatedUsers)
+    return res.json(updatedUsers)
   } catch (error) {
-    res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
+    return res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
   }
 }

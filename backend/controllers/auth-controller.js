@@ -38,7 +38,7 @@ export const authUser = async (req, res) => {
       
       res.setHeader('Set-Cookie', [
         serialize('token', accessToken, { path: '/', httpOnly: true, expires: tokenCookieExpires }),
-        serialize('refresToken', refreshToken, { path: '/', httpOnly: true, expires: refreshTokenCookieExpires })
+        serialize('refreshToken', refreshToken, { path: '/', httpOnly: true, expires: refreshTokenCookieExpires })
       ])
 
       res.status(200).json({ accessToken, refreshToken })
