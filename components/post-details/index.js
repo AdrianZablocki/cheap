@@ -19,7 +19,7 @@ import Modal from '../layout/modal'
 import ChangePrice from '../change-price'
 import Button from '../UI/button'
 import { getPost, setDisabledScroll, updatePost } from '@/utils'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 dayjs.extend(utc)
 
@@ -40,6 +40,7 @@ const PostDetails = ({ postId, token }) => {
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
+  const pathName = usePathname()
   const { push } = useRouter()
 
   useEffect(() => {

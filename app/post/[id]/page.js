@@ -14,7 +14,7 @@ const PostPage = async({ params }) => {
   }
 
   return (
-    <PostDetails postId={params?.id} token={token.value} />
+    <PostDetails postId={params?.id} token={token?.value} />
   )
 }
 
