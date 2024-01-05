@@ -22,7 +22,7 @@ const Header = () => {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <Logo />
-        {pathName.includes('user') ? (
+        {pathName !== '/' ? (
           <Link href="/">
             <IconButton
               width={30}

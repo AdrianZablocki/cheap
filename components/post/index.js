@@ -11,9 +11,10 @@ import UserContext from '@/context/user-context'
 import SpinnerContext from '@/context/spinner-context'
 import SnackbarContext from '@/context/snackbar-context'
 import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
-import sadIcon from '@/public/icons/sad.svg'
-import happyIcon from '@/public/icons/happy.svg'
+import cancelIcon from '@/public/icons/cancel.svg'
+import confirmIcon from '@/public/icons/confirm.svg'
 import phoneIcon from '@/public/icons/phone.svg'
+import moreIcon from '@/public/icons/more.svg'
 import redNo2Image from '@/public/images/red.jpeg'
 import { date, setDisabledScroll, updatePost } from '@/utils'
 import ConfirmPrice from '../confirm-price'
@@ -23,7 +24,6 @@ import Modal from '../layout/modal'
 
 import styles from './post.module.scss'
 import Link from 'next/link'
-import Button from '../UI/button'
 
 dayjs.extend(utc)
 
@@ -87,8 +87,6 @@ const Post = ({ post }) => {
     }
   }
 
-  const onMore = (id) => push(`/post/${id}`)
-
   return (
     <>
       <li className={styles.post}>
@@ -114,13 +112,13 @@ const Post = ({ post }) => {
         <div className={styles.actions}>
           <IconButton
             alt="happy icon"
-            icon={happyIcon}
+            icon={confirmIcon}
             padding={'8px'}
             action={()=>onAction('confirm')}
           />
           <IconButton
             alt="sad icon"
-            icon={sadIcon}
+            icon={cancelIcon}
             padding={'8px'}
             action={()=>onAction('change')}
           />
@@ -131,9 +129,13 @@ const Post = ({ post }) => {
               padding={'8px'}
             />
           </Link>
-
-          <Button text="Więcej" buttonType="successFilled" action={() => onMore(postCopy._id)} />
-        
+          <Link href={`/post/${post._id}`}>
+            <IconButton
+              alt="phone icon"
+              icon={moreIcon}
+              padding={'8px'}
+            />
+          </Link>
         </div>
       </li>  
 

@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 import axios from 'axios'
 import mongoose from 'mongoose'
 
-import Post from '@/components/post'
+import PostDetails from '@/components/post-details'
 
 const getPost = async (id) => {
   const  { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`)
@@ -20,7 +20,7 @@ const PostPage = async({ params }) => {
   const { post } = await getPost(params?.id)
 
   return (
-    <Post post={post} />
+    <PostDetails post={post} />
   )
 }
 
