@@ -1,5 +1,11 @@
 import axios from 'axios'
 
+export const getPost = async (id) => {
+  const  { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`)
+
+  return data
+}
+
 export const getPosts = async (query) => {
   const url = query ? `/api/posts?${query}` : '/api/posts'
   const  { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}${url}`)

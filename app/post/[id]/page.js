@@ -1,26 +1,20 @@
 import { redirect } from 'next/navigation'
-import axios from 'axios'
+import { cookies } from 'next/headers'
 import mongoose from 'mongoose'
 
 import PostDetails from '@/components/post-details'
 
-const getPost = async (id) => {
-  const  { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`)
-
-  return data
-}
 
 const PostPage = async({ params }) => {
+  const token = cookies().get('token')
   const isValidId = mongoose.isValidObjectId(params?.id)
 
   if (!isValidId) {
     return redirect('/')
   }
 
-  const { post } = await getPost(params?.id)
-
   return (
-    <PostDetails post={post} />
+    <PostDetails postId={params?.id} token={token.value} />
   )
 }
 

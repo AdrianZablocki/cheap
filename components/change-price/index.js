@@ -66,7 +66,7 @@ const ChangePrice = ({ updatePost, disablePost, post }) => {
       }
 
       <div className={styles.actions}>
-        {buttonsConfig.map((button, index) => <Button
+        {buttonsConfig.map((button, index) => button.action && <Button
           key={`change-price-button-${index}`}
           className={styles.button}
           text={button.text}
