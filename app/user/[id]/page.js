@@ -1,4 +1,3 @@
-
 import { redirect } from 'next/navigation'
 import mongoose from 'mongoose'
 

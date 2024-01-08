@@ -37,7 +37,7 @@ const useErrorHandler = (snackbarHandler) => {
   const handleError = (error) => {
     console.log('ERROR: ', error)
 
-    if ((error)?.response?.status === ERROR_CODES.UNAUTHORIZED || (error)?.response?.status === ERROR_CODES.FORBIDDEN || error.response.status === 405) {
+    if ((error)?.response?.status === ERROR_CODES.UNAUTHORIZED || (error)?.response?.status === ERROR_CODES.FORBIDDEN || error?.response?.status === 405) {
 
       snackbarHandler(getErrorMessage('Unauthorized'), SEVERITY.ERROR)
       push(`/refresh?location=${pathName}`)

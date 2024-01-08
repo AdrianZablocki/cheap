@@ -1,5 +1,6 @@
 'use client'
 
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useContext, useEffect, useState } from 'react'
 import { jwtDecode } from 'jwt-decode'
@@ -19,7 +20,6 @@ import Modal from '../layout/modal'
 import ChangePrice from '../change-price'
 import Button from '../UI/button'
 import { getPost, setDisabledScroll, updatePost, deletePost } from '@/utils'
-import { usePathname, useRouter } from 'next/navigation'
 import Dialog from '../layout/dialog'
 
 dayjs.extend(utc)
