@@ -1,0 +1,39 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
+
+.dialogBackdrop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top:0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .3);
+}
+
+.dialog {
+  padding: 28px 20px 62px;
+  margin: 0 16px;
+  background-color: $color-white;
+  border-radius: 15px;
+}
+
+.content {
+  padding: 62px 0;
+}
+
+.actions,
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  justify-content: flex-end;
+}
+
+.actions {
+  justify-content: space-between;
+}

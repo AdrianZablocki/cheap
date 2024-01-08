@@ -18,8 +18,9 @@ import styles from './post-details.module.scss'
 import Modal from '../layout/modal'
 import ChangePrice from '../change-price'
 import Button from '../UI/button'
-import { getPost, setDisabledScroll, updatePost } from '@/utils'
+import { getPost, setDisabledScroll, updatePost, deletePost } from '@/utils'
 import { usePathname, useRouter } from 'next/navigation'
+import Dialog from '../layout/dialog'
 
 dayjs.extend(utc)
 
@@ -37,6 +38,7 @@ const daysMap = {
 const PostDetails = ({ postId, token }) => {
   const [ post, setPost ]=useState()
   const [ showModal, setShowModal ] = useState(false)
+  const [ showDialog, setShowDialog ] = useState(false)
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
   const { handleError } = useErrorHandler(snackbarHandler)
@@ -75,7 +77,24 @@ const PostDetails = ({ postId, token }) => {
       setDisabledScroll(false)
       push('/')
     } catch (error) {
-      console.log('UPDATE PRICE ERROR', error)
+      console.log('UPDATE POST ERROR', error)
+      setOpenSpinner(false)
+      handleError(error)
+    }
+  }
+
+  const onDeletePost = async() => {
+    setOpenSpinner(true)
+    const message = 'Post został usunięty'
+    try {
+      await deletePost(post._id)
+      setOpenSpinner(false)
+      snackbarHandler(message, SEVERITY.SUCCESS)
+      setShowModal(false)
+      setDisabledScroll(false)
+      push('/')
+    } catch (error) {
+      console.log('DELETE POST ERROR', error)
       setOpenSpinner(false)
       handleError(error)
     }
@@ -86,12 +105,25 @@ const PostDetails = ({ postId, token }) => {
     setShowModal(true)
   }
 
+  const onDelete = () => {
+    checkAuth()
+    setShowDialog(true)
+    setDisabledScroll(true)
+  }
+
+  const onCloseDialog = () => {
+    setShowDialog(false)
+    setDisabledScroll(false)
+  }
+
   const checkAuth = () => {
     if(!token || !jwtDecode(token).isVerified) {
       push(`/refresh?location=${pathName}`)
       return
     }
   }
+
+  const isAuthor = () => jwtDecode(token).id === post.authorId
 
   return (
     <>
@@ -129,15 +161,16 @@ const PostDetails = ({ postId, token }) => {
               )}
             </div>
           </div>
-          <div className={styles.actions}>
-            <Button type="button" text="Edytuj" buttonType="success" action={() => onEdit()}/>
-            <Button type="button" text="Usuń" buttonType="error" />
+          <div className={`${styles.actions} ${!isAuthor() ? styles.noDeleteButton : ''}`}>
+            <Button type="button" text="Edytuj" buttonType="success" action={() => onEdit()} />
+            {isAuthor() && <Button type="button" text="Usuń" buttonType="error" action={() => onDelete()} />}
           </div>
           { showModal &&
             <Modal onClose={() => setShowModal(false)}>
               <ChangePrice post={post} updatePost={onUpdatePost} />
             </Modal>
           }
+          { showDialog && <Dialog action={onDeletePost} closeDialog={onCloseDialog} />}
         </div>
       }
     </>
