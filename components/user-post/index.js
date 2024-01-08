@@ -95,7 +95,7 @@ const UserPost = ({ post, token, getUser }) => {
         <p>{post.address}</p>
         <div className={styles.actions}>
           <Button buttonType="successNoBord" type="button" text="Edutuj" action={() => onEdit()} />
-          <Button buttonType="errorNoBoard" type="button" text="Usuń" />
+          <Button buttonType="errorNoBoard" type="button" text="Usuń" action={() => onDelete()} />
         </div>
       </li> 
       { showModal &&
@@ -103,7 +103,7 @@ const UserPost = ({ post, token, getUser }) => {
           <ChangePrice post={post} updatePost={onUpdatePost} />
         </Modal>
       }
-      { showDialog && <Dialog />}
+      { showDialog && <Dialog action={onDeletePost} closeDialog={onCloseDialog} />}
     </>
   ) 
 }
