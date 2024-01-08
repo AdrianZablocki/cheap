@@ -11,9 +11,9 @@ import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import Button from '../UI/button'
 import Modal from '../layout/modal'
 import Dialog from '../layout/dialog'
+import ChangePrice from '../change-price'
 
 import styles from './user-post.module.scss'
-import ChangePrice from '../change-price'
 
 dayjs.extend(utc)
 
