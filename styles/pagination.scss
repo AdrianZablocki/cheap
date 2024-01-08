@@ -1,0 +1,30 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  li {
+    margin: 0 10px;
+    cursor: pointer;
+  }
+}
+
+.selected {
+  color: red;
+}
+
+.previous {
+  margin-right: 10px;
+
+  &.disabled {
+    opacity: .5;
+  }
+}
+
+.next {
+  margin-left: 10px;
+
+  &.disabled {
+    opacity: .5;
+  }
+}

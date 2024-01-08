@@ -12,7 +12,7 @@ class APIFilters {
         $options: 'i'
       }
     } : {};
-    console.log(keyword)
+    console.log('keyword',keyword)
     this.query = this.query.find(keyword);
 
     return this;
