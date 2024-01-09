@@ -5,13 +5,14 @@ import { useState } from 'react'
 // import Link from 'next/link'
 
 import filtersIcon from '@/public/icons/filters.svg'
+import Filters from '@/components/filters'
 import SearchBar from '../../UI/searchbar'
 import Modal from '../modal'
 import IconButton from '../../UI/icon-button'
 
 import styles from './navbar.module.scss'
 
-const Navbar = ({ setKeyword, handlePageClick }) => {
+const Navbar = ({ setKeyword, handlePageClick, setFilters, filters }) => {
   const [showModal, setShowModal] = useState(false)
   const router = useRouter()
 
@@ -37,7 +38,7 @@ const Navbar = ({ setKeyword, handlePageClick }) => {
 
       {showModal &&
         <Modal onClose={() => setShowModal(false)}>
-          filters
+          <Filters setFilters={setFilters} closeModal={() => setShowModal(false)} filters={filters} />
         </Modal>
       }
       </div>

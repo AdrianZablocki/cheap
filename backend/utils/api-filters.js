@@ -12,7 +12,7 @@ class APIFilters {
         $options: 'i'
       }
     } : {};
-    console.log('keyword',keyword)
+    // console.log('keyword',keyword)
     this.query = this.query.find(keyword);
 
     return this;
@@ -34,7 +34,7 @@ class APIFilters {
 
     this.query = this.query.limit(resPerPage).skip(skip)
 
-    console.log('PAGINATION', this.queryStr, this.query.options)
+    // console.log('PAGINATION', this.queryStr, this.query.options)
     return this
 
   }

@@ -6,10 +6,10 @@ import ReactPaginate from 'react-paginate'
 import { getPosts } from '@/utils'
 import Post from '@/components/post'
 import SpinnerContext from '@/context/spinner-context'
+import QueryBuilder from '@/utils/requests/query-builder'
 import Navbar from '../layout/navbar'
 
 import styles from './post-list.module.scss'
-import QueryBuilder from '@/utils/requests/query-builder'
 
 const PostList = () => {
   const [ posts, setPosts ] = useState()
@@ -17,12 +17,18 @@ const PostList = () => {
   const [ page, setPage ] = useState(0)
   const { setOpenSpinner } = useContext(SpinnerContext)
   const [ keyword, setKeyword ] = useState()
+  const [ filters, setFilters ] = useState({region: '', strainName: ''})
 
   useEffect(() => {
-    const query2 = new QueryBuilder().withPagination(page + 1).withKeyword(keyword).build()
-    const fetchData = async() => fetchPosts(query2)
+    const query = new QueryBuilder()
+      .withPagination(page + 1)
+      .withKeyword(keyword)
+      .withFilters(filters)
+      .build()
+
+    const fetchData = async() => fetchPosts(query)
     fetchData()
-  }, [keyword, page])
+  }, [keyword, page, filters])
 
   const fetchPosts = async(query) => {
     console.log('GET')
@@ -44,7 +50,7 @@ const PostList = () => {
 
   return (
     <>
-      <Navbar setKeyword={setKeyword} handlePageClick={handlePageClick} />
+      <Navbar setKeyword={setKeyword} handlePageClick={handlePageClick} setFilters={setFilters} filters={filters} />
       <ul className={styles.grid}>
         {posts && posts.map((post, index )=> <Post key={`post_${index}`} post={post} />)}
       </ul>
