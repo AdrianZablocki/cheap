@@ -17,7 +17,6 @@ const PostList = () => {
   const [ page, setPage ] = useState(0)
   const { setOpenSpinner } = useContext(SpinnerContext)
   const [ keyword, setKeyword ] = useState()
-  // const [ ]
 
   useEffect(() => {
     const query2 = new QueryBuilder().withPagination(page + 1).withKeyword(keyword).build()
