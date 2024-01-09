@@ -11,14 +11,14 @@ import IconButton from '../../UI/icon-button'
 
 import styles from './navbar.module.scss'
 
-const Navbar = ({ onSearch }) => {
+const Navbar = ({ setKeyword, handlePageClick }) => {
   const [showModal, setShowModal] = useState(false)
   const router = useRouter()
 
   return (
     <div className={styles.navbarWrapper}>
       <div className={styles.navbar}>
-        <SearchBar onSearch={onSearch} />
+        <SearchBar setKeyword={setKeyword} handlePageClick={handlePageClick} />
 
         <div className={styles.actionButtons}>
           <IconButton

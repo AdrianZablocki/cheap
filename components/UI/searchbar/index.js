@@ -9,7 +9,7 @@ import IconButton from '../icon-button'
 
 import styles from './searchbar.module.scss'
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ setKeyword, handlePageClick }) => {
   const [ queryName, setQueryName ] = useState('')
   const [ debouncedName, setDebouncedName ] = useState('')
   const [ onSearch$ ] = useState(()=>new Subject())
@@ -18,16 +18,19 @@ const SearchBar = ({ onSearch }) => {
     const subscription = onSearch$.pipe(
       debounceTime(500),
       distinctUntilChanged(),
-      tap(query => onSearch(query ? `keyword=${query}&page=1` : ''))
+      tap(query => setKeyword(query))
     ).subscribe(setDebouncedName);
   }, [])
 
   const handleSearch = e => {
+    handlePageClick({selected: 0})
     setQueryName(e.target.value)
     onSearch$.next(e.target.value)
   }
 
   const onClear = () => {
+    handlePageClick({selected: 0})
+    setKeyword('')
     setQueryName('')
     onSearch$.next('')
   }
