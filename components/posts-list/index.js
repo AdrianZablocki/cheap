@@ -13,7 +13,7 @@ import styles from './post-list.module.scss'
 
 const PostList = () => {
   const [ posts, setPosts ] = useState()
-  const [ pageCount, setPageCount] = useState()
+  const [ pageCount, setPageCount] = useState(1)
   const [ page, setPage ] = useState(0)
   const { setOpenSpinner } = useContext(SpinnerContext)
   const [ keyword, setKeyword ] = useState()
@@ -36,7 +36,7 @@ const PostList = () => {
     try {
       const postsData = await getPosts(query ? query : '')
       setPosts(postsData.posts)
-      setPageCount(Math.round(postsData.filteredPostsCount/postsData.postsPerPage))
+      setPageCount(Math.ceil(postsData.filteredPostsCount/postsData.postsPerPage))
       setOpenSpinner(false)
     } catch (error) {
       console.log(error)
