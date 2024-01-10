@@ -44,7 +44,7 @@ const User = ({ params }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.name}>{user?.name}</div>
-      <Link href="/">Edytuj dane konta</Link>
+      {/* <Link href="/">Edytuj dane konta</Link> */}
       <Link href="/logout">Wyloguj</Link>
       <div className={styles.postsWrapper}>
         <span>Moje wpisy</span>

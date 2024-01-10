@@ -18,10 +18,8 @@ const RefreshToken = ({ refreshToken }) => {
     const refresh = async (token) => {
       try {
         const newToken = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/refresh`, { token })
-        console.log('NEW TOKEN', newToken)
         setUserToken(newToken.data.accessToken)
         push(`${process.env.NEXT_PUBLIC_API_URL}/${location}`)
-        
       } catch (error) {
         console.log('REFRESH TOKEN ERROR', error)
         

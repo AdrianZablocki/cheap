@@ -121,6 +121,7 @@ const PostDetails = ({ postId }) => {
   const checkAuth = () => {
     if(!userToken || !jwtDecode(userToken).isVerified) {
       push(`/refresh?location=${pathName}`)
+      snackbarHandler('Użytkownik musi mieć zweryfikowane konto aby dodawać i edytować posty', SEVERITY.ERROR)
       return
     }
   }
