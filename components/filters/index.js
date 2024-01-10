@@ -1,4 +1,4 @@
-import { getRegionList, getStrainList } from '@/utils'
+import { getRegionList, getStrainList, setDisabledScroll } from '@/utils'
 import Select from '../UI/select'
 import Button from '../UI/button'
 import { useFormik } from 'formik'
@@ -13,6 +13,7 @@ const Filters = ({ setFilters, closeModal, filters }) => {
     onSubmit: (values) => {
       setFilters(values)
       closeModal()
+      setDisabledScroll(false)
     }
   })
 

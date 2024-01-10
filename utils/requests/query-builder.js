@@ -21,8 +21,8 @@ class QueryBuilder {
       
       keys.forEach((key, index) => {
         console.log(index, keys.length, index === keys.length - 1)
-        query += filters[key] ? `${key}=${filters[key]}${isLastFilter(index, key) ? '' : '&'}` : ''
-        
+        // query += filters[key] ? `${key}=${filters[key]}${isLastFilter(index, key) ? '' : '&'}` : ''
+        query += filters[key] ? `${key}=${filters[key]}&` : ''
       })
     }
     this.filters = query ? query : ''
