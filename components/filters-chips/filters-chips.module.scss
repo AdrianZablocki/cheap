@@ -1,26 +1,25 @@
+@import '../../styles/variables.scss';
+
 .wrapper {
   padding: 8px 0;
   overflow: auto;
-}
-
-.chipsContainer {
-  // min-width: 100%;
-  // display: flex;
-  //   justify-content: space-between;
-  // display: flex;
-  // div {
-  //   display: inline;
-  //   width: 180px;
-  //   padding: 8px;
-  //   background-color: gray;
-  // }
 }
 
 .chip {
   display: inline-block;
   min-width: 100px;
   max-width: 300px;
-  padding: 8px;
-  background-color: gray;
+  padding: 8px 20px;
   margin-right: 20px;
+  background-color: $color-white;
+  border: 1px solid $color-paradise-green;
+  border-radius: 50px;
+}
+
+.chipContent {
+  display: flex;
+}
+
+.chipValue {
+  margin-right: 16px;
 }

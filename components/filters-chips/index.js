@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 
+import closeIcon from '@/public/icons/close.svg'
+import IconButton from '../UI/icon-button';
+
 import styles from './filters-chips.module.scss'
 
 const FiltersChips = ({ filters, setFilters }) => {
   const itemsRef = useRef([]);
   const [ width, setWidth ] = useState(0)
-  const chipPadding = 16
+  const chipPadding = 40
   const chipMargin = 20
 
   useEffect(() => {
@@ -24,7 +27,7 @@ const FiltersChips = ({ filters, setFilters }) => {
  }
   return (
     <div className={styles.wrapper}>
-      <div className={styles.chipsContainer} style={{width: width }}>
+      <div style={{width: width }}>
       {
         Object.keys(filters)?.map((key, index) => {
           if (filters[key]) {
@@ -33,7 +36,16 @@ const FiltersChips = ({ filters, setFilters }) => {
                 key={`filter-${key}`}
                 ref={el => itemsRef.current[index] = el}
               >
-              <span>{filters[key]}</span>  <button type="button" onClick={() => setFilters({...filters, [key]: ''})}>X</button>
+                <div className={styles.chipContent}>
+                  <span className={styles.chipValue}>{filters[key]}</span>
+                  <IconButton
+                  width={14}
+                  height={14}
+                    icon={closeIcon}
+                    alt="close icon"
+                    action={() => setFilters({...filters, [key]: ''})}
+                  /> 
+                </div>
             </div>
           }
         })
