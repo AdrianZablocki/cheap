@@ -31,7 +31,6 @@ const PostList = () => {
   }, [keyword, page, filters])
 
   const fetchPosts = async(query) => {
-    console.log('GET')
     setOpenSpinner(true)
     setPosts([])
     try {

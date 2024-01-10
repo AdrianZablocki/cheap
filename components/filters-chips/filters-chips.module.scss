@@ -1,0 +1,26 @@
+.wrapper {
+  padding: 8px 0;
+  overflow: auto;
+}
+
+.chipsContainer {
+  // min-width: 100%;
+  // display: flex;
+  //   justify-content: space-between;
+  // display: flex;
+  // div {
+  //   display: inline;
+  //   width: 180px;
+  //   padding: 8px;
+  //   background-color: gray;
+  // }
+}
+
+.chip {
+  display: inline-block;
+  min-width: 100px;
+  max-width: 300px;
+  padding: 8px;
+  background-color: gray;
+  margin-right: 20px;
+}

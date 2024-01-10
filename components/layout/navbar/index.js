@@ -14,6 +14,9 @@ import styles from './navbar.module.scss'
 const Navbar = ({ setKeyword, handlePageClick, setFilters, filters }) => {
   const [showModal, setShowModal] = useState(false)
 
+  const isFilters = () => {
+    return filters.region || filters.strainName
+  }
   return (
     <div className={styles.navbarWrapper}>
       <div className={styles.navbar}>
@@ -37,7 +40,7 @@ const Navbar = ({ setKeyword, handlePageClick, setFilters, filters }) => {
         }
       </div>
 
-      <FiltersChips filters={filters} setFilters={setFilters} />
+      {isFilters() && <FiltersChips filters={filters} setFilters={setFilters} />}
     </div>
   )
 }

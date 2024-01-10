@@ -19,7 +19,6 @@ class QueryBuilder {
       const keys = Object.keys(filters)
       
       keys.forEach((key, index) => {
-        console.log(index, keys.length, index === keys.length - 1)
         query += filters[key] ? `${key}=${filters[key]}&` : ''
       })
     }
@@ -37,7 +36,6 @@ class QueryBuilder {
     if (this.filters) {
       query += `&${this.filters}`
     }
-    console.log(query)
     return query
   }
 }
