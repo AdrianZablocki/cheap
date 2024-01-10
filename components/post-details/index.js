@@ -12,6 +12,7 @@ import phoneIcon from '@/public/icons/phone.svg'
 import clockIcon from '@/public/icons/clock.svg'
 import SpinnerContext from '@/context/spinner-context'
 import SnackbarContext from '@/context/snackbar-context'
+import UserContext from '@/context/user-context'
 import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import IconButton from '../UI/icon-button'
 
@@ -35,12 +36,13 @@ const daysMap = {
   6: 'Niedziela'
 }
 
-const PostDetails = ({ postId, token }) => {
+const PostDetails = ({ postId }) => {
   const [ post, setPost ]=useState()
   const [ showModal, setShowModal ] = useState(false)
   const [ showDialog, setShowDialog ] = useState(false)
   const { setOpenSpinner } = useContext(SpinnerContext)
   const { snackbarHandler } = useContext(SnackbarContext)
+  const { userToken } = useContext(UserContext)
   const { handleError } = useErrorHandler(snackbarHandler)
   const pathName = usePathname()
   const { push } = useRouter()
@@ -117,13 +119,13 @@ const PostDetails = ({ postId, token }) => {
   }
 
   const checkAuth = () => {
-    if(!token || !jwtDecode(token).isVerified) {
+    if(!userToken || !jwtDecode(userToken).isVerified) {
       push(`/refresh?location=${pathName}`)
       return
     }
   }
 
-  const isAuthor = () => jwtDecode(token).id === post.authorId
+  const isAuthor = () => userToken && jwtDecode(userToken)?.id === post.authorId
 
   return (
     <>

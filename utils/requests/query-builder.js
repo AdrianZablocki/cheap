@@ -17,16 +17,13 @@ class QueryBuilder {
     let query = ''
     if (filters) {
       const keys = Object.keys(filters)
-      const isLastFilter = (index, key) => index === keys.length - 1 && filters[key] !== ''
       
       keys.forEach((key, index) => {
         console.log(index, keys.length, index === keys.length - 1)
-        // query += filters[key] ? `${key}=${filters[key]}${isLastFilter(index, key) ? '' : '&'}` : ''
         query += filters[key] ? `${key}=${filters[key]}&` : ''
       })
     }
     this.filters = query ? query : ''
-    console.log(query)
     return this
   }
 
