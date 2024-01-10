@@ -1,16 +1,30 @@
+@import './variables.scss';
+
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 
   li {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
     margin: 0 10px;
-    cursor: pointer;
+    color: $color-black-light;
+    cursor: pointer
+  }
+
+  li:not(.previous, .next) {
+    border: 1px solid $color-black-light;
   }
 }
 
 .selected {
-  color: red;
+  color: $color-paradise-green!important;
+  border: 1px solid $color-paradise-green!important;
 }
 
 .previous {

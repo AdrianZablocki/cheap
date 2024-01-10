@@ -39,8 +39,8 @@ const FiltersChips = ({ filters, setFilters }) => {
                 <div className={styles.chipContent}>
                   <span className={styles.chipValue}>{filters[key]}</span>
                   <IconButton
-                  width={14}
-                  height={14}
+                    width={14}
+                    height={14}
                     icon={closeIcon}
                     alt="close icon"
                     action={() => setFilters({...filters, [key]: ''})}

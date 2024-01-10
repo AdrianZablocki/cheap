@@ -7,9 +7,12 @@ import { getPosts } from '@/utils'
 import Post from '@/components/post'
 import SpinnerContext from '@/context/spinner-context'
 import QueryBuilder from '@/utils/requests/query-builder'
+import prevIcon from '@/public/icons/prev.svg'
+import nextIcon from '@/public/icons/next.svg'
 import Navbar from '../layout/navbar'
 
 import styles from './post-list.module.scss'
+import IconButton from '../UI/icon-button'
 
 const PostList = () => {
   const [ posts, setPosts ] = useState()
@@ -60,8 +63,18 @@ const PostList = () => {
         // pageRangeDisplayed={3}
         pageCount={pageCount}
         breakLabel="..."
-        nextLabel="next >"
-        previousLabel="< previous"
+        nextLabel={<IconButton 
+          width={30}
+          height={30}
+          icon={nextIcon}
+          alt="close icon"
+        />}
+        previousLabel={<IconButton 
+          width={30}
+          height={30}
+          icon={prevIcon}
+          alt="close icon"
+        />}
         onPageChange={handlePageClick}
       />}    
     </>
