@@ -120,31 +120,41 @@ const Post = ({ post }) => {
         </div>
 
         <div className={styles.actions}>
-          <IconButton
-            alt="happy icon"
-            icon={confirmIcon}
-            padding={'8px'}
-            action={()=>onAction('confirm')}
-          />
-          <IconButton
-            alt="sad icon"
-            icon={cancelIcon}
-            padding={'8px'}
-            action={()=>onAction('change')}
-          />
-          <Link href={`tel:${post.contact}`}>
+          <div className={styles.actionItem}>
+            <IconButton
+              alt="confirm icon"
+              icon={confirmIcon}
+              padding={'8px'}
+              action={()=>onAction('confirm')}
+            />
+            <div className={styles.actionTip}>potwierdz</div>        
+          </div>
+
+          <div className={styles.actionItem}>
+            <IconButton
+              alt="cancel icon"
+              icon={cancelIcon}
+              padding={'8px'}
+              action={()=>onAction('change')}
+            /> 
+            <div className={styles.actionTip}>nieaktualne</div>          
+          </div>
+
+          <Link href={`tel:${post.contact}`} className={styles.actionItem}>
             <IconButton
               alt="phone icon"
               icon={phoneIcon}
               padding={'8px'}
             />
+            <div className={styles.actionTip}>zadzwoń</div>
           </Link>
-          <Link href={`/post/${post._id}`}>
+          <Link href={`/post/${post._id}`} className={styles.actionItem}>
             <IconButton
               alt="phone icon"
               icon={moreIcon}
               padding={'8px'}
             />
+            <div className={styles.actionTip}>więcej</div>
           </Link>
         </div>
       </li>  

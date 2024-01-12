@@ -26,6 +26,10 @@ export const authUser = async (req, res) => {
     const validPassword = await bcrypt.compare(req.body.password, user.password);
 
     if (validPassword) {
+      if (!user.verified) {
+        return res.status(404).json({ message: 'Aby zalogować się i móc w pełni korzystać z serwisu prosimy o zweryfikowanie konta, klikając w link przesłany w mailu'})
+      }
+
       const accessToken = jwt.sign(
         { id: user.id, email: user.email, name: user.name, isVerified: user.verified }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: tokenExpires }
       );
@@ -41,13 +45,13 @@ export const authUser = async (req, res) => {
         serialize('refreshToken', refreshToken, { path: '/', httpOnly: true, expires: refreshTokenCookieExpires })
       ])
 
-      res.status(200).json({ accessToken, refreshToken })
+      return res.status(200).json({ accessToken, refreshToken })
 
     } else {
-      res.status(404).json({ message: 'Niepoprawne hasło' })
+      return res.status(404).json({ message: 'Niepoprawne hasło' })
     }
   } else {
-    res.status(404).json({ message: 'Niepoprawny email' })
+    return res.status(404).json({ message: 'Niepoprawny email' })
   }
 
 
@@ -70,15 +74,15 @@ export const refreshToken = async (req, res) => {
         { id: user.id, email: user.email, name: user.name, isVerified: user.verified }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: tokenExpires}
       )
 
-      res.setHeader('Set-Cookie', [
+      return res.setHeader('Set-Cookie', [
         serialize('token', accessToken, { path: '/', httpOnly: true, expires: tokenCookieExpires })
       ])
 
-      res.status(200).json({ accessToken })
+      return res.status(200).json({ accessToken })
     }
     
   } catch (error) {
-    res.status(403).json({ message: 'Forbidden' }) // Forbidden
+    return res.status(403).json({ message: 'Forbidden' }) // Forbidden
   }
 
 }
