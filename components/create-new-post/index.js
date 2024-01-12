@@ -16,8 +16,12 @@ const CreateNewPost = () => {
 
   useEffect(() => {
     if(!userToken || !jwtDecode(userToken).isVerified) {
+      const message = !userToken 
+        ? 'Użytkownik musi być zalogowany'
+        : 'Użytkownik musi mieć zweryfikowane konto aby dodawać i edytować posty'
+
       push(`/refresh?location=/`)
-      snackbarHandler('Użytkownik musi mieć zweryfikowane konto aby dodawać i edytować posty', SEVERITY.ERROR)
+      snackbarHandler(message, SEVERITY.ERROR)
     }
   }, [userToken, push])
 

@@ -15,7 +15,6 @@ import cancelIcon from '@/public/icons/cancel.svg'
 import confirmIcon from '@/public/icons/confirm.svg'
 import phoneIcon from '@/public/icons/phone.svg'
 import moreIcon from '@/public/icons/more.svg'
-import redNo2Image from '@/public/images/red.jpeg'
 import { date, setDisabledScroll, updatePost } from '@/utils'
 import ConfirmPrice from '../confirm-price'
 import ChangePrice from '../change-price'
@@ -24,6 +23,7 @@ import Modal from '../layout/modal'
 
 import styles from './post.module.scss'
 import Link from 'next/link'
+import { imagesMap } from '@/utils/images/images-map'
 
 dayjs.extend(utc)
 
@@ -82,8 +82,12 @@ const Post = ({ post }) => {
 
   const checkAuth = () => {
     if(!userToken || !jwtDecode(userToken).isVerified) {
+      const message = !userToken 
+        ? 'Użytkownik musi być zalogowany'
+        : 'Użytkownik musi mieć zweryfikowane konto aby dodawać i edytować posty'
+
       push(`/refresh?location=${pathName}`)
-      snackbarHandler('Użytkownik musi mieć zweryfikowane konto aby dodawać i edytować posty', SEVERITY.ERROR)
+      snackbarHandler(message, SEVERITY.ERROR)
       return
     }
   }
@@ -100,7 +104,12 @@ const Post = ({ post }) => {
         </div>
 
         <div className={styles.imageContainer}>
-          <Image className={styles.image} src={redNo2Image} alt="red" fill={false} priority />
+          <Image
+            className={styles.image}
+            src={imagesMap.get(postCopy.strainName)}
+            alt={postCopy.strainName}
+            fill={false} priority
+          />
         </div>
 
         <div className={styles.content}>
