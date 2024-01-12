@@ -74,7 +74,7 @@ export const refreshToken = async (req, res) => {
         { id: user.id, email: user.email, name: user.name, isVerified: user.verified }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: tokenExpires}
       )
 
-      return res.setHeader('Set-Cookie', [
+      res.setHeader('Set-Cookie', [
         serialize('token', accessToken, { path: '/', httpOnly: true, expires: tokenCookieExpires })
       ])
 
