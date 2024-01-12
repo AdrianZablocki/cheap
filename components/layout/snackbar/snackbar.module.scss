@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .wrapper {
   z-index: 1400;
   position: fixed;
@@ -10,6 +12,7 @@
   align-items: center;
   bottom: 8px;
   width: 0;
+  z-index: z-index($list, snackbar);
 }
 
 .snackbar {
