@@ -157,13 +157,13 @@ const PostDetails = ({ postId }) => {
           <div className={`${styles.details} ${styles.oppeningHours}`}>
             <IconButton alt="clock icon" icon={clockIcon} padding={iconPadding} />
             <div>
-              {post.openingHours.map((item, index) => 
+              {post.openingHours?.map((item, index) => 
                 <div key={`openingHours-${index}`} className={styles.hour}>
                   {daysMap[index]} 
                   <span> </span>
-                  {item.open.hours}:{item.open.minutes === 0 ? '00' : item.open.minutes}
+                  {item?.open?.hours}:{item?.open?.minutes === 0 ? '00' : item?.open?.minutes}
                   <span> - </span>
-                  {item.close.hours}:{item.close.minutes === 0 ? '00' : item.close.minutes}
+                  {item?.close?.hours}:{item?.close?.minutes === 0 ? '00' : item?.close?.minutes}
                 </div>
               )}
             </div>
