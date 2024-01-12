@@ -142,10 +142,7 @@ const Post = ({ post }) => {
             <div className={styles.actionTip}>nieaktualne</div>          
           </div>
 
-          <Link
-            href={postCopy.isValid ? `tel:${post.contact}` : ''}
-            className={styles.actionItem}
-          >
+          <Link href={`tel:${post.contact}`} className={styles.actionItem}>
             <IconButton
               alt="phone icon"
               icon={phoneIcon}
@@ -153,10 +150,7 @@ const Post = ({ post }) => {
             />
             <div className={styles.actionTip}>zadzwoń</div>
           </Link>
-          <Link
-            href={postCopy.isValid ? `/post/${post._id}` : ''}
-            className={styles.actionItem}
-          >
+          <Link href={`/post/${post._id}`} className={styles.actionItem}>
             <IconButton
               alt="more icon"
               icon={moreIcon}
