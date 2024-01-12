@@ -63,7 +63,7 @@
   }
 
   button {
-    z-index: 1;
+    z-index: z-index($list, basic);
   }
 }
 

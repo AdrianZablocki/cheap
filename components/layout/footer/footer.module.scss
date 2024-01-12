@@ -14,6 +14,7 @@
   background-color: $color-white;
   border-top: $border-1-orochimaru;
   box-shadow: $shadow-box-top;
+  z-index: z-index($list, footer);
 
   a {
     @include font($mont-medium, 14px);
