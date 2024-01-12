@@ -95,28 +95,30 @@ const Post = ({ post }) => {
   return (
     <>
       <li className={styles.post}>
-        <div className={styles.header}>
-          <div>{postCopy.strainName} {!postCopy.isValid && <span>nieaktualne</span>}</div>
-          <div className={styles.price}>
-            <div>{postCopy.price} zł/gram</div>
-            <div>{dayjs(postCopy.date).format(date)}</div>
+        <div>
+          <div className={styles.header}>
+            <div>{postCopy.strainName}</div>
+            <div className={styles.price}>
+              <div>{postCopy.price} zł/gram</div>
+              <div>{dayjs(postCopy.date).format(date)}</div>
+            </div>
           </div>
-        </div>
 
-        <div className={styles.imageContainer}>
-          <Image
-            className={styles.image}
-            src={imagesMap.get(postCopy.strainName)}
-            alt={postCopy.strainName}
-            fill={false} priority
-          />
-        </div>
-
-        <div className={styles.content}>
+          <div className={`${!postCopy.isValid ? styles.invalid : ''}`}>
+            <Image
+              className={styles.image}
+              src={imagesMap.get(postCopy.strainName)}
+              alt={postCopy.strainName}
+              fill={false} priority
+            />
+            {!postCopy.isValid && <div className={styles.layer}><span>Nieaktualne</span></div>}
+          </div>     
+          <div className={styles.content}>
             <div className={styles.storeName}>{postCopy.name}</div> 
             <div className={styles.label}>apteka</div>
             <div className={styles.address}>{postCopy.address}</div> 
             <div className={styles.label}>adres</div>
+          </div>     
         </div>
 
         <div className={styles.actions}>
@@ -140,7 +142,10 @@ const Post = ({ post }) => {
             <div className={styles.actionTip}>nieaktualne</div>          
           </div>
 
-          <Link href={`tel:${post.contact}`} className={styles.actionItem}>
+          <Link
+            href={postCopy.isValid ? `tel:${post.contact}` : ''}
+            className={styles.actionItem}
+          >
             <IconButton
               alt="phone icon"
               icon={phoneIcon}
@@ -148,15 +153,18 @@ const Post = ({ post }) => {
             />
             <div className={styles.actionTip}>zadzwoń</div>
           </Link>
-          <Link href={`/post/${post._id}`} className={styles.actionItem}>
+          <Link
+            href={postCopy.isValid ? `/post/${post._id}` : ''}
+            className={styles.actionItem}
+          >
             <IconButton
-              alt="phone icon"
+              alt="more icon"
               icon={moreIcon}
               padding={'8px'}
             />
             <div className={styles.actionTip}>więcej</div>
           </Link>
-        </div>
+        </div>  
       </li>  
 
       { showModal && <Modal onClose={() => setShowModal(false)}>{modalContent}</Modal> }
