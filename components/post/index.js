@@ -127,7 +127,7 @@ const Post = ({ post }) => {
               padding={'8px'}
               action={()=>onAction('confirm')}
             />
-            <div className={styles.actionTip}>potwierdz</div>        
+            <div className={styles.actionTip}>potwierdź</div>        
           </div>
 
           <div className={styles.actionItem}>
