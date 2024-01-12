@@ -3,6 +3,7 @@ import { useFormik } from 'formik'
 import { getRegionList, getStrainList, setDisabledScroll } from '@/utils'
 import Select from '../UI/select'
 import Button from '../UI/button'
+import Input from '../UI/input'
 
 const Filters = ({ setFilters, closeModal, filters }) => {
 
@@ -28,6 +29,7 @@ const Filters = ({ setFilters, closeModal, filters }) => {
         options={getRegionList()}
         onChange={formik.handleChange}
       />
+      <Input />
       <Select
         id="strainName"
         value={formik.values.strainName}

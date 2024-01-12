@@ -19,7 +19,9 @@ const userSchema = new mongoose.Schema({
   },
   verified: { type: Boolean },
   role: { type: String},
-  refreshToken: { type: String }
+  refreshToken: { type: String },
+  ofAge: { type: Boolean },
+  consent: { type: Boolean }
 })
 
 export default mongoose.models.User || mongoose.model('User', userSchema)

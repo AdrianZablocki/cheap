@@ -23,8 +23,12 @@ const validation = Yup.object({
   region: Yup.string().required('Region jest polem wymaganym'),
   consent: Yup
     .bool()
-    .required('Zgoda musi być zaznaczona')
-    .oneOf([true], 'Zgoda musi być zaznaczona')//Yup.boolean().required('Zgoda jest wymagana')
+    .required('Zgoda jest wymagana')
+    .oneOf([true], 'Zgoda jest wymagana'),
+  ofAge: Yup
+    .bool()
+    .required('Oświadczenie o pełnoletności jest wymagane')
+    .oneOf([true], 'Oświadczenie o pełnoletności jest wymagane'),
 })
 
 const UserForm = ({ handleSubmit }) => {
@@ -35,6 +39,7 @@ const UserForm = ({ handleSubmit }) => {
       password: '',
       region: '',
       consent: '',
+      ofAge: '',
       role: 'user',
       verified: false
     },
@@ -77,6 +82,21 @@ const UserForm = ({ handleSubmit }) => {
         <fieldset className={styles.statute}>
           <label forhtml="checkbox_id">
             <input
+              id="ofAge"
+              name="ofAge"
+              type="checkbox"
+              value={formik.values.ofAge}
+              onChange={formik.handleChange}
+              onBlur={() => formik.setFieldTouched('ofAge')}
+            />
+            Mam ukończone 18 lat
+          </label>
+          <div className={styles.error}>{getFormikError(formik, 'ofAge')}</div>
+        </fieldset>
+
+        <fieldset className={styles.statute}>
+          <label forhtml="checkbox_id">
+            <input
               id="consent"
               name="consent"
               type="checkbox"
@@ -84,7 +104,7 @@ const UserForm = ({ handleSubmit }) => {
               onChange={formik.handleChange}
               onBlur={() => formik.setFieldTouched('consent')}
             />
-            Akceputję <Link href="/regulamin" passHref>regulamin</Link> strony cheap weed&#42;
+            Akceputję <Link href="/regulamin" passHref>regulamin</Link> strony cheap weed
           </label>
           <div className={styles.error}>{getFormikError(formik, 'consent')}</div>
         </fieldset>
