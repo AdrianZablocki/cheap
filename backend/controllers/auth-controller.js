@@ -15,10 +15,11 @@ const tokenCookieExpires = new Date(Date.now() + (tokenExpires * 1000))
 const refreshTokenCookieExpires = new Date(Date.now() + (refreshTokenExpires * 1000))
 
 export const verifyUser = async (req, res) => {
-  const now = Math.floor(Date.now() / 1000)
-  if (now > jwtDecode(req.body.token).exp) {
-    return res.status(200).json({ message: 'Link aktywacyjny wygasł' })
-  }
+  // TODO check if verificatio link expired
+  // const now = Math.floor(Date.now() / 1000)
+  // if (now > jwtDecode(req.body.token).exp) {
+  //   return res.status(200).json({ message: 'Link aktywacyjny wygasł' })
+  // }
   
   try {
     const token = await User.findById(req.body.userId)

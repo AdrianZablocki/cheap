@@ -13,28 +13,18 @@ const VerifiedPage = async({ searchParams }) => {
   const verified = await setValidationFlag(searchParams)
 
   const responseMap = new Map([
-    [ 
-      'Link aktywacyjny wygasł', 
-      <Link key="activation link" href="/registration" passHref>Link aktywacyjny wygasł</Link>
-    ],
-    [ 
-      'Konto zostało zweryfikowne poprawnie',
-      <Link key="login link" href="/login" passHref>Konto zostało zweryfikowane poprawnie, moesz teraz się zalogować</Link> 
-    ],
+    [ 'Link aktywacyjny wygasł', () => <Link href="/activation-link">Link aktywacyjny wygasł</Link> ],
+    [ 'Konto zostało zweryfikowne poprawnie', () => redirect('/login') ],
     [ 
       'Coś z tym linkiem jest nie tak',
-      <div key="failed">Coś poszło nie tak, proszimy o kontakt</div>
+      () => <div key="failed">Coś poszło nie tak, prosimy o <a href="mailto:kontakt@chaepweed.pl">kontakt</a></div>
     ],
-    [ 
-      'default',
-      <div key="total failed">Coś totalnie poszło nie tak, najlepiej skontaktuj się z nami</div>
-    ]
+    [ 'default', () => <div key="total failed">Coś totalnie poszło nie tak, najlepiej skontaktuj się z nami</div> ]
   ])
-  console.log('Verification page', verified)
   
   return (
     <div>
-      {verified && responseMap.get(verified.message || 'default')}
+      {verified && responseMap.get(verified.message || 'default')()}
     </div>
   )
 }

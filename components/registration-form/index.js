@@ -23,12 +23,12 @@ const RegistrationForm = () => {
     
     try {
       const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, body)
-      snackbarHandler('Uytkownik zosyał utworzony', SEVERITY.SUCCESS)
+      snackbarHandler('Konto zostało utworzone', SEVERITY.SUCCESS)
       console.log('client create user', data)
       if (data) {
         await sendEmail(
           data.userData.email,
-          data.userData.region,
+          data.userData.name,
           data.userData._id,
           data.userData.validationToken
         )
@@ -40,11 +40,11 @@ const RegistrationForm = () => {
     }
   }
 
-  const sendEmail = async (email, region, id, validationToken) => {
+  const sendEmail = async (email, name, id, validationToken) => {
     validationToken
     try {
       await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/verification`, {
-        email, region, id, validationToken
+        email, name, id, validationToken
       })
       setOpenSpinner(false)
       setOpenPopup(true)
