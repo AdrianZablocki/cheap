@@ -17,7 +17,6 @@ const Header = () => {
   const { userToken } = useContext(UserContext)
   const pathName = usePathname()
 
-  const url = userToken ? `/user/${jwtDecode(userToken).id}` : '/refresh?location=/'
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
@@ -35,7 +34,7 @@ const Header = () => {
           </Link>
         ) : (
           userToken ? 
-            (<Link href={url}>
+            (<Link href={`/user/${jwtDecode(userToken).id}`}>
               <IconButton
                 width={40}
                 height={40}

@@ -150,6 +150,7 @@ const Post = ({ post }) => {
             />
             <div className={styles.actionTip}>zadzwoń</div>
           </Link>
+          
           <Link href={`/post/${post._id}`} className={styles.actionItem}>
             <IconButton
               alt="more icon"

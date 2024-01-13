@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 
 import User from '../models/user'
 import Post from '../models/post'
@@ -7,22 +8,26 @@ import { removePassword } from '../utils/remove-password'
 const saltRounds = 12
 
 export const createUser = async (req, res) => {
+
   const user = await User.findOne({ email: req.body.email })
 
   if (!user) {
     bcrypt.hash(req.body.password, saltRounds, async (err,   hash) => {
       try {
-        const user = await User.create({ ...req.body, password: hash})
-
+        const validationToken = jwt.sign(
+          { email: req.body.email, name: req.body.name }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: 86400 }
+        );
+        const user = await User.create({ ...req.body, password: hash, validationToken})
         const userData = removePassword(user)
         
-        res.status(201).json({ message: 'Konto zostało utworzone', userData })
+        return res.status(201).json({ message: 'Konto zostało utworzone', userData })
       } catch (error) {
-        res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
+        console.log(error)
+        return res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
       }
     })
   } else {
-    res.status(409).json({ message: `Użytkownik: ${req.body.email} istnieje` })
+    return res.status(409).json({ message: `Użytkownik: ${req.body.email} istnieje` })
   }
 }
 

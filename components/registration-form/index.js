@@ -24,8 +24,14 @@ const RegistrationForm = () => {
     try {
       const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, body)
       snackbarHandler('Uytkownik zosyał utworzony', SEVERITY.SUCCESS)
+      console.log('client create user', data)
       if (data) {
-        await sendEmail(data.userData.email, data.userData.region, data.userData._id)
+        await sendEmail(
+          data.userData.email,
+          data.userData.region,
+          data.userData._id,
+          data.userData.validationToken
+        )
       }
     } catch (error) {
       console.log('REGISTER USER', error)
@@ -34,18 +40,18 @@ const RegistrationForm = () => {
     }
   }
 
-  const sendEmail = async (email, region, id) => {
+  const sendEmail = async (email, region, id, validationToken) => {
+    validationToken
     try {
-      const test = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/verification`, {
-        email, region, id
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/verification`, {
+        email, region, id, validationToken
       })
       setOpenSpinner(false)
       setOpenPopup(true)
-      console.log('WYSŁANO EMAIL WERUFIKACYNY', test)
     } catch (error) {
       setOpenSpinner(false)
       setErrorMesage(error.response.data.error?.message || error.response.data.message)
-      console.log('SEND EMAIL ERROR', error)
+      console.log('SEND VERIFICATION EMAIL ERROR', error)
     }
   }
 

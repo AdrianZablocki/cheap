@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
   verified: { type: Boolean },
   role: { type: String},
   refreshToken: { type: String },
+  validationToken: { type: String },
   ofAge: { type: Boolean },
   consent: { type: Boolean }
 })

@@ -1,8 +1,13 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import { jwtDecode } from 'jwt-decode'
 import { serialize } from 'cookie'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 
 import User from '../models/user'
+
+dayjs.extend(utc)
 
 const tokenExpires = 86400
 const refreshTokenExpires = 525600
@@ -10,12 +15,16 @@ const tokenCookieExpires = new Date(Date.now() + (tokenExpires * 1000))
 const refreshTokenCookieExpires = new Date(Date.now() + (refreshTokenExpires * 1000))
 
 export const verifyUser = async (req, res) => {
+  const now = Math.floor(Date.now() / 1000)
+  if (now > jwtDecode(req.body.token).exp) {
+    return res.status(200).json({ message: 'Link aktywacyjny wygasł' })
+  }
+  
   try {
-    const user = await User.findOneAndUpdate({ email: req.body.email }, { verified: true }, { new: true })
-    console.log('VERIFICATION', user)
-    res.status(200).json({ message: 'Email verified' })
+    const user = await User.findOneAndUpdate({ _id: req.body.userId }, { verified: true }, { new: true })
+    return res.status(200).json({ message: 'Konto zostało zweryfikowne poprawnie' })
   } catch (error) {
-    res.status(404).json({ message: 'Wrong email', error })
+    return res.status(404).json({ message: 'Coś z tym linkiem jest nie tak', error })
   }
 }
 

@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer'
 
 export const sendVerificationEmail = async (req, res) => {
-  const { email, region, id } = req.body
+  const { email, region, id, validationToken } = req.body
   const user = process.env.NEXT_PUBLIC_USER
   const pass = process.env.NEXT_PUBLIC_PASSWORD
 
@@ -22,14 +22,11 @@ export const sendVerificationEmail = async (req, res) => {
       html: `
         <p>Region: ${region}</p>
         <p>Email: ${email}</p>
-        <a href="${process.env.NEXT_PUBLIC_API_URL}/verified?user=${email}">link</a>
+        <a href="${process.env.NEXT_PUBLIC_API_URL}/verified?userId=${id}&token=${validationToken}">link</a>
       `
     })
-
-    console.log(emailToSend.messageId, emailToSend.accepted);
     res.status(200).json({ message: 'Wysłaliśmy meila weryfikacyjneg'})
   } catch (error) {
-    console.log('Mail error', error)
     res.status(404).json({ message: 'Nie udało się wysłać maila'})
   }
 

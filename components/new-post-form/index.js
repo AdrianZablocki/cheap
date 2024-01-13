@@ -73,7 +73,6 @@ const NewPostForm = () => {
 
   const onCreateNewPost = async(values) => {
     setOpenSpinner(true)
-    console.log(jwtDecode(userToken).id )
     const { name, openingHours, address, contact, lat, lng, mapUrl, websiteUrl } = values.drugStore
     const { strainName, region, city } = values
     const body = {
