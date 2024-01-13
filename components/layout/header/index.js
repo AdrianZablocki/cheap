@@ -34,15 +34,27 @@ const Header = () => {
             />
           </Link>
         ) : (
-          <Link href={url}>
-            <IconButton
-              width={40}
-              height={40}
-              icon={userIcon}
-              alt="user icon"
-              priority
-            />
-          </Link>
+          userToken ? 
+            (<Link href={url}>
+              <IconButton
+                width={40}
+                height={40}
+                icon={userIcon}
+                alt="user icon"
+                priority
+              />
+            </Link>) : 
+            (<Link href="/login">
+              login
+              {/* <IconButton
+                width={40}
+                height={40}
+                icon={userIcon}
+                alt="user icon"
+                priority
+              /> */}
+            </Link>
+            )
         )}
       </div>
 
