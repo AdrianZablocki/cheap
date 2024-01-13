@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { useContext, useState } from 'react'
@@ -15,15 +16,16 @@ import cancelIcon from '@/public/icons/cancel.svg'
 import confirmIcon from '@/public/icons/confirm.svg'
 import phoneIcon from '@/public/icons/phone.svg'
 import moreIcon from '@/public/icons/more.svg'
+import expierdImg from '@/public/images/expired.svg'
 import { date, setDisabledScroll, updatePost } from '@/utils'
 import ConfirmPrice from '../confirm-price'
 import ChangePrice from '../change-price'
 import IconButton from '../UI/icon-button'
 import Modal from '../layout/modal'
+import { imagesMap } from '@/utils/images/images-map'
+import Button from '../UI/button'
 
 import styles from './post.module.scss'
-import Link from 'next/link'
-import { imagesMap } from '@/utils/images/images-map'
 
 dayjs.extend(utc)
 
@@ -95,73 +97,88 @@ const Post = ({ post }) => {
   return (
     <>
       <li className={styles.post}>
-        <div>
-          <div className={styles.header}>
-            <div>{postCopy.strainName}</div>
-            <div className={styles.price}>
-              <div>{postCopy.price} zł/gram</div>
-              <div>{dayjs(postCopy.date).format(date)}</div>
-            </div>
+        <div className={styles.header}>
+          <div>{postCopy.strainName}</div>
+          <div className={styles.price}>
+            <div>{postCopy.price} zł/gram</div>
+            <div>{dayjs(postCopy.date).format(date)}</div>
           </div>
-
-          <div className={`${!postCopy.isValid ? styles.invalid : ''}`}>
-            <Image
-              className={styles.image}
-              src={imagesMap.get(postCopy.strainName)}
-              alt={postCopy.strainName}
-              fill={false} priority
-            />
-            {!postCopy.isValid && <div className={styles.layer}><span>Nieaktualne</span></div>}
-          </div>     
-          <div className={styles.content}>
-            <div className={styles.storeName}>{postCopy.name}</div> 
-            <div className={styles.label}>apteka</div>
-            <div className={styles.address}>{postCopy.address}</div> 
-            <div className={styles.label}>adres</div>
-          </div>     
         </div>
 
-        <div className={styles.actions}>
-          <div className={styles.actionItem}>
-            <IconButton
-              alt="confirm icon"
-              icon={confirmIcon}
-              padding={'8px'}
-              action={()=>onAction('confirm')}
-            />
-            <div className={styles.actionTip}>potwierdź</div>        
+        <div style={{position: 'relative'}}>
+          <div>
+            <div className={`${!postCopy.isValid ? styles.invalid : ''}`}>
+              <Image
+                className={styles.image}
+                src={imagesMap.get(postCopy.strainName)}
+                alt={postCopy.strainName}
+                fill={false} priority
+              />
+            </div>     
+            <div className={styles.content}>
+              <div className={styles.storeName}>{postCopy.name}</div> 
+              <div className={styles.label}>apteka</div>
+              <div className={styles.address}>{postCopy.address}</div> 
+              <div className={styles.label}>adres</div>
+            </div>     
           </div>
 
-          <div className={styles.actionItem}>
-            <IconButton
-              alt="cancel icon"
-              icon={cancelIcon}
-              padding={'8px'}
-              action={()=>onAction('change')}
-            /> 
-            <div className={styles.actionTip}>nieaktualne</div>          
-          </div>
+          <div className={styles.actions}>
+            <div className={styles.actionItem}>
+              <IconButton
+                alt="confirm icon"
+                icon={confirmIcon}
+                padding={'8px'}
+                action={()=>onAction('confirm')}
+              />
+              <div className={styles.actionTip}>potwierdź</div>        
+            </div>
 
-          <Link href={`tel:${post.contact}`} className={styles.actionItem}>
-            <IconButton
-              alt="phone icon"
-              icon={phoneIcon}
-              padding={'8px'}
-            />
-            <div className={styles.actionTip}>zadzwoń</div>
-          </Link>
-          
-          <Link href={`/post/${post._id}`} className={styles.actionItem}>
-            <IconButton
-              alt="more icon"
-              icon={moreIcon}
-              padding={'8px'}
-            />
-            <div className={styles.actionTip}>więcej</div>
-          </Link>
-        </div>  
+            <div className={styles.actionItem}>
+              <IconButton
+                alt="cancel icon"
+                icon={cancelIcon}
+                padding={'8px'}
+                action={()=>onAction('change')}
+              /> 
+              <div className={styles.actionTip}>nieaktualne</div>          
+            </div>
+
+            <Link href={`tel:${post.contact}`} className={styles.actionItem}>
+              <IconButton
+                alt="phone icon"
+                icon={phoneIcon}
+                padding={'8px'}
+              />
+              <div className={styles.actionTip}>zadzwoń</div>
+            </Link>
+            
+            <Link href={`/post/${post._id}`} className={styles.actionItem}>
+              <IconButton
+                alt="more icon"
+                icon={moreIcon}
+                padding={'8px'}
+              />
+              <div className={styles.actionTip}>więcej</div>
+            </Link>
+          </div>
+          {!postCopy.isValid &&
+            <div className={styles.layer}>
+              <div className={styles.layerImg}>
+                <Image
+                  src={expierdImg}
+                  width={164}
+                  height={164}
+                  alt="Oferta nieaktualna"
+                  fill={false}
+                  priority
+                />              
+              </div>
+              <Button type="button" buttonType="success" text="Aktualizuj" action={()=>onAction('change')} />
+            </div>
+          }
+        </div>
       </li>  
-
       { showModal && <Modal onClose={() => setShowModal(false)}>{modalContent}</Modal> }
     </>
   )

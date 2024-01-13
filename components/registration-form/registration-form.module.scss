@@ -3,6 +3,8 @@
 .wrapper {
   @extend %main-container;
   position: relative;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .header {

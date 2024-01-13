@@ -80,7 +80,7 @@ const LoginForm = () => {
     <div className={styles.wrapper}>
       <div className={styles.header}><Logo width={80} height={40}/></div>
 
-      <div className={styles.welcome}>Witaj po przerwie!</div>
+      <div className={styles.welcome}>Cześć!</div>
 
       <form onSubmit={formik.handleSubmit}>
         {
