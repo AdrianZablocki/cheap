@@ -105,24 +105,21 @@ const Post = ({ post }) => {
           </div>
         </div>
 
-        <div style={{position: 'relative'}}>
-          <div>
-            <div className={`${!postCopy.isValid ? styles.invalid : ''}`}>
-              <Image
-                className={styles.image}
-                src={imagesMap.get(postCopy.strainName)}
-                alt={postCopy.strainName}
-                fill={false} priority
-              />
-            </div>     
-            <div className={styles.content}>
-              <div className={styles.storeName}>{postCopy.name}</div> 
-              <div className={styles.label}>apteka</div>
-              <div className={styles.address}>{postCopy.address}</div> 
-              <div className={styles.label}>adres</div>
-            </div>     
-          </div>
-
+        <div className={styles.contentWrapper}>  
+          <Image
+            className={styles.image}
+            src={imagesMap.get(postCopy.strainName)}
+            alt={postCopy.strainName}
+            fill={false} priority
+          />
+          
+          <div className={styles.content}>
+            <div className={styles.storeName}>{postCopy.name}</div> 
+            <div className={styles.label}>apteka</div>
+            <div className={styles.address}>{postCopy.address}</div> 
+            <div className={styles.label}>adres</div>
+          </div>     
+          
           <div className={styles.actions}>
             <div className={styles.actionItem}>
               <IconButton

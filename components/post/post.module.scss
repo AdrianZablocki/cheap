@@ -7,7 +7,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   border-radius: 4px;
   border: 1px solid $color-eagles-view;
   box-shadow: $shadow-box;
@@ -16,9 +15,18 @@
   background-color: $color-white;
 }
 
+
 .header {
   @include font($mont-bold, 16px);
   padding: 12px 16px 8px;
+}
+
+.contentWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .price {
@@ -75,10 +83,6 @@
   @include font($mont-light, 11px);
   margin-top: -16px;
   z-index: 0;
-}
-
-.invalid {
-  position: relative;
 }
 
 .layer {

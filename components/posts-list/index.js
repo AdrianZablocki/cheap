@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
 
-import { getPosts } from '@/utils'
+import { getPosts, setDisabledScroll } from '@/utils'
 import Post from '@/components/post'
 import SpinnerContext from '@/context/spinner-context'
 import QueryBuilder from '@/utils/requests/query-builder'
@@ -28,6 +28,8 @@ const PostList = () => {
       .withKeyword(keyword)
       .withFilters(filters)
       .build()
+      
+    setDisabledScroll(false)
 
     const fetchData = async() => fetchPosts(query)
     fetchData()
