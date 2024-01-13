@@ -14,8 +14,10 @@ import styles from './navbar.module.scss'
 const Navbar = ({ setKeyword, handlePageClick, setFilters, filters }) => {
   const [showModal, setShowModal] = useState(false)
 
+  const chips = ['region', 'strainName', 'city']
+
   const isFilters = () => {
-    return filters.region || filters.strainName
+    return filters.region || filters.strainName || filters.city
   }
   return (
     <div className={styles.navbarWrapper}>

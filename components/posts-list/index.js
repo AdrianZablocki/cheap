@@ -20,7 +20,7 @@ const PostList = () => {
   const [ page, setPage ] = useState(0)
   const { setOpenSpinner } = useContext(SpinnerContext)
   const [ keyword, setKeyword ] = useState()
-  const [ filters, setFilters ] = useState({region: '', strainName: ''})
+  const [ filters, setFilters ] = useState({region: '', strainName: '', city: ''})
 
   useEffect(() => {
     const query = new QueryBuilder()

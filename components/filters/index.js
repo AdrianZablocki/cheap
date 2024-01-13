@@ -5,12 +5,15 @@ import Select from '../UI/select'
 import Button from '../UI/button'
 import Input from '../UI/input'
 
+import styles from './filters.module.scss'
+
 const Filters = ({ setFilters, closeModal, filters }) => {
 
   const formik = useFormik({
     initialValues: {
       region: filters.region,
       strainName: filters.strainName,
+      city: filters.city
     },
     onSubmit: (values) => {
       setFilters(values)
@@ -29,7 +32,14 @@ const Filters = ({ setFilters, closeModal, filters }) => {
         options={getRegionList()}
         onChange={formik.handleChange}
       />
-      <Input />
+      <Input
+        type="text"
+        id="city"
+        value={formik.values.city}
+        label="Miasto"
+        placeholder="Wybierz miasto"
+        onChange={formik.handleChange}
+      />
       <Select
         id="strainName"
         value={formik.values.strainName}
@@ -38,8 +48,9 @@ const Filters = ({ setFilters, closeModal, filters }) => {
         options={getStrainList()}
         onChange={formik.handleChange}
       />
-
-      <Button type="submit" buttonType="success" text="Pokaż wyniki" />
+      <div className={styles.actionButtons}>
+        <Button type="submit" buttonType="success" text="Pokaż wyniki" />
+      </div>
     </form>
   )
 }
