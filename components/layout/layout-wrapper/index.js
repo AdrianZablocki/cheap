@@ -32,7 +32,7 @@ const LayoutWrapper = ({ children, token }) => {
           { !headerlessViews.includes(pathname) && <Header />}
           { children }
           { pathname === '/' && <Footer /> }
-          <Spinner isOpen={openSpinner} background="rgba(0, 0, 0, .5)" />
+          <Spinner isOpen={openSpinner} background="rgba(#747976, .8)" />
           <SnackbarMessage isOpen={openSnackbar} message={snackbarMessage} severity={snackbarSeverity} />      
         </SnackbarContext.Provider>
       </SpinnerContext.Provider>    

@@ -100,8 +100,9 @@
 }
 
 .layerImg {
-  height: 70%;
+  height: calc(100% - 45px);
   display: flex;
   justify-content: center;
   align-items: center;
 }
+

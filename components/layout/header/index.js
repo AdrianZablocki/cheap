@@ -7,6 +7,7 @@ import { jwtDecode } from 'jwt-decode'
 
 import UserContext from '@/context/user-context'
 import userIcon from '@/public/icons/user.svg'
+import loginIcon from '@/public/icons/login.svg'
 import backIcon from '@/public/icons/back.svg'
 import IconButton from '../../UI/icon-button'
 import Logo from '../logo'
@@ -43,15 +44,14 @@ const Header = () => {
                 priority
               />
             </Link>) : 
-            (<Link href="/login">
-              login
-              {/* <IconButton
-                width={40}
-                height={40}
-                icon={userIcon}
+            (<Link className={styles.loginLink} href="/login" passHref>
+              <IconButton
+                width={38}
+                height={38}
+                icon={loginIcon}
                 alt="user icon"
                 priority
-              /> */}
+              />
             </Link>
             )
         )}

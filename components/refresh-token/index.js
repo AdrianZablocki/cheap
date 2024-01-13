@@ -10,7 +10,7 @@ import Spinner from '../layout/spinner'
 const RefreshToken = ({ refreshToken }) => {
 
   const { setUserToken } = useContext(UserContext)
-  const location = useSearchParams().get('location')
+  const location = useSearchParams().get('location') || ''
   const { push } = useRouter()
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const RefreshToken = ({ refreshToken }) => {
   }, [push, location, refreshToken, setUserToken])
 
   return (
-    <Spinner background="#FFF" isOpen />
+    <Spinner isOpen background="#FFF" />
   )
 }
 

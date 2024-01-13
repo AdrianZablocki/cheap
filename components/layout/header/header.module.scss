@@ -1,5 +1,6 @@
 @import '../../../styles/mixins.scss';
 @import '../../../styles//variables.scss';
+@import '../../../styles/fonts.scss';
 
 .wrapper {
   padding: 16px 0;
@@ -19,3 +20,9 @@
 .title {
   visibility: hidden;
 }
+
+// .loginLink {
+//   @include font($mont-medium, 14px);
+//   color: $color-black-light;
+//   text-decoration: none;
+// }

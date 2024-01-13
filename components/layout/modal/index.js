@@ -43,7 +43,7 @@ const Modal = ({ onClose, children, title, backButton, onBackButton }) => {
         </div>
         {title && <h1>{title}</h1>}
         <div className={styles.modalBody}>{children}</div>
-        <Spinner isOpen={openSpinner} background="rgba(0, 0, 0, .5)" />
+        <Spinner isOpen={openSpinner} background="rgba(#747976, .8)" />
       </div>      
     </div>
 
