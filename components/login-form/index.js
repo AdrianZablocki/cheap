@@ -103,6 +103,8 @@ const LoginForm = () => {
           )
         }
 
+        <Link className={styles.forgotPassword} href="/reset-password" passHref>Nie pamiętam hasła</Link>
+
         <div className={styles.actionsWrapper}>
           <Button type="submit" text="Zaloguj" buttonType="successFilled" disabled={!(formik.isValid && formik.dirty)} />
         </div>
@@ -112,7 +114,6 @@ const LoginForm = () => {
         <div className={styles.activeUser}>Masz już konto?</div>
         <Button type="button" text="Zarejestruj się" buttonType="success" action={() => push('/registration') }/>        
       </div>
-      <Link href="/reset-password" passHref>Resetuj hasło</Link>
     </div> 
   )
 }
