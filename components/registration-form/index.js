@@ -41,7 +41,6 @@ const RegistrationForm = () => {
   }
 
   const sendEmail = async (email, name, id, validationToken) => {
-    validationToken
     try {
       await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/verification`, {
         email, name, id, validationToken
@@ -50,7 +49,7 @@ const RegistrationForm = () => {
       setOpenPopup(true)
     } catch (error) {
       setOpenSpinner(false)
-      setErrorMesage(error.response.data.error?.message || error.response.data.message)
+      handleError(error)
       console.log('SEND VERIFICATION EMAIL ERROR', error)
     }
   }

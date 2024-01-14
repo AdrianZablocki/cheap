@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
   role: { type: String},
   refreshToken: { type: String },
   validationToken: { type: String },
+  resetPasswordToken: { type: String },
   ofAge: { type: Boolean },
   consent: { type: Boolean }
 })

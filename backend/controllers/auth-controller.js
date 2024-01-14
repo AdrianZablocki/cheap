@@ -37,10 +37,10 @@ export const verifyUser = async (req, res) => {
 }
 
 export const authUser = async (req, res) => {
-  const user = await User.findOne({email: req.body.email});
+  const user = await User.findOne({email: req.body.email})
 
   if (user) {
-    const validPassword = await bcrypt.compare(req.body.password, user.password);
+    const validPassword = await bcrypt.compare(req.body.password, user.password)
 
     if (validPassword) {
       if (!user.verified) {
@@ -49,11 +49,11 @@ export const authUser = async (req, res) => {
 
       const accessToken = jwt.sign(
         { id: user.id, email: user.email, name: user.name, isVerified: user.verified }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: tokenExpires }
-      );
+      )
 
       const refreshToken = jwt.sign(
         { id: user.id, email: user.email, name: user.name, isVerified: user.verified }, process.env.NEXT_PUBLIC_REFRESH_TOKEN_SECRET, { expiresIn: refreshTokenExpires }
-      );
+      )
 
       await User.findOneAndUpdate({ email: req.body.email }, { refreshToken }, { new: true })
       
@@ -102,4 +102,25 @@ export const refreshToken = async (req, res) => {
     return res.status(403).json({ message: 'Forbidden' }) // Forbidden
   }
 
+}
+
+export const resetPassword = async (req, res) => {
+  try {
+    const user = await User.findOne({email: req.body.email})
+
+    if (user) {
+      const resetPasswordToken = jwt.sign(
+        { email: req.body.email }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: 86400 }
+      );
+      const updatedUser = await User.findOneAndUpdate({ email: req.body.email }, { resetPasswordToken }, { new: true })
+      console.log(updatedUser)
+      // const updatedUser = {...user, resetPasswordToken }
+      return res.status(200).json({ updatedUser })
+    } else {
+      return res.status(404).json({ message: 'Nie znaleziono takiego maila' })
+    }
+    
+  } catch (error) {
+    return res.status(500).json({ message: 'Coś poszło nie tak', error })
+  }
 }

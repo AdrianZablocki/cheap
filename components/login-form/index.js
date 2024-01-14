@@ -15,6 +15,7 @@ import styles from './login-form.module.scss'
 import Logo from '../layout/logo'
 import Input from '../UI/input'
 import Button from '../UI/button'
+import Link from 'next/link'
 
 const validation = Yup.object({
   email: Yup
@@ -111,6 +112,7 @@ const LoginForm = () => {
         <div className={styles.activeUser}>Masz już konto?</div>
         <Button type="button" text="Zarejestruj się" buttonType="success" action={() => push('/registration') }/>        
       </div>
+      <Link href="/reset-password" passHref>Resetuj hasło</Link>
     </div> 
   )
 }
