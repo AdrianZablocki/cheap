@@ -14,11 +14,11 @@ const ConfirmPrice = ({ post, openChangePriceModal, updatePost }) => {
 
   const buttons = [
     { text: 'Zmień', buttonType: 'error', action: openChangePriceModal },
-    { text: 'Potwierdz', buttonType: 'success', action: updatePost },
+    { text: 'Potwierdź', buttonType: 'success', action: updatePost },
   ]
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <div className={styles.content}>
         <div className={styles.strainName}>{post.strainName}</div>
         <div className={styles.address}>{post.address}</div>
@@ -36,7 +36,7 @@ const ConfirmPrice = ({ post, openChangePriceModal, updatePost }) => {
           action={button.action}
         />)}
       </div>
-    </>
+    </div>
   )
 }
 

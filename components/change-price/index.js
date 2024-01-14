@@ -18,7 +18,7 @@ const ChangePrice = ({ updatePost, disablePost, post }) => {
       action: () => updatePost({price: (newPrice/amount).toFixed(2)})
     },
     {
-      text: 'Promocja nieaktualna',
+      text: 'Cena nieaktualna',
       buttonType:'error',
       disabled: false,
       action: disablePost
@@ -42,38 +42,40 @@ const ChangePrice = ({ updatePost, disablePost, post }) => {
         <div className={styles.address}>{post.address}</div>
       </div>
 
-      <form>
-        <Input
-          type="number"
-          value={newPrice}
-          label="Cena (zł)"
-          min={0}
-          onChange={(e) => onPriceChange(e)}
-        />
-        <Input
-          type="number"
-          value={1}
-          label="Waga (gram)"
-          min={0}
-          onChange={(e) => onAmountChange(e)}
-        />
-      </form>
+      <div className={styles.wrapper}>
+        <form>
+          <Input
+            type="number"
+            value={newPrice}
+            label="Cena (zł)"
+            min={0}
+            onChange={(e) => onPriceChange(e)}
+          />
+          <Input
+            type="number"
+            value={1}
+            label="Waga (gram)"
+            min={0}
+            onChange={(e) => onAmountChange(e)}
+          />
+        </form>
 
-      { isPriceUpdated(newPrice, amount) && 
-        <div className={styles.newPrice}>
-          Zaktualizowana cena za gram: <span>{(newPrice/amount).toFixed(2)}zł</span>
-        </div>
-      }
+        { isPriceUpdated(newPrice, amount) && 
+          <div className={styles.newPrice}>
+            Zaktualizowana cena za gram: <span>{(newPrice/amount).toFixed(2)}zł</span>
+          </div>
+        }
 
-      <div className={styles.actions}>
-        {buttonsConfig.map((button, index) => button.action && <Button
-          key={`change-price-button-${index}`}
-          className={styles.button}
-          text={button.text}
-          buttonType={button.buttonType}
-          disabled={button.disabled}
-          action={button.action}
-        />)}
+        <div className={styles.actions}>
+          {buttonsConfig.map((button, index) => button.action && <Button
+            key={`change-price-button-${index}`}
+            className={styles.button}
+            text={button.text}
+            buttonType={button.buttonType}
+            disabled={button.disabled}
+            action={button.action}
+          />)}
+        </div>        
       </div>
     </>
   )

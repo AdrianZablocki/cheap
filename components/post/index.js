@@ -14,7 +14,7 @@ import SnackbarContext from '@/context/snackbar-context'
 import useErrorHandler, { SEVERITY } from '@/hooks/use-error-handler'
 import cancelIcon from '@/public/icons/cancel.svg'
 import confirmIcon from '@/public/icons/confirm.svg'
-import phoneIcon from '@/public/icons/phone.svg'
+import phoneIcon from '@/public/icons/phone1.svg'
 import moreIcon from '@/public/icons/more.svg'
 import expierdImg from '@/public/images/expired.svg'
 import { date, setDisabledScroll, updatePost } from '@/utils'
@@ -98,7 +98,7 @@ const Post = ({ post }) => {
     <>
       <li className={styles.post}>
         <div className={styles.header}>
-          <div>{postCopy.strainName}</div>
+          <div className={styles.strain}>{postCopy.strainName}</div>
           <div className={styles.price}>
             <div>{postCopy.price} zł/gram</div>
             <div>{dayjs(postCopy.date).format(date)}</div>
@@ -108,7 +108,7 @@ const Post = ({ post }) => {
         <div className={styles.contentWrapper}>  
           <Image
             className={styles.image}
-            src={imagesMap.get(postCopy.strainName)}
+            src={imagesMap.get(postCopy.strainName) || imagesMap.get('Red No 2, Lemon Skunk')}
             alt={postCopy.strainName}
             fill={false} priority
           />

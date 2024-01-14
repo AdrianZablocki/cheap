@@ -29,8 +29,12 @@
   height: 100%;
 }
 
+// .strain {
+//   @include font($mont-medium, 14px);
+// }
+
 .price {
-  @include font($mont-medium, 14px);
+  @include font($mont-medium, 16px);
   display: flex;
   justify-content: space-between;
   margin-top: 4px;

@@ -2,6 +2,11 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/fonts.scss';
 
+.wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .content {
   padding: 26px;
   color: $color-black-light;

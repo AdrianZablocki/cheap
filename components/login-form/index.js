@@ -69,7 +69,7 @@ const LoginForm = () => {
       const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, body)
       setUserToken(data.accessToken)
       setOpenSpinner(false)
-      snackbarHandler('Witamy ponownie!', SEVERITY.SUCCESS)
+      snackbarHandler('Cześć!', SEVERITY.SUCCESS)
       push('/')
     } catch (error) {
       setOpenSpinner(false)

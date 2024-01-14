@@ -4,6 +4,7 @@
 
 .post {
   @extend %main-container;
+  max-width: 600px;
   color: $color-black-light;
 
   h1, h2 {
