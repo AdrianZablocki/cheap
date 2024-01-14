@@ -94,8 +94,8 @@ const UserPost = ({ post, token, getUser }) => {
         <p>{post.name}</p>
         <p>{post.address}</p>
         <div className={styles.actions}>
-          <Button buttonType="successNoBord" type="button" text="Edutuj" action={() => onEdit()} />
-          <Button buttonType="errorNoBoard" type="button" text="Usuń" action={() => onDelete()} />
+          <Button buttonType="success" type="button" text="Edytuj" action={() => onEdit()} />
+          <Button buttonType="error" type="button" text="Usuń" action={() => onDelete()} />
         </div>
       </li> 
       { showModal &&
