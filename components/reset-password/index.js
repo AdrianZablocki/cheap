@@ -105,6 +105,12 @@ const ResetPassword = ({ params }) => {
 
   return (
     <div className={styles.wrapper}>
+      {params.name &&
+        <div className={styles.user}>
+          <div className={styles.userLabel}>Nick</div>
+          <div className={styles.userName}>{params.name}</div>
+        </div>
+      }
       <form onSubmit={formik.handleSubmit}>
         {!checkParams() ? 
           (<Input

@@ -44,7 +44,7 @@ const User = ({ params }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.name}>{user?.name}</div>
-      <Link href={`/reset-password?userId=${user?._id}&token=${userToken}`}>Zmień hasło</Link>
+      <Link href={`/reset-password?userId=${user?._id}&token=${userToken}&name=${user?.name}`}>Zmień hasło</Link>
       <Link href="/logout">Wyloguj</Link>
       <div className={styles.postsWrapper}>
         <span>Moje wpisy</span>
