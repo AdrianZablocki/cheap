@@ -36,7 +36,6 @@ const AutocompleteMap = ({ loaded, onComplete, field, selectedAdress, setSelecte
             setLng(lng)
           });
           getDetails({placeId}).then((result) => {
-            console.log('Details', result)
             onComplete(field, {
               mapUrl: result.url,
               websiteUrl: result.website,

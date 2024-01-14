@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useContext} from 'react'
 import { jwtDecode } from 'jwt-decode'
@@ -17,22 +17,22 @@ import styles from './header.module.scss'
 const Header = () => {
   const { userToken } = useContext(UserContext)
   const pathName = usePathname()
+  const { back } = useRouter()
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <Logo />
         {pathName !== '/' ? (
-          <Link href="/">
-            <IconButton
-              width={30}
-              height={30}
-              padding="8px"
-              icon={backIcon}
-              alt="back icon"
-              priority
-            />
-          </Link>
+          <IconButton
+            width={30}
+            height={30}
+            padding="8px"
+            icon={backIcon}
+            alt="back icon"
+            priority
+            action={() => back()}
+          />
         ) : (
           userToken ? 
             (<Link href={`/user/${jwtDecode(userToken).id}`}>

@@ -13,6 +13,8 @@ import SpinnerContext from '@/context/spinner-context'
 import Input from '../UI/input'
 import Button from '../UI/button'
 
+import styles from './reset-password.module.scss'
+
 const validationEmail = Yup.object({
   email: Yup
     .string()
@@ -102,7 +104,7 @@ const ResetPassword = ({ params }) => {
   }
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <form onSubmit={formik.handleSubmit}>
         {!checkParams() ? 
           (<Input
@@ -140,7 +142,9 @@ const ResetPassword = ({ params }) => {
             
           </>)
         }
-        <Button type="submit" buttonType="successFilled" text="Wyślij" disabled={!(formik.isValid && formik.dirty)} />
+        <div className={styles.actions}>
+          <Button type="submit" buttonType="successFilled" text="Wyślij" disabled={!(formik.isValid && formik.dirty)} />
+        </div>
       </form>
     </div>
   )
