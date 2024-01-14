@@ -6,6 +6,7 @@ import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
 import User from '../models/user'
+import { removePassword } from '../utils/remove-password'
 
 dayjs.extend(utc)
 
@@ -107,15 +108,13 @@ export const refreshToken = async (req, res) => {
 export const resetPassword = async (req, res) => {
   try {
     const user = await User.findOne({email: req.body.email})
-
     if (user) {
       const resetPasswordToken = jwt.sign(
         { email: req.body.email }, process.env.NEXT_PUBLIC_TOKEN_SECRET, { expiresIn: 86400 }
       );
       const updatedUser = await User.findOneAndUpdate({ email: req.body.email }, { resetPasswordToken }, { new: true })
-      console.log(updatedUser)
-      // const updatedUser = {...user, resetPasswordToken }
-      return res.status(200).json({ updatedUser })
+      const userData = removePassword(updatedUser)
+      return res.status(200).json({ userData })
     } else {
       return res.status(404).json({ message: 'Nie znaleziono takiego maila' })
     }

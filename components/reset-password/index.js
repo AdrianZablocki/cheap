@@ -37,10 +37,10 @@ const ResetPassword = () => {
     try {
       const  { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/reset`, { email })
       sendEmail(
-        data.updatedUser.email,
-        data.updatedUser.name,
-        data.updatedUser._id,
-        data.updatedUser.resetPasswordToken
+        data.userData.email,
+        data.userData.name,
+        data.userData._id,
+        data.userData.resetPasswordToken
       )
       snackbarHandler('Wysłaliśmy email z linkiem do zresetowania hasła', SEVERITY.SUCCESS)
     } catch (error) {

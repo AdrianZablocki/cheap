@@ -24,7 +24,6 @@ const RegistrationForm = () => {
     try {
       const { data }  = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, body)
       snackbarHandler('Konto zostało utworzone', SEVERITY.SUCCESS)
-      console.log('client create user', data)
       if (data) {
         await sendEmail(
           data.userData.email,
