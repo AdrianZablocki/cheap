@@ -22,7 +22,6 @@ export const createUser = async (req, res) => {
         
         return res.status(201).json({ message: 'Konto zostało utworzone', userData })
       } catch (error) {
-        console.log(error)
         return res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
       }
     })
@@ -83,5 +82,40 @@ export const getUsers = async (req, res) => {
     return res.json(updatedUsers)
   } catch (error) {
     return res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
+  }
+}
+
+export const changePassword = async (req, res) => {
+  const user = await User.findOne({ _id: req.body.id })
+  
+  if (user && req.body.token === user.resetPasswordToken) {
+    bcrypt.hash(req.body.password, saltRounds, async (err,   hash) => {
+
+      try {
+        const updatedUser = await User.findByIdAndUpdate(req.body.id, { password: hash, resetPasswordToken: null })
+        const userData = removePassword(updatedUser)
+        
+        return res.status(201).json({ message: 'Hasło zostało zmienione, możesz się teraz zalogować', userData })
+      } catch (error) {
+
+        return res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
+      }
+    })
+
+  } else if(user && req.body.id === user.id) {
+    bcrypt.hash(req.body.password, saltRounds, async (err,   hash) => {
+
+      try {
+        const updatedUser = await User.findByIdAndUpdate(req.body.id, { password: hash, resetPasswordToken: null })
+        const userData = removePassword(updatedUser)
+        
+        return res.status(201).json({ message: 'Hasło zostało zmienione', userData })
+      } catch (error) {
+
+        return res.status(500).json({ message: 'Coś poszło nie tak, spróbuj ponownie później', error })
+      }
+    })
+  } else {
+    return res.status(409).json({ message: `Użytkownik nie istnieje` })
   }
 }

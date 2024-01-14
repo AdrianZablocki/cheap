@@ -54,7 +54,7 @@ export const sendResetPasswordEmail = async (req, res) => {
         <h3>Cześć ${name},</h3>
         <p>Przesyłamy link do zresetowania hasła.</p>
         <p>Kliknij poniższy link, aby sfinalizować proces.</p> 
-        <p><a href="${process.env.NEXT_PUBLIC_API_URL}/new-password?userId=${id}&token=${resetPasswordToken}">Resetuj hasło</a></p>
+        <p><a href="${process.env.NEXT_PUBLIC_API_URL}/reset-password?userId=${id}&token=${resetPasswordToken}">Resetuj hasło</a></p>
         <div>Z poważaniem,</div>
         <a href="${process.env.NEXT_PUBLIC_API_URL}" style="text-decoration: none; color: #575656; padding: 8px 0; display: inline-block;">
           <div style="width: 70px; height: 32px; line-height: 16px; letter-spacing: -1.6px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 24px; max-height: 32px;">

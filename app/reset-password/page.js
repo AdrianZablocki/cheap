@@ -1,8 +1,9 @@
 import  ResetPassword from '@/components/reset-password'
 
-const ResetPasswordPage = () => {
+const ResetPasswordPage = ({ searchParams }) => {
+  console.log(searchParams)
   return (
-    <ResetPassword />
+    <ResetPassword params={searchParams} />
   )
 }
 
