@@ -60,6 +60,7 @@ const PostDetails = ({ postId }) => {
       setPost(data.post)
       setOpenSpinner(false)
     } catch (error) {
+      console.log(error)
       handleError(error)
       setOpenSpinner(false)
     }
