@@ -118,7 +118,7 @@ const ResetPassword = ({ params }) => {
             id="email"
             name="email"
             value={formik.values.email}
-            label="Podaj email, na który wyślemy link resetujący hasło"
+            label="Podaj email, na który wyślemy link do resetu hasła"
             placeholder="Wpisz email"
             onChange={formik.handleChange}
             error={getFormikError(formik, 'email')}
