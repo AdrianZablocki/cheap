@@ -18,7 +18,7 @@ export const metadata = {
     type: 'website',
     description: 'Cheap Weed - tania medyczna marihuana w Polsce',
     url: 'https://cheapweed.pl',
-    images: '/public/logo.png'
+    images: '/logo.png'
   },
   robots: {
     index: true,
