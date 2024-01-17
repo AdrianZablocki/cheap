@@ -104,7 +104,7 @@ const UserForm = ({ handleSubmit }) => {
               onChange={formik.handleChange}
               onBlur={() => formik.setFieldTouched('consent')}
             />
-            Akceputję <Link href="/regulamin" passHref>regulamin</Link> strony cheap weed
+            Akceputję <Link href="/terms" passHref>regulamin</Link> strony cheap weed
           </label>
           <div className={styles.error}>{getFormikError(formik, 'consent')}</div>
         </fieldset>

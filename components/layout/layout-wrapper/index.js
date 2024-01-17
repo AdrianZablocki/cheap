@@ -28,14 +28,21 @@ const LayoutWrapper = ({ children, token }) => {
   const headerlessViews = [ '/login', '/registration' ]
 
   const confirmPilicy = () => {
-    localStorage?.setItem(policy, true)
+    localStorage && localStorage.setItem(policy, true)
     setShowDialog(false)
   }
 
-  const readMoreAboutpolicy = () => {
-    localStorage?.setItem(policy, true)
+  const readMoreAboutPolicy = () => {
+    localStorage && localStorage.setItem(policy, true)
     push('/privacy-policy')
     setShowDialog(false)
+  }
+
+  const checkCookiesConsent = () => {
+    if (typeof window !== 'undefined') {
+      return !localStorage.getItem(policy)
+    }
+    return true
   }
 
   return (
@@ -49,11 +56,11 @@ const LayoutWrapper = ({ children, token }) => {
           { !headerlessViews.includes(pathname) && <Header />}
           { children }
           { pathname === '/' && <Footer /> }
-          {!localStorage?.getItem(policy) && showDialog &&
+          {checkCookiesConsent() && showDialog &&
             <Dialog
               confirmAction={confirmPilicy}
               confirmText="Akceptuję"
-              moreAction={readMoreAboutpolicy}
+              moreAction={readMoreAboutPolicy}
               content={content}
             />
           }
