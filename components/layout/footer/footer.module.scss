@@ -4,7 +4,7 @@
 
 .footerWrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   position: fixed;
   bottom: 0;
@@ -15,14 +15,19 @@
   border-top: $border-1-orochimaru;
   box-shadow: $shadow-box-top;
   z-index: z-index($list, footer);
+}
 
-  a {
-    @include font($mont-medium, 14px);
-    padding: 8px 20px;
-    color: $color-black-light;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 34px;
-    border: 2px solid $color-paradise-green;
-  }
+.about,
+.createPost {
+  @include font($mont-medium, 14px);
+  padding: 8px 20px;
+  color: $color-black-light;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 34px;
+  border: 2px solid $color-paradise-green;
+}
+
+.about {
+  border: none;
 }

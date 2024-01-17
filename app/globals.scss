@@ -2,6 +2,7 @@
 @import '../styles/fonts.scss';
 @import '../styles/variables.scss';
 @import '../styles/pagination.scss';
+@import '../styles/mixins.scss';
 
 * {
   box-sizing: border-box;
@@ -24,4 +25,44 @@ body {
 button {
   border: none;
   background-color: transparent;
+}
+
+.about,
+.privacy-policy, 
+.terms {
+  @extend %main-container;
+
+  h1 {
+    margin: 50px 0;
+    font-size: 20px
+  }
+
+  h2 {
+    margin: 20px 0;
+    font-size: 18px
+  }
+
+  p {
+    @include font($mont-light, 16px);
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 18px;
+  }
+
+  ul {
+    margin-bottom: 16px;
+  }
+
+  li {
+    @include font($mont-light, 14px);
+    line-height: 24px;
+    margin-left: 48px;
+    list-style-type: disc;
+  }
+
+  a {
+    color: $color-black-light;
+    text-decoration: none;
+  }
+
 }

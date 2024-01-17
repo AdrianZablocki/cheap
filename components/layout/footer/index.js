@@ -5,7 +5,8 @@ import styles from './footer.module.scss'
 const Footer = ({}) => {
   return (
     <footer className={styles.footerWrapper}>
-      <Link href="/create-post" passHref>Utwórz wpis</Link>
+      <Link className={styles.about} href="/about" passHref>O nas</Link>
+      <Link className={styles.createPost} href="/create-post" passHref>Utwórz wpis</Link>
     </footer>
   )
 } 

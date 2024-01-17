@@ -43,3 +43,14 @@
     margin-bottom: 8px;
   }
 }
+
+.deleteAccount {
+  text-align: right;
+
+  button {
+    font-size: 16px;
+    margin-bottom: 16px;
+    padding: 0;
+    color: $color-black-light;    
+  }
+}
