@@ -25,7 +25,9 @@ export const verifyUser = async (req, res) => {
   try {
     const user = await User.findById(req.body.userId)
 
+    console.log('USER', user, user?.validationToken === req.body.token)
     if (user?.validationToken === req.body.token) {
+      console.log('HUJ')
       await User.findOneAndUpdate({ _id: req.body.userId }, { verified: true, validationToken: null }, { new: true })
       return res.status(200).json({ message: 'Konto zostało zweryfikowne poprawnie' })
     } else {
