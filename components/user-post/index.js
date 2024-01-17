@@ -103,7 +103,13 @@ const UserPost = ({ post, token, getUser }) => {
           <ChangePrice post={post} updatePost={onUpdatePost} />
         </Modal>
       }
-      { showDialog && <Dialog action={onDeletePost} closeDialog={onCloseDialog} />}
+      {showDialog &&
+        <Dialog
+          confirmAction={onDeletePost}
+          onClose={onCloseDialog}
+          content="Czy na pewno chcesz usunąć wpis?"
+        />
+      }
     </>
   ) 
 }

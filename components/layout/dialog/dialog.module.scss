@@ -18,9 +18,15 @@
   margin: 0 16px;
   background-color: $color-white;
   border-radius: 15px;
+  line-height: 1.4;
+  max-width: 600px;
+}
+.content {
+  margin-bottom: 18px;  
+  text-align: center;
 }
 
-.content {
+.contentWithPadding {
   padding: 62px 0;
 }
 
@@ -36,4 +42,18 @@
 
 .actions {
   justify-content: space-between;
+}
+
+.moreActions {
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 400px;
+  margin: 0 auto;
+
+  button {
+    &:first-child {
+      margin-bottom: 28px;
+    }
+  }
+  
 }
