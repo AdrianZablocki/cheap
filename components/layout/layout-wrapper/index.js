@@ -28,12 +28,12 @@ const LayoutWrapper = ({ children, token }) => {
   const headerlessViews = [ '/login', '/registration' ]
 
   const confirmPilicy = () => {
-    localStorage.setItem(policy, true)
+    localStorage?.setItem(policy, true)
     setShowDialog(false)
   }
 
   const readMoreAboutpolicy = () => {
-    localStorage.setItem(policy, true)
+    localStorage?.setItem(policy, true)
     push('/privacy-policy')
     setShowDialog(false)
   }
@@ -49,7 +49,7 @@ const LayoutWrapper = ({ children, token }) => {
           { !headerlessViews.includes(pathname) && <Header />}
           { children }
           { pathname === '/' && <Footer /> }
-          {!localStorage.getItem(policy) && showDialog &&
+          {!localStorage?.getItem(policy) && showDialog &&
             <Dialog
               confirmAction={confirmPilicy}
               confirmText="Akceptuję"
