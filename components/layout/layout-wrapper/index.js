@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname, useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import SpinnerContext from '@/context/spinner-context'
 import SnackbarContext from '@/context/snackbar-context'
@@ -20,6 +20,7 @@ const LayoutWrapper = ({ children, token }) => {
   const [ openSpinner, setOpenSpinner ] = useState(false)
   const [ userToken, setUserToken ] = useState(token?.value || '')
   const [ showDialog, setShowDialog ] = useState(true)
+  const [ policyConfirmed, setPolicyConfirmed ] = useState(true)
   const pathname = usePathname()
   const { push } = useRouter()
 
@@ -27,22 +28,20 @@ const LayoutWrapper = ({ children, token }) => {
 
   const headerlessViews = [ '/login', '/registration' ]
 
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      setPolicyConfirmed(localStorage.getItem(policy))
+    }
+  }, [])
+
   const confirmPilicy = () => {
     localStorage && localStorage.setItem(policy, true)
     setShowDialog(false)
   }
 
   const readMoreAboutPolicy = () => {
-    localStorage && localStorage.setItem(policy, true)
     push('/privacy-policy')
     setShowDialog(false)
-  }
-
-  const checkCookiesConsent = () => {
-    if (typeof window !== 'undefined') {
-      return !localStorage.getItem(policy)
-    }
-    return true
   }
 
   return (
@@ -56,7 +55,7 @@ const LayoutWrapper = ({ children, token }) => {
           { !headerlessViews.includes(pathname) && <Header />}
           { children }
           { pathname === '/' && <Footer /> }
-          {checkCookiesConsent() && showDialog &&
+          { !policyConfirmed && showDialog &&
             <Dialog
               confirmAction={confirmPilicy}
               confirmText="Akceptuję"
