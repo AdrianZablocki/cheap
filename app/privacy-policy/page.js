@@ -19,7 +19,7 @@ const PrivacyPolicyPage = () => {
       </ul>
 
       <h2>Jakie dane osobowe przetwarzamy?</h2>
-      <p>W celu realizacji usług, o których piszemy w Regulaminie, cheapweed.pl przetwarza adres e-mail oraz imię (jeżeli nam je podasz) lub nick oraz adres IP.</p>
+      <p>W celu realizacji usług, o których piszemy w Regulaminie, cheapweed.pl przetwarza adres e-mail, imię (jeżeli nam je podasz) lub nick oraz adres IP.</p>
       <p>Podanie tych danych jest niezbędne do realizacji usług.</p>
 
       <h2>W jakim celu przetwarzamy Twoje dane osobowe?</h2>
@@ -30,7 +30,7 @@ const PrivacyPolicyPage = () => {
       <p>W zależności od tego, w jakim celu i jakie dane o Tobie przetwarzamy, zastosowanie znajdzie właściwa podstawa prawna:</p>
       <ul>
         <li>dane dotyczące rejestracji oraz inne dane zawarte na Twoim koncie: przetwarzamy je w związku z realizacją naszych usług na Twoją rzecz, zgodnie z regulaminem</li>
-        <li>dane dotyczące leków w związku z korzystaniem przez Ciebie z naszych usług przetwarzamy na podstawie odrębnej zgody wyrażonej przez Ciebie. Jednak chcąc w pełni zabezpieczyć Twoje prawa z RODO oraz w związku z tym, że przekazujemy Ci dane produktów, zadbaliśmy o właściwe podstawy przetwarzania Twoich danych osobowych tak, aby spełnić wymogi RODO</li>
+        <li>dane dotyczące Produktów w związku z korzystaniem przez Ciebie z naszych usług przetwarzamy na podstawie odrębnej zgody wyrażonej przez Ciebie. Jednak chcąc w pełni zabezpieczyć Twoje prawa z RODO oraz w związku z tym, że przekazujemy Ci dane Produktów, zadbaliśmy o właściwe podstawy przetwarzania Twoich danych osobowych tak, aby spełnić wymogi RODO</li>
         <li>dane dotyczące korzystania z naszej strony internetowej i portalu (dane techniczne), w tym dane z niezbędnych do działania portalu plików Cookies przetwarzamy na podstawie naszego prawnie uzasadnionego interesu w związku ze świadczonymi na Twoją rzecz usługami zgodnie z Regulaminem</li>
         <li>wszelkie posiadane przez nas dane mogą być również przetwarzane przez nas w celu dochodzenia lub obrony przed roszczeniami, jeżeli zajdzie taka konieczność. Przetwarzanie danych odbywa się wówczas na podstawie naszego prawnie uzasadnionego celu</li>
       </ul>

@@ -38,7 +38,7 @@ const TermsPage = () => {
       <p>4. Użytkownik dzięki informacjom zawartym we wpisach innych Użytkowników może nabyć interesujące go produkty. Wpisy zawierają nazwy produktów z ich cenami, datą ostatniej aktualizacji ceny, adresem  oraz poprzedzone są  linkami z danymi kontaktowymi aptek.</p>
 
       <h2>Wymagania techniczne związane z korzystaniem z Usług</h2>
-      <p>1. Posiadanie smartfona, komputera lub innego urządzenia z dostępem do sieci internet.</p>
+      <p>1. Posiadanie smartfona, komputera lub innego urządzenia z dostępem do sieci Internet.</p>
       <p>2. Posiadanie zainstalowanej przeglądarki internetowej obsługującej technologie wykorzystywane w serwisie cheapweed.pl.</p>
       <p>3. Posiadanie dowolnego konta poczty elektronicznej e-mail (dla wybranych Usług).</p>
 
