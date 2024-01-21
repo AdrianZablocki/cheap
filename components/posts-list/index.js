@@ -21,12 +21,14 @@ const PostList = () => {
   const { setOpenSpinner } = useContext(SpinnerContext)
   const [ keyword, setKeyword ] = useState()
   const [ filters, setFilters ] = useState({region: '', strainName: '', city: ''})
+  const [ sort, setSort ] = useState({ sortBy: 'date', sortDir: -1 })
 
   useEffect(() => {
     const query = new QueryBuilder()
       .withPagination(page + 1)
       .withKeyword(keyword)
       .withFilters(filters)
+      .withSort(sort)
       .build()
       
     setDisabledScroll(false)
@@ -44,7 +46,6 @@ const PostList = () => {
       setPageCount(Math.ceil(postsData.filteredPostsCount/postsData.postsPerPage))
       setOpenSpinner(false)
     } catch (error) {
-      console.log(error)
       setOpenSpinner(false)
     }
   }
@@ -54,7 +55,15 @@ const PostList = () => {
 
   return (
     <>
-      <Navbar setKeyword={setKeyword} handlePageClick={handlePageClick} setFilters={setFilters} filters={filters} />
+      <Navbar
+        setKeyword={setKeyword}
+        handlePageClick={handlePageClick}
+        setFilters={setFilters}
+        filters={filters}
+        sort={sort}
+        setSort={setSort}
+      />
+
       <ul className={styles.grid}>
         {posts && posts.map((post, index )=> <Post key={`post_${index}`} post={post} />)}
       </ul>
@@ -62,7 +71,7 @@ const PostList = () => {
       {<ReactPaginate
         forcePage={page}
         className="pagination"
-        // pageRangeDisplayed={3}
+        pageRangeDisplayed={3}
         pageCount={pageCount}
         breakLabel="..."
         nextLabel={<IconButton 
@@ -77,6 +86,7 @@ const PostList = () => {
           icon={prevIcon}
           alt="close icon"
         />}
+        renderOnZeroPageCount={null}
         onPageChange={handlePageClick}
       />}    
     </>

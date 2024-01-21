@@ -11,14 +11,11 @@ import Modal from '../modal'
 
 import styles from './navbar.module.scss'
 
-const Navbar = ({ setKeyword, handlePageClick, setFilters, filters }) => {
+const Navbar = ({ setKeyword, handlePageClick, setFilters, filters, sort, setSort }) => {
   const [showModal, setShowModal] = useState(false)
 
-  const chips = ['region', 'strainName', 'city']
+  const isFilters = () => filters.region || filters.strainName || filters.city
 
-  const isFilters = () => {
-    return filters.region || filters.strainName || filters.city
-  }
   return (
     <div className={styles.navbarWrapper}>
       <div className={styles.navbar}>
@@ -37,7 +34,13 @@ const Navbar = ({ setKeyword, handlePageClick, setFilters, filters }) => {
 
         {showModal &&
           <Modal onClose={() => setShowModal(false)}>
-            <Filters setFilters={setFilters} closeModal={() => setShowModal(false)} filters={filters} />
+            <Filters
+              setFilters={setFilters}
+              closeModal={() => setShowModal(false)}
+              filters={filters}
+              sort={sort}
+              setSort={setSort}
+            />
           </Modal>
         }
       </div>
