@@ -12,11 +12,9 @@
   z-index: z-index($list, modal);
 
   @media screen and (min-width: 768px) {
-    padding: 50px;
-  }
-
-  @media screen and (min-width: 992px) {
-    padding: 100px;
+    padding: 0;
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -30,12 +28,11 @@
   @media screen and (min-width: 768px) {
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
+    min-width: 600px;
+    height: auto;
+    margin: auto;
   }
 
-  @media screen and (min-width: 992px) {
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-  }
 }
 
 .modalBody {

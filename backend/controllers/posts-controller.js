@@ -2,12 +2,14 @@ import Post from '../models/post'
 import APIFilters from '../utils/api-filters'
 
 export const getPosts = async(req, res, next) => {
+
   const postsPerPage = 9
   const postsCount = await Post.estimatedDocumentCount()
-
-  const apiFilters = await new APIFilters(Post.find().sort({date: -1}), req.query)
+  
+  const apiFilters = await new APIFilters(Post.find(), req.query)
     .search()
-    .filter();
+    .filter()
+    .sort()
 
   let posts = await apiFilters.query
 

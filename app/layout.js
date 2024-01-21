@@ -41,7 +41,6 @@ export default function RootLayout({ children }) {
     <html lang="pl">
       <body id="modal-root">
         <LayoutWrapper token={token}>{children}</LayoutWrapper>
-        {/* <div>Sorki, mamy problemy techniczne</div> */}
       </body>
     </html>
   )

@@ -17,9 +17,17 @@ class APIFilters {
     return this;
   }
 
+  sort() {
+    const sort = {[this.queryStr.sortBy]: Number(this.queryStr.sortDir)}
+    if (Object.keys(sort).length) {
+      this.query = this.query.sort(sort)      
+    }
+    return this
+  }
+
   filter() {
     const queryCopy = { ...this.queryStr }
-    const removeFields = ['keyword', 'page']
+    const removeFields = ['keyword', 'page', 'sortBy', 'sortDir']
     removeFields.forEach(el => delete queryCopy[el])
 
     this.query = this.query.find(queryCopy)

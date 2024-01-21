@@ -1,4 +1,39 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles/variables.scss';
+
 .actionButtons {
   padding-top: 36px;
   text-align: center;
+}
+
+.sortBy,
+.sortItems {
+  display: flex;
+}
+
+.sortItems {
+  flex-direction: column;
+
+  input {
+    margin: 0 8px 0 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    color: $color-black-light;
+    margin-bottom: 16px;
+  }
+}
+
+.sortTitle,
+.sortItems {
+  width: 50%;
+}
+
+.sortTitle {
+  @include font($mont-light, 14px);
 }

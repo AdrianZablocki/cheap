@@ -1,7 +1,8 @@
 class QueryBuilder {
-  keyword = '';
-  pagination = '';
+  keyword = ''
+  pagination = ''
   filters = ''
+  sort = ''
   
   withKeyword(keyword) {
     this.keyword = keyword ? `keyword=${keyword}` : ''
@@ -25,6 +26,13 @@ class QueryBuilder {
     this.filters = query ? query : ''
     return this
   }
+  
+  withSort(sort) {
+    if (Object.keys(sort).length) {
+      this.sort = `sortBy=${sort.sortBy}&sortDir=${sort.sortDir}`
+    }
+    return this
+  }
 
   build() {
     let query = `&${this.pagination}`
@@ -35,6 +43,10 @@ class QueryBuilder {
 
     if (this.filters) {
       query += `&${this.filters}`
+    }
+
+    if (this.sort) {
+      query += `&${this.sort}`
     }
     return query
   }
