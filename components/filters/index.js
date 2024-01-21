@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { useFormik } from 'formik'
 
 import { getRegionList, getStrainList, setDisabledScroll } from '@/utils'
@@ -9,7 +8,6 @@ import Input from '../UI/input'
 import styles from './filters.module.scss'
 
 const Filters = ({ setFilters, closeModal, filters, sort, setSort }) => {
-  const itemsRef = useRef([])
 
   const formik = useFormik({
     initialValues: {

@@ -6,7 +6,7 @@ import IconButton from '../UI/icon-button';
 import styles from './filters-chips.module.scss'
 
 const FiltersChips = ({ filters, setFilters }) => {
-  const itemsRef = useRef([])
+  const itemsRef = useRef([]);
   const [ width, setWidth ] = useState(0)
   const chipPadding = 40
   const chipMargin = 20

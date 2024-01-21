@@ -28,7 +28,9 @@ class QueryBuilder {
   }
   
   withSort(sort) {
-    this.sort = `sortBy=${sort.sortBy}&sortDir=${sort.sortDir}`
+    if (Object.keys(sort).length) {
+      this.sort = `sortBy=${sort.sortBy}&sortDir=${sort.sortDir}`
+    }
     return this
   }
 
